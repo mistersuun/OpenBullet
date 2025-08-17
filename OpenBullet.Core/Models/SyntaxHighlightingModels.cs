@@ -74,3 +74,4 @@ public class SyntaxHighlightingRules
     public string[] BlockStartKeywords { get; set; } = Array.Empty<string>();
     public string[] BlockEndKeywords { get; set; } = Array.Empty<string>();
 }
+

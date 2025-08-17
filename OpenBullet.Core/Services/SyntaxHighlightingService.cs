@@ -453,3 +453,4 @@ public class SyntaxHighlightingService : ISyntaxHighlightingService
         return _highlightingRules["Generic"];
     }
 }
+

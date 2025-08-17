@@ -118,7 +118,7 @@
                         <TextBlock Text="Country" VerticalAlignment="Center"/>
                         <TextBlock Grid.Column="1" Text="{Binding Country}" FontWeight="SemiBold"/>
                     </Grid>
-                </StackPanel>
+            </StackPanel>
             </Grid>
         </materialDesign:Card>
 

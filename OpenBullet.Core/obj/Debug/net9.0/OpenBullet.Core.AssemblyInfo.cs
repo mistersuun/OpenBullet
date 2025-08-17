@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OpenBullet.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c260c9c8d4e1d6978ce068838dd641465fcad27b")]
 [assembly: System.Reflection.AssemblyProductAttribute("OpenBullet.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OpenBullet.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

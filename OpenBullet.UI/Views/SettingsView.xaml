@@ -103,8 +103,8 @@
                                 <TextBlock Text="Save Settings"/>
                             </StackPanel>
                         </Button>
-                    </StackPanel>
-                </materialDesign:Card>
+            </StackPanel>
+        </materialDesign:Card>
             </StackPanel>
         </ScrollViewer>
     </Grid>

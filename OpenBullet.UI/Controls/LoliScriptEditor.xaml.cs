@@ -429,12 +429,12 @@ public partial class LoliScriptEditor : UserControl
     private void FormatScript()
     {
         var lines = ScriptEditor.Text.Split('\n');
-        var formattedLines = new List<string>();
+            var formattedLines = new List<string>();
         int indentLevel = 0;
-
-        foreach (var line in lines)
-        {
-            var trimmedLine = line.Trim();
+            
+            foreach (var line in lines)
+            {
+                var trimmedLine = line.Trim();
             if (string.IsNullOrEmpty(trimmedLine))
             {
                 formattedLines.Add(string.Empty);
@@ -451,8 +451,8 @@ public partial class LoliScriptEditor : UserControl
 
             // Increase indent for start keywords
             if (IsStartKeyword(trimmedLine))
-                indentLevel++;
-        }
+                    indentLevel++;
+                }
 
         ScriptEditor.Text = string.Join("\n", formattedLines);
     }

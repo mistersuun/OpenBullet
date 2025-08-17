@@ -292,3 +292,4 @@ public class Step13_Block2_EnhancedAutoCompletionTests
         completions.Should().Contain(c => c.Text == expectedCommand && c.Type == CompletionType.Command);
     }
 }
+
