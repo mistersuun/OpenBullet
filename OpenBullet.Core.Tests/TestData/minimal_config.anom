@@ -1,0 +1,10 @@
+[SETTINGS]
+{
+  "Name": "Minimal Config",
+  "Author": "TestUser",
+  "Version": "1.0.0",
+  "SuggestedBots": 1
+}
+
+[SCRIPT]
+PRINT Hello World

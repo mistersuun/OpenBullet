@@ -1,0 +1,121 @@
+<UserControl x:Class="OpenBullet.UI.Controls.LoliScriptEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Editor Toolbar -->
+        <materialDesign:Card Grid.Row="0" Margin="0,0,0,8" Padding="8">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="SaveButton" 
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="Save Script (Ctrl+S)"
+                        Click="SaveButton_Click">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
+                
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="8,0"/>
+                
+                <Button x:Name="UndoButton" 
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="Undo (Ctrl+Z)"
+                        Click="UndoButton_Click">
+                    <materialDesign:PackIcon Kind="Undo" />
+                </Button>
+                
+                <Button x:Name="RedoButton" 
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="Redo (Ctrl+Y)"
+                        Click="RedoButton_Click">
+                    <materialDesign:PackIcon Kind="Redo" />
+                </Button>
+                
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="8,0"/>
+                
+                <Button x:Name="FindButton" 
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="Find and Replace (Ctrl+F)"
+                        Click="FindButton_Click">
+                    <materialDesign:PackIcon Kind="Magnify" />
+                </Button>
+                
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="8,0"/>
+                
+                <Button x:Name="ValidateButton" 
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="Validate Script"
+                        Click="ValidateButton_Click">
+                    <materialDesign:PackIcon Kind="CheckCircle" />
+                </Button>
+                
+                <Button x:Name="FormatButton" 
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="Format Code"
+                        Click="FormatButton_Click">
+                    <materialDesign:PackIcon Kind="CodeBraces" />
+                </Button>
+                
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="8,0"/>
+                
+                <ComboBox x:Name="ThemeComboBox" 
+                          Width="120" 
+                          Margin="8,0,0,0"
+                          SelectionChanged="ThemeComboBox_SelectionChanged"
+                          ToolTip="Select Color Theme">
+                    <ComboBoxItem Content="Dark Theme" Tag="Dark"/>
+                    <ComboBoxItem Content="Light Theme" Tag="Light"/>
+                    <ComboBoxItem Content="High Contrast" Tag="HighContrast"/>
+                </ComboBox>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!-- Main Editor -->
+        <materialDesign:Card Grid.Row="1" Padding="0">
+            <avalonedit:TextEditor x:Name="ScriptEditor"
+                                   FontFamily="Consolas"
+                                   FontSize="13"
+                                   ShowLineNumbers="True"
+                                   WordWrap="False"
+                                   HorizontalScrollBarVisibility="Auto"
+                                   VerticalScrollBarVisibility="Auto"
+                                   Background="Transparent"
+                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   LineNumbersForeground="{DynamicResource MaterialDesignBodyLight}"
+                                   TextChanged="ScriptEditor_TextChanged"
+                                   KeyDown="ScriptEditor_KeyDown"/>
+        </materialDesign:Card>
+
+        <!-- Status Bar -->
+        <materialDesign:Card Grid.Row="2" Margin="0,8,0,0" Padding="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock x:Name="StatusText" 
+                           Grid.Column="0" 
+                           Text="Ready" 
+                           VerticalAlignment="Center"/>
+                
+                <TextBlock x:Name="LineInfoText" 
+                           Grid.Column="1" 
+                           Margin="16,0,0,0"
+                           VerticalAlignment="Center"/>
+                
+                <TextBlock x:Name="CharInfoText" 
+                           Grid.Column="2" 
+                           Margin="16,0,0,0"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

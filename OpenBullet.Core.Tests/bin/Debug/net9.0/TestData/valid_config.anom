@@ -1,0 +1,63 @@
+[SETTINGS]
+{
+  "Name": "Test Configuration",
+  "SuggestedBots": 50,
+  "MaxCPM": 0,
+  "LastModified": "2024-01-15T10:30:00.0000000Z",
+  "AdditionalInfo": "This is a test configuration for unit testing",
+  "Author": "TestAuthor",
+  "Version": "1.2.3",
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": true,
+  "MaxProxyUses": 10,
+  "EncodeData": false,
+  "AllowedWordlist1": "MailPass",
+  "AllowedWordlist2": "",
+  "DataRules": ["rule1", "rule2"],
+  "CustomInputs": ["input1"],
+  "CaptchaUrl": "https://example.com/captcha",
+  "Base64": false,
+  "Grayscale": true,
+  "RemoveLines": false,
+  "RemoveNoise": true,
+  "Dilate": false,
+  "Threshold": 0.8,
+  "DiffKeep": 0.1,
+  "DiffHide": 0.2,
+  "Transparent": false,
+  "OnlyShow": false,
+  "ContrastGamma": true,
+  "Contrast": 1.2,
+  "Gamma": 0.9,
+  "Brightness": 1.1,
+  "RemoveLinesMin": 5,
+  "RemoveLinesMax": 20,
+  "ForceHeadless": true,
+  "AlwaysOpen": false,
+  "AlwaysQuit": true,
+  "DisableNotifications": true,
+  "CustomUserAgent": "TestAgent/1.0",
+  "RandomUA": false,
+  "CustomCMDArgs": "--disable-web-security",
+  "LoliSave": false
+}
+
+[SCRIPT]
+## Test LoliScript Configuration
+#LOGIN REQUEST POST "https://example.com/login" 
+  CONTENT "username=<USER>&password=<PASS>" 
+  CONTENTTYPE "application/x-www-form-urlencoded" 
+  HEADER "User-Agent: TestAgent/1.0"
+  HEADER "Accept: text/html,application/xhtml+xml"
+
+KEYCHECK 
+  KEYCHAIN Success OR 
+    KEY "Welcome"
+    KEY "Dashboard"
+  KEYCHAIN Failure OR 
+    KEY "Invalid credentials"
+    KEY "Login failed"
+    KEY "Error"

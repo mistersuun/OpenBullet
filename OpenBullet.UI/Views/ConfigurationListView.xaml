@@ -1,0 +1,162 @@
+<UserControl x:Class="OpenBullet.UI.Views.ConfigurationListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,24">
+            <TextBlock Text="Configurations" FontSize="28" FontWeight="Bold" />
+            <TextBlock Text="Manage automation configurations" FontSize="14" Opacity="0.7" />
+        </StackPanel>
+
+        <!-- Configuration Management Interface -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Action Bar -->
+            <materialDesign:Card Grid.Row="0" Margin="0,0,0,16" Padding="16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBox materialDesign:HintAssist.Hint="Search configurations..." Width="200" Margin="0,0,16,0"
+                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ComboBox materialDesign:HintAssist.Hint="Filter by category" Width="150" 
+                                  SelectedItem="{Binding CategoryFilter}">
+                            <ComboBoxItem Content="All Categories"/>
+                            <ComboBoxItem Content="Web Scraping"/>
+                            <ComboBoxItem Content="Account Creation"/>
+                            <ComboBoxItem Content="Data Processing"/>
+                            <ComboBoxItem Content="API Testing"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" 
+                                Command="{Binding CreateConfigurationCommand}" Margin="0,0,8,0">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus" Margin="0,0,4,0"/>
+                                <TextBlock Text="New Config"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignOutlinedButton}" 
+                                Command="{Binding ImportConfigurationCommand}" Margin="0,0,8,0">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Import" Margin="0,0,4,0"/>
+                                <TextBlock Text="Import"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignOutlinedButton}" 
+                                Command="{Binding RefreshCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Refresh" Margin="0,0,4,0"/>
+                                <TextBlock Text="Refresh"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <!-- Configuration List -->
+            <materialDesign:Card Grid.Row="1" Padding="0">
+                <Grid>
+                    <DataGrid ItemsSource="{Binding Configurations}" SelectedItem="{Binding SelectedConfiguration}"
+                              AutoGenerateColumns="False" CanUserReorderColumns="False" 
+                              CanUserResizeColumns="True" IsReadOnly="True"
+                              GridLinesVisibility="Horizontal" HeadersVisibility="Column">
+                        
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
+                            <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="120"/>
+                            <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="100"/>
+                            <DataGridTextColumn Header="Version" Binding="{Binding Version}" Width="80"/>
+                            
+                            <DataGridTemplateColumn Header="Status" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="12" Padding="6,2" HorizontalAlignment="Center"
+                                                Background="{Binding StatusColor}">
+                                            <TextBlock Text="{Binding Status}" FontWeight="SemiBold" 
+                                                       Foreground="White" FontSize="10"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                            <DataGridTextColumn Header="Created" Binding="{Binding CreatedAt, StringFormat='MMM dd, yyyy'}" Width="100"/>
+
+                            <DataGridTemplateColumn Header="Actions" Width="180">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.EditConfigurationCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                    CommandParameter="{Binding}"
+                                                    ToolTip="Edit Configuration">
+                                                <materialDesign:PackIcon Kind="Edit"/>
+                                            </Button>
+                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.TestConfigurationCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                    CommandParameter="{Binding}"
+                                                    ToolTip="Test Configuration">
+                                                <materialDesign:PackIcon Kind="TestTube" Foreground="Orange"/>
+                                            </Button>
+                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.DuplicateConfigurationCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                    CommandParameter="{Binding}"
+                                                    ToolTip="Duplicate Configuration">
+                                                <materialDesign:PackIcon Kind="ContentDuplicate"/>
+                                            </Button>
+                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.ExportConfigurationCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                    CommandParameter="{Binding}"
+                                                    ToolTip="Export Configuration">
+                                                <materialDesign:PackIcon Kind="Export"/>
+                                            </Button>
+                                            <Button Style="{StaticResource MaterialDesignIconButton}" 
+                                                    Command="{Binding DataContext.DeleteConfigurationCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                    CommandParameter="{Binding}"
+                                                    ToolTip="Delete Configuration">
+                                                <materialDesign:PackIcon Kind="Delete" Foreground="Red"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Empty State -->
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <materialDesign:PackIcon Kind="FileDocumentMultipleOutline" Width="64" Height="64" Opacity="0.3"/>
+                        <TextBlock Text="No Configurations Found" FontSize="18" FontWeight="SemiBold" 
+                                   Margin="0,16,0,8" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Create your first LoliScript configuration to get started" FontSize="12" 
+                                   Opacity="0.7" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" 
+                                Command="{Binding CreateConfigurationCommand}" Margin="0,16,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus" Margin="0,0,4,0"/>
+                                <TextBlock Text="Create First Configuration"/>
+                            </StackPanel>
+                        </Button>
+            </StackPanel>
+                </Grid>
+        </materialDesign:Card>
+        </Grid>
+    </Grid>
+</UserControl>
