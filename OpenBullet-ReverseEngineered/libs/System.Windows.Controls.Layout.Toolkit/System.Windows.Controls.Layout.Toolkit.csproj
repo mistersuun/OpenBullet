@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\System.Windows.Controls.Layout.Toolkit.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DE528FB0-AF97-40C3-8D16-B88BD84988F9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>System.Windows.Controls.Layout.Toolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>3.5.40128.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>System.Windows.Controls</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WPFToolkit">
+      <HintPath>lib\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="System\Windows\Automation\Peers\AccordionItemWrapperAutomationPeer.cs" />
+    <Compile Include="System\Windows\Automation\Peers\AccordionAutomationPeer.cs" />
+    <Compile Include="System\Windows\Automation\Peers\AccordionItemAutomationPeer.cs" />
+    <Compile Include="TransitioningContentControl.cs" />
+    <Compile Include="VisualTreeExtensions.cs" />
+    <Compile Include="ItemsControlHelper.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="BindingEvaluator`1.cs" />
+    <Compile Include="IUpdateVisualState.cs" />
+    <Compile Include="AccordionItem.cs" />
+    <Compile Include="Accordion.cs" />
+    <Compile Include="AccordionAction.cs" />
+    <Compile Include="AccordionSelectionMode.cs" />
+    <Compile Include="InteractionHelper.cs" />
+    <Compile Include="SelectionSequence.cs" />
+    <Compile Include="VisualStates.cs" />
+    <Compile Include="WeakEventListener`3.cs" />
+    <Compile Include="Primitives\AccordionButton.cs" />
+    <Compile Include="Primitives\ExpandableContentControl.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="XamlGeneratedNamespace\GeneratedInternalTypeHelper.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

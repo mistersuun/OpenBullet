@@ -1,0 +1,236 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes"
+                    xmlns:conv="clr-namespace:Xceed.Wpf.Toolkit.Core.Converters">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="../../Themes/Aero2/Common.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+  <conv:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter"/>
+  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+  <Style x:Key="ColorCanvasTextBoxStyle" TargetType="{x:Type TextBox}"
+         BasedOn="{StaticResource {x:Type TextBox}}">
+    <Setter Property="Control.Background" Value="Transparent"/>
+    <Style.Triggers>
+      <Trigger Property="UIElement.IsFocused" Value="false">
+        <Setter Property="Control.BorderBrush" Value="Transparent"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+    <Setter Property="Control.IsTabStop" Value="false"/>
+    <Setter Property="UIElement.Focusable" Value="false"/>
+    <Setter Property="Control.Background" Value="Transparent"/>
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type RepeatButton}">
+          <Border Background="{TemplateBinding Control.Background}"/>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <ControlTemplate x:Key="VerticalSlideThumbTemplate" TargetType="{x:Type Thumb}">
+    <Canvas SnapsToDevicePixels="true" Background="Transparent">
+      <Path x:Name="LeftArrow" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000"
+            Data="F1 M 276.761,316 L 262.619,307.835 262.619,324.165 276.761,316 Z"
+            RenderTransformOrigin="0.5,0.5" Width="6" Height="8">
+        <UIElement.RenderTransform>
+          <TransformGroup>
+            <TranslateTransform Y="6"/>
+          </TransformGroup>
+        </UIElement.RenderTransform>
+      </Path>
+      <Path x:Name="RightArrow" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000"
+            Data="F1 M 276.761,316 L 262.619,307.835 262.619,324.165 276.761,316 Z"
+            RenderTransformOrigin="0.5,0.5" Width="6" Height="8">
+        <UIElement.RenderTransform>
+          <TransformGroup>
+            <RotateTransform Angle="-180"/>
+            <TranslateTransform Y="6" X="9"/>
+          </TransformGroup>
+        </UIElement.RenderTransform>
+      </Path>
+    </Canvas>
+  </ControlTemplate>
+  <Style x:Key="VerticalSlideThumbStyle" TargetType="{x:Type Thumb}">
+    <Setter Property="UIElement.Focusable" Value="false"/>
+    <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+    <Setter Property="FrameworkElement.Height" Value="12"/>
+    <Setter Property="FrameworkElement.Width" Value="15"/>
+    <Setter Property="Control.Foreground" Value="Gray"/>
+    <Setter Property="Control.Template" Value="{StaticResource VerticalSlideThumbTemplate}"/>
+  </Style>
+  <ControlTemplate x:Key="ColorSpectrumSliderTemplate" TargetType="{x:Type local:ColorSpectrumSlider}">
+    <Grid>
+      <Border BorderBrush="{TemplateBinding Control.BorderBrush}"
+              BorderThickness="{TemplateBinding Control.BorderThickness}" Margin="0,8,0,0">
+        <Border x:Name="PART_TrackBackground" Width="15">
+          <Rectangle x:Name="PART_SpectrumDisplay" Stretch="Fill" VerticalAlignment="Stretch"/>
+        </Border>
+      </Border>
+      <Track Name="PART_Track">
+        <Track.DecreaseRepeatButton>
+          <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}" Command="Slider.DecreaseLarge"/>
+        </Track.DecreaseRepeatButton>
+        <Track.IncreaseRepeatButton>
+          <RepeatButton Style="{StaticResource SliderRepeatButtonStyle}" Command="Slider.IncreaseLarge"/>
+        </Track.IncreaseRepeatButton>
+        <Track.Thumb>
+          <Thumb Style="{StaticResource VerticalSlideThumbStyle}"/>
+        </Track.Thumb>
+      </Track>
+    </Grid>
+  </ControlTemplate>
+  <Style TargetType="{x:Type local:ColorSpectrumSlider}">
+    <Setter Property="Control.BorderBrush" Value="DarkGray"/>
+    <Setter Property="Control.BorderThickness" Value="1"/>
+    <Setter Property="RangeBase.SmallChange" Value="10"/>
+    <Setter Property="Slider.Orientation" Value="Vertical"/>
+    <Setter Property="Control.Background" Value="Transparent"/>
+    <Setter Property="Control.Foreground"
+            Value="{DynamicResource {x:Static JetSystemColors.ControlTextBrushKey}}"/>
+    <Setter Property="RangeBase.Minimum" Value="0"/>
+    <Setter Property="RangeBase.Maximum" Value="360"/>
+    <Setter Property="Slider.TickFrequency" Value="0.001"/>
+    <Setter Property="Slider.IsSnapToTickEnabled" Value="true"/>
+    <Setter Property="Slider.IsDirectionReversed" Value="false"/>
+    <Setter Property="Slider.IsMoveToPointEnabled" Value="true"/>
+    <Setter Property="RangeBase.Value" Value="0"/>
+    <Setter Property="Control.Template" Value="{StaticResource ColorSpectrumSliderTemplate}"/>
+  </Style>
+  <ControlTemplate x:Key="ColorCanvasTemplate" TargetType="{x:Type local:ColorCanvas}">
+    <Border Background="{TemplateBinding Control.Background}"
+            BorderThickness="{TemplateBinding Control.BorderThickness}"
+            BorderBrush="{TemplateBinding Control.BorderBrush}" Padding="3">
+      <Grid Margin="2">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Border BorderThickness="1" BorderBrush="DarkGray" ClipToBounds="true"
+                  Background="{StaticResource CheckerBrush}">
+            <Canvas x:Name="PART_ColorShadingCanvas" Width="200" Height="100" HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+              <Rectangle x:Name="ColorShadingRectangle" Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}"
+                         Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
+                         Fill="{Binding SelectedColor, ElementName=PART_SpectrumSlider, Converter={StaticResource ColorToSolidColorBrushConverter}}"/>
+              <Rectangle x:Name="WhiteGradient" Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
+                         Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}">
+                <Shape.Fill>
+                  <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="#ffffffff"/>
+                    <GradientStop Offset="1" Color="Transparent"/>
+                  </LinearGradientBrush>
+                </Shape.Fill>
+              </Rectangle>
+              <Rectangle x:Name="BlackGradient" Width="{Binding ElementName=PART_ColorShadingCanvas, Path=Width}"
+                         Height="{Binding ElementName=PART_ColorShadingCanvas, Path=Height}">
+                <Shape.Fill>
+                  <LinearGradientBrush StartPoint="0,1" EndPoint="0, 0">
+                    <GradientStop Offset="0" Color="#ff000000"/>
+                    <GradientStop Offset="1" Color="#00000000"/>
+                  </LinearGradientBrush>
+                </Shape.Fill>
+              </Rectangle>
+              <Canvas x:Name="PART_ColorShadeSelector" Width="10" Height="10" IsHitTestVisible="false">
+                <Ellipse Width="10" Height="10" StrokeThickness="3" Stroke="#FFFFFFFF" IsHitTestVisible="false"/>
+                <Ellipse Width="10" Height="10" StrokeThickness="1" Stroke="#FF000000" IsHitTestVisible="false"/>
+              </Canvas>
+            </Canvas>
+          </Border>
+          <Border Grid.Row="1" Margin="0,5,0,0">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Border x:Name="SelectedColorBorder" Background="{StaticResource CheckerBrush}" Height="22"
+                      Margin="2,0,2,0" BorderThickness="1" BorderBrush="#FFC9CACA">
+                <Rectangle x:Name="SelectedColor"
+                           Fill="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}"/>
+              </Border>
+              <TextBox x:Name="PART_HexadecimalTextBox" Grid.Column="1" Margin="2,0,2,0" VerticalAlignment="Center"
+                       Style="{StaticResource ColorCanvasTextBoxStyle}">
+              </TextBox>
+            </Grid>
+          </Border>
+          <Border Grid.Column="1" Grid.RowSpan="2" Margin="4,-8,0,0" ClipToBounds="false">
+            <local:ColorSpectrumSlider x:Name="PART_SpectrumSlider" VerticalAlignment="Stretch"/>
+          </Border>
+        </Grid>
+        <Border x:Name="RGBBorder" MinWidth="180" Grid.Row="1" BorderThickness="1" ClipToBounds="true"
+                Margin="0,10,0,0">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="44"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="R" VerticalAlignment="Center"/>
+            <Slider x:Name="PART_RSlider" Maximum="255" SmallChange="1" LargeChange="10" TickFrequency="1" Grid.Row="0"
+                    Grid.Column="1" Margin="4,6,4,6" VerticalAlignment="Center"
+                    Value="{Binding R, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <local:ByteUpDown Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Background="Transparent"
+                              Value="{Binding Value, ElementName=PART_RSlider}"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="G" VerticalAlignment="Center"/>
+            <Slider x:Name="PART_GSlider" Maximum="255" SmallChange="1" LargeChange="10" TickFrequency="1" Grid.Row="1"
+                    Grid.Column="1" Margin="4,6,4,6" VerticalAlignment="Center"
+                    Value="{Binding G, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <local:ByteUpDown Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Background="Transparent"
+                              Value="{Binding Value, ElementName=PART_GSlider}"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="B" VerticalAlignment="Center"/>
+            <Slider x:Name="PART_BSlider" Maximum="255" SmallChange="1" LargeChange="10" TickFrequency="1" Grid.Row="2"
+                    Grid.Column="1" Margin="4,6,4,6" VerticalAlignment="Center"
+                    Value="{Binding B, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <local:ByteUpDown Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Background="Transparent"
+                              Value="{Binding Value, ElementName=PART_BSlider}"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="A" VerticalAlignment="Center"
+                       Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Slider x:Name="PART_OpacitySlider" Grid.Row="3" Grid.Column="1" Maximum="255" SmallChange="1"
+                    LargeChange="10" Margin="4,6,4,6" VerticalAlignment="Center"
+                    Value="{Binding Path=A, RelativeSource={RelativeSource TemplatedParent}}"
+                    Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <local:ByteUpDown Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Background="Transparent"
+                              Value="{Binding Value, ElementName=PART_OpacitySlider}"
+                              Visibility="{Binding Path=UsingAlphaChannel, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+          </Grid>
+        </Border>
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="UIElement.IsEnabled" Value="false">
+        <Setter Value="{DynamicResource {x:Static JetSystemColors.GrayTextBrushKey}}" Property="Control.Foreground"/>
+      </Trigger>
+      <Trigger Value="{x:Null}" Property="local:ColorCanvas.SelectedColor">
+        <Setter TargetName="PART_ColorShadeSelector" Property="UIElement.Visibility" Value="Collapsed"/>
+        <Setter TargetName="SelectedColorBorder" Property="Border.Background" Value="Transparent"/>
+        <Setter TargetName="RGBBorder" Property="UIElement.IsEnabled" Value="false"/>
+        <Setter Value="{DynamicResource {x:Static JetSystemColors.GrayTextBrushKey}}" TargetName="RGBBorder"
+                Property="TextElement.Foreground"/>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <Style TargetType="{x:Type local:ColorCanvas}">
+    <Setter Property="Control.Background" Value="{StaticResource PanelBackgroundBrush}"/>
+    <Setter Property="Control.BorderBrush"
+            Value="{DynamicResource {x:Static themes:ResourceKeys.ControlNormalBorderKey}}"/>
+    <Setter Property="Control.BorderThickness" Value="1"/>
+    <Setter Property="Control.Template" Value="{StaticResource ColorCanvasTemplate}"/>
+  </Style>
+</ResourceDictionary>

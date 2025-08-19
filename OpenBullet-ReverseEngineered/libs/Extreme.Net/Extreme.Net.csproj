@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\Extreme.Net.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{522CABDE-64F0-4225-A39B-66927AA2A985}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Extreme.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.1.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Extreme</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources.cs" />
+    <Compile Include="Net\RequestParams.cs" />
+    <Compile Include="Net\HttpExceptionStatus.cs" />
+    <Compile Include="Net\BytesContent.cs" />
+    <Compile Include="Net\FileContent.cs" />
+    <Compile Include="Net\FormUrlEncodedContent.cs" />
+    <Compile Include="Net\HttpContent.cs" />
+    <Compile Include="Net\HttpStatusCode.cs" />
+    <Compile Include="Net\MultipartContent.cs" />
+    <Compile Include="Net\StreamContent.cs" />
+    <Compile Include="Net\StringContent.cs" />
+    <Compile Include="Net\ChainProxyClient.cs" />
+    <Compile Include="Net\DownloadProgressChangedEventArgs.cs" />
+    <Compile Include="Net\HttpHeader.cs" />
+    <Compile Include="Net\UploadProgressChangedEventArgs.cs" />
+    <Compile Include="Net\ExceptionHelper.cs" />
+    <Compile Include="Net\Html.cs" />
+    <Compile Include="Net\NetException.cs" />
+    <Compile Include="Net\HttpMethod.cs" />
+    <Compile Include="Net\CookieDictionary.cs" />
+    <Compile Include="Net\HttpProxyClient.cs" />
+    <Compile Include="Net\HttpException.cs" />
+    <Compile Include="Net\HttpRequest.cs" />
+    <Compile Include="Net\HttpResponse.cs" />
+    <Compile Include="Net\Http.cs" />
+    <Compile Include="Net\ProxyClient.cs" />
+    <Compile Include="Net\ProxyType.cs" />
+    <Compile Include="Net\ProxyException.cs" />
+    <Compile Include="Net\ProxyHelper.cs" />
+    <Compile Include="Net\Socks4aProxyClient.cs" />
+    <Compile Include="Net\Socks4ProxyClient.cs" />
+    <Compile Include="Net\Socks5ProxyClient.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

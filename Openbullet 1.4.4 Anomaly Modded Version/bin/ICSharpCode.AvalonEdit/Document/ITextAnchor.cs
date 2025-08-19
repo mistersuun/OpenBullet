@@ -1,0 +1,29 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: ICSharpCode.AvalonEdit.Document.ITextAnchor
+// Assembly: ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310
+// MVID: 0CDAE4EE-B402-4B03-A15F-9E1877AEC22C
+// Assembly location: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\ICSharpCode.AvalonEdit.dll
+
+using System;
+
+#nullable disable
+namespace ICSharpCode.AvalonEdit.Document;
+
+public interface ITextAnchor
+{
+  TextLocation Location { get; }
+
+  int Offset { get; }
+
+  AnchorMovementType MovementType { get; set; }
+
+  bool SurviveDeletion { get; set; }
+
+  bool IsDeleted { get; }
+
+  event EventHandler Deleted;
+
+  int Line { get; }
+
+  int Column { get; }
+}

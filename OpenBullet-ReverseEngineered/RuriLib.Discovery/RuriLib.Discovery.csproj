@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyTitle>RuriLib API Discovery Tool</AssemblyTitle>
+  </PropertyGroup>
+
+  <!-- Copy ALL Original OpenBullet DLLs to Output Directory -->
+  <ItemGroup Label="Copy DLLs to Output">
+    <!-- Core DLLs -->
+    <None Include="..\libs\RuriLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Leaf.xNet.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Extreme.Net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\LiteDB.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\AngleSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    
+    <!-- Scripting DLLs -->
+    <None Include="..\libs\IronPython.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\IronPython.Modules.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Microsoft.Dynamic.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Microsoft.Scripting.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Jint.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    
+    <!-- Other Dependencies -->
+    <None Include="..\libs\ProxySocket.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Tesseract.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\WebDriver.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\WebDriver.Support.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    
+    <!-- Config file for testing -->
+    <None Include="amazonChecker.anom">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Additional packages for compatibility -->
+  <ItemGroup Label="Compatibility Packages">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
+    <PackageReference Include="System.Security.Permissions" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>

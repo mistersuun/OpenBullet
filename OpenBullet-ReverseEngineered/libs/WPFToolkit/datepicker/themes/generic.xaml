@@ -1,0 +1,270 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Microsoft.Windows.Controls"
+                    xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives"
+                    xmlns:vsm="clr-namespace:System.Windows">
+  <ControlTemplate x:Key="DropDownButtonTemplate" TargetType="{Type Button}">
+    <Grid>
+      <vsm:VisualStateManager.VisualStateGroups>
+        <vsm:VisualStateGroup x:Name="CommonStates">
+          <vsm:VisualStateGroup.Transitions>
+            <vsm:VisualTransition GeneratedDuration="0"/>
+            <vsm:VisualTransition To="MouseOver" GeneratedDuration="0:0:0.1"/>
+            <vsm:VisualTransition To="Pressed" GeneratedDuration="0:0:0.1"/>
+          </vsm:VisualStateGroup.Transitions>
+          <vsm:VisualState x:Name="Normal"/>
+          <vsm:VisualState x:Name="MouseOver">
+            <Storyboard>
+              <ColorAnimation Duration="0" Storyboard.TargetName="Background"
+                              Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#FF448DCA"/>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#7FFFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#CCFFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#F2FFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+          </vsm:VisualState>
+          <vsm:VisualState x:Name="Pressed">
+            <Storyboard>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="Background"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#FF448DCA"/>
+              </ColorAnimationUsingKeyFrames>
+              <DoubleAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="Highlight"
+                                             Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
+              </DoubleAnimationUsingKeyFrames>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#EAFFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#C6FFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#6BFFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+              <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetName="BackgroundGradient"
+                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="0" Value="#F4FFFFFF"/>
+              </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+          </vsm:VisualState>
+          <vsm:VisualState x:Name="Disabled"/>
+        </vsm:VisualStateGroup>
+      </vsm:VisualStateManager.VisualStateGroups>
+      <Grid Height="18" Width="19" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"
+            Background="#11FFFFFF" FlowDirection="LeftToRight">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="23*"/>
+          <RowDefinition Height="19*"/>
+          <RowDefinition Height="19*"/>
+          <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Border x:Name="Highlight" Margin="-1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="4"
+                BorderThickness="1" BorderBrush="#FF45D6FA" Opacity="0" CornerRadius="0,0,1,1"/>
+        <Border x:Name="Background" Margin="0,-1,0,0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3"
+                BorderThickness="1" BorderBrush="#FFFFFFFF" Opacity="1" CornerRadius=".5" Background="#FF1F3B53"/>
+        <Border x:Name="BackgroundGradient" Margin="0,-1,0,0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3"
+                BorderThickness="1" BorderBrush="#BF000000" Opacity="1" CornerRadius=".5">
+          <Border.Background>
+            <LinearGradientBrush StartPoint=".7,0" EndPoint=".7,1">
+              <GradientStop Color="#FFFFFFFF" Offset="0"/>
+              <GradientStop Color="#F9FFFFFF" Offset="0.375"/>
+              <GradientStop Color="#E5FFFFFF" Offset="0.625"/>
+              <GradientStop Color="#C6FFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+          </Border.Background>
+        </Border>
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="1" StrokeThickness="1">
+          <Shape.Stroke>
+            <LinearGradientBrush EndPoint="0.48,-1" StartPoint="0.48,1.25">
+              <GradientStop Color="#FF494949"/>
+              <GradientStop Color="#FF9F9F9F" Offset="1"/>
+            </LinearGradientBrush>
+          </Shape.Stroke>
+          <Shape.Fill>
+            <LinearGradientBrush EndPoint="0.3,-1.1" StartPoint="0.46,1.6">
+              <GradientStop Color="#FF4084BD"/>
+              <GradientStop Color="#FFAFCFEA" Offset="1"/>
+            </LinearGradientBrush>
+          </Shape.Fill>
+        </Rectangle>
+        <Path HorizontalAlignment="Center" Margin="4,3,4,3" VerticalAlignment="Center"
+              RenderTransformOrigin="0.5,0.5" Grid.Column="0" Grid.Row="1" Fill="#FF2F2F2F" Stretch="Fill"
+              Data="M 11.426758,8.4305077 L 11.749023,8.4305077 11.749023,16.331387 10.674805,16.331387 10.674805,10.299648 9.0742188,11.298672 9.0742188,10.294277 C 9.4788408,10.090176 9.9094238,9.8090878 10.365967,9.4510155 10.82251,9.0929432 11.176106,8.7527733 11.426758,8.4305077 M 14.65086,8.4305077 L 18.566387,8.4305077 18.566387,9.3435936 15.671368,9.3435936 15.671368,11.255703 C 15.936341,11.058764 16.27293,10.960293 16.681133,10.960293 17.411602,10.960293 17.969301,11.178717 18.354229,11.615566 18.739157,12.052416 18.931622,12.673672 18.931622,13.479336 18.931622,15.452317 18.052553,16.438808 16.294415,16.438808 15.560365,16.438808 14.951641,16.234707 14.468243,15.826504 L 14.881817,14.929531 C 15.368796,15.326992 15.837872,15.525723 16.289043,15.525723 17.298809,15.525723 17.803692,14.895514 17.803692,13.635098 17.803692,12.460618 17.305971,11.873379 16.310528,11.873379 15.83071,11.873379 15.399232,12.079271 15.016094,12.491055 L 14.65086,12.238613 Z"
+              Grid.ColumnSpan="4" Grid.RowSpan="3"/>
+        <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#FFFFFFFF" StrokeThickness="0"
+                 Grid.ColumnSpan="4" Width="3" Height="3"/>
+        <Border x:Name="DisabledVisual" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="4" BorderThickness="1"
+                BorderBrush="#B2FFFFFF" Opacity="0" CornerRadius="0,0,.5,.5"/>
+      </Grid>
+    </Grid>
+  </ControlTemplate>
+  <Style TargetType="{Type local:DatePicker}">
+    <Setter Property="Control.Foreground" Value="#FF333333"/>
+    <Setter Property="local:DatePicker.IsTodayHighlighted" Value="true"/>
+    <Setter Property="local:DatePicker.SelectedDateFormat" Value="Short"/>
+    <Setter Property="Control.Background" Value="Transparent"/>
+    <Setter Property="Control.Padding" Value="2"/>
+    <Setter Property="Control.BorderBrush">
+      <Setter.Value>
+        <LinearGradientBrush EndPoint=".5,0" StartPoint=".5,1">
+          <GradientStop Color="#FFA3AEB9" Offset="0"/>
+          <GradientStop Color="#FF8399A9" Offset="0.375"/>
+          <GradientStop Color="#FF718597" Offset="0.375"/>
+          <GradientStop Color="#FF617584" Offset="1"/>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Control.BorderThickness" Value="1"/>
+    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{Type local:DatePicker}">
+          <Border BorderBrush="{TemplateBinding Control.BorderBrush}"
+                  BorderThickness="{TemplateBinding Control.BorderThickness}"
+                  Background="{TemplateBinding Control.Background}" Padding="{TemplateBinding Control.Padding}">
+            <vsm:VisualStateManager.VisualStateGroups>
+              <vsm:VisualStateGroup x:Name="CommonStates">
+                <vsm:VisualState x:Name="Normal"/>
+                <vsm:VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="PART_DisabledVisual" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                  </Storyboard>
+                </vsm:VisualState>
+              </vsm:VisualStateGroup>
+            </vsm:VisualStateManager.VisualStateGroups>
+            <Decorator.Child>
+              <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}">
+                <FrameworkElement.Resources>
+                  <SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF"/>
+                </FrameworkElement.Resources>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="PART_Button" Grid.Row="0" Grid.Column="1"
+                        Template="{StaticResource DropDownButtonTemplate}"
+                        Foreground="{TemplateBinding Control.Foreground}" Width="20" Margin="3,0,3,0" Focusable="false"
+                        VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <primitives:DatePickerTextBox x:Name="PART_TextBox" Grid.Row="0" Grid.Column="0"
+                                              Foreground="{TemplateBinding Control.Foreground}" HorizontalContentAlignment="Stretch"
+                                              VerticalContentAlignment="Stretch" Focusable="{TemplateBinding UIElement.Focusable}"/>
+                <Grid x:Name="PART_DisabledVisual" Opacity="0" IsHitTestVisible="false" Row="0" Column="0" ColumnSpan="2">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <Rectangle Grid.Row="0" Grid.Column="0" RadiusX="1" RadiusY="1" Fill="#A5FFFFFF"/>
+                  <Rectangle Grid.Row="0" Grid.Column="1" RadiusX="1" RadiusY="1" Fill="#A5FFFFFF" Height="18" Width="19"
+                             Margin="3,0,3,0"/>
+                  <Popup x:Name="PART_Popup" Placement="Bottom" StaysOpen="false" AllowsTransparency="true"
+                         PlacementTarget="{Binding ElementName=PART_Button}"/>
+                </Grid>
+              </Grid>
+            </Decorator.Child>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="{Type primitives:DatePickerTextBox}">
+    <Setter Property="Control.Foreground" Value="{DynamicResource {Static JetSystemColors.WindowTextBrushKey}}"/>
+    <Setter Property="Control.Background" Value="{DynamicResource {Static JetSystemColors.WindowBrushKey}}"/>
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{Type primitives:DatePickerTextBox}">
+          <Grid>
+            <FrameworkElement.Resources>
+              <SolidColorBrush x:Key="WatermarkBrush" Color="#FFAAAAAA"/>
+            </FrameworkElement.Resources>
+            <vsm:VisualStateManager.VisualStateGroups>
+              <vsm:VisualStateGroup x:Name="CommonStates">
+                <vsm:VisualStateGroup.Transitions>
+                  <vsm:VisualTransition GeneratedDuration="0"/>
+                  <vsm:VisualTransition To="MouseOver" GeneratedDuration="0:0:0.1"/>
+                </vsm:VisualStateGroup.Transitions>
+                <vsm:VisualState x:Name="Normal"/>
+                <vsm:VisualState x:Name="MouseOver">
+                  <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="ContentElement"
+                                    Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="#FF99C1E2"
+                                    Duration="0"/>
+                    <ColorAnimation Storyboard.TargetName="watermark_decorator"
+                                    Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="#FF99C1E2"
+                                    Duration="0"/>
+                  </Storyboard>
+                </vsm:VisualState>
+              </vsm:VisualStateGroup>
+              <vsm:VisualStateGroup x:Name="WatermarkStates">
+                <vsm:VisualStateGroup.Transitions>
+                  <vsm:VisualTransition GeneratedDuration="0"/>
+                </vsm:VisualStateGroup.Transitions>
+                <vsm:VisualState x:Name="Unwatermarked"/>
+                <vsm:VisualState x:Name="Watermarked">
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
+                    <DoubleAnimation Storyboard.TargetName="PART_Watermark" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                  </Storyboard>
+                </vsm:VisualState>
+              </vsm:VisualStateGroup>
+              <vsm:VisualStateGroup x:Name="FocusStates">
+                <vsm:VisualStateGroup.Transitions>
+                  <vsm:VisualTransition GeneratedDuration="0"/>
+                </vsm:VisualStateGroup.Transitions>
+                <vsm:VisualState x:Name="Unfocused"/>
+                <vsm:VisualState x:Name="Focused">
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="FocusVisual" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                  </Storyboard>
+                </vsm:VisualState>
+              </vsm:VisualStateGroup>
+            </vsm:VisualStateManager.VisualStateGroups>
+            <Border x:Name="Border" Background="{TemplateBinding Control.Background}"
+                    BorderBrush="{TemplateBinding Control.BorderBrush}"
+                    BorderThickness="{TemplateBinding Control.BorderThickness}"
+                    Padding="{TemplateBinding Control.Padding}" CornerRadius="1" Opacity="1">
+              <Grid x:Name="WatermarkContent"
+                    HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}">
+                <Border x:Name="ContentElement" BorderThickness="1">
+                  <Border.BorderBrush>
+                    <SolidColorBrush Color="#FFFFFFFF"/>
+                  </Border.BorderBrush>
+                </Border>
+                <Border x:Name="watermark_decorator" BorderThickness="1">
+                  <Border.BorderBrush>
+                    <SolidColorBrush Color="#FFFFFFFF"/>
+                  </Border.BorderBrush>
+                  <ContentControl x:Name="PART_Watermark" Opacity="0" Focusable="false" IsHitTestVisible="false"
+                                  Content="{TemplateBinding primitives:DatePickerTextBox.Watermark}" Padding="2"/>
+                </Border>
+                <ScrollViewer x:Name="PART_ContentHost" Margin="0"
+                              HorizontalContentAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                              VerticalContentAlignment="{TemplateBinding Control.VerticalContentAlignment}"/>
+                <Border x:Name="FocusVisual" BorderBrush="#FF45D6FA" CornerRadius="1" Opacity="0" IsHitTestVisible="false"/>
+              </Grid>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

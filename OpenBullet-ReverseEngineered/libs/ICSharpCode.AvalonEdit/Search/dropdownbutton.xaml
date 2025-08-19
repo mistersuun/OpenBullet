@@ -1,0 +1,68 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ICSharpCode.AvalonEdit.Search">
+  <SolidColorBrush x:Key="{ComponentResourceKey {x:Type local:DropDownButton}, ActiveBorder}" Color="#FF0A246A"/>
+  <SolidColorBrush x:Key="{ComponentResourceKey {x:Type local:DropDownButton}, ActiveBackground}" Color="#FFB6BDD2"/>
+  <Style TargetType="{x:Type local:DropDownButton}">
+    <Setter Property="TextElement.Foreground"
+            Value="{DynamicResource {x:Static JetSystemColors.ControlTextBrushKey}}"/>
+    <Setter Property="Control.Padding" Value="2,2,2,2"/>
+    <Setter Property="Border.BorderThickness" Value="1,1,1,1"/>
+    <Setter Property="Panel.Background" Value="Transparent"/>
+    <Setter Property="Border.BorderBrush" Value="Transparent"/>
+    <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+    <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+    <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate xmlns:s="clr-namespace:System;assembly=mscorlib"
+                         TargetType="{x:Type local:DropDownButton}">
+          <Border Name="OuterBorder" BorderThickness="{TemplateBinding Border.BorderThickness}"
+                  BorderBrush="{TemplateBinding Border.BorderBrush}" Background="{TemplateBinding Panel.Background}"
+                  SnapsToDevicePixels="true">
+            <StackPanel Orientation="Horizontal">
+              <ContentPresenter Margin="{TemplateBinding Control.Padding}" Content="{TemplateBinding ContentControl.Content}"
+                                ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                                HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+              <Path Margin="0,2,2,2" Data="M 0,0 L 1,0 0.5,1 Z" Fill="{TemplateBinding TextElement.Foreground}"
+                    Width="7" Height="3.5" Stretch="Fill"/>
+            </StackPanel>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="UIElement.IsMouseOver" Value="true">
+              <Setter TargetName="OuterBorder"
+                      Value="{DynamicResource {ComponentResourceKey {x:Type local:DropDownButton}, ActiveBorder}}"
+                      Property="Border.BorderBrush"/>
+              <Setter TargetName="OuterBorder"
+                      Value="{DynamicResource {ComponentResourceKey {x:Type local:DropDownButton}, ActiveBackground}}"
+                      Property="Panel.Background"/>
+            </Trigger>
+            <Trigger Property="UIElement.IsKeyboardFocused" Value="true">
+              <Setter TargetName="OuterBorder"
+                      Value="{DynamicResource {ComponentResourceKey {x:Type local:DropDownButton}, ActiveBorder}}"
+                      Property="Border.BorderBrush"/>
+              <Setter TargetName="OuterBorder"
+                      Value="{DynamicResource {ComponentResourceKey {x:Type local:DropDownButton}, ActiveBackground}}"
+                      Property="Panel.Background"/>
+            </Trigger>
+            <Trigger Property="UIElement.IsEnabled" Value="false">
+              <Setter Value="{DynamicResource {x:Static JetSystemColors.GrayTextBrushKey}}"
+                      Property="TextElement.Foreground"/>
+            </Trigger>
+            <Trigger Property="local:DropDownButton.IsDropDownContentOpen" Value="true">
+              <Setter TargetName="OuterBorder" Value="{DynamicResource {x:Static JetSystemColors.ControlDarkBrushKey}}"
+                      Property="Border.BorderBrush"/>
+              <Setter TargetName="OuterBorder" Property="Border.BorderThickness" Value="1,1,1,0"/>
+              <Setter TargetName="OuterBorder" Property="Border.Padding" Value="0,0,0,1"/>
+              <Setter TargetName="OuterBorder" Property="Panel.Background" Value="Transparent"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

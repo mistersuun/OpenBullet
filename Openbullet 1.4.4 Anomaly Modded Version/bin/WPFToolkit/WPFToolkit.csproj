@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\WPFToolkit.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8275E20-5747-48BF-8697-38E385410899}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>WPFToolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>3.5.40128.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Microsoft\Windows\Controls\VisualStateBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ControlBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\TextBoxBaseBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SRID.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DatePickerFormat.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridBoundColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridHyperlinkColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridComboBoxColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridColumnEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridColumnReorderingEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridBeginningEditEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ContainerTracking`1.cs" />
+    <Compile Include="Microsoft\Windows\Controls\VisualStates.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarModeChangedEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarDateRangeChangingEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\VirtualizedCellInfoCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SelectedCellsCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridColumnDropSeparator.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridClipboardCellContent.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridCellClipboardEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SR.cs" />
+    <Compile Include="Microsoft\Windows\Controls\WeakHashtable.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridSortingEventHandler.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridRowEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridCheckBoxColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridCellInfo.cs" />
+    <Compile Include="Microsoft\Windows\Controls\TypeHandlerFactory`1.cs" />
+    <Compile Include="Microsoft\Windows\Controls\VisualStateBehaviorFactory.cs" />
+    <Compile Include="Microsoft\Windows\Controls\NotificationTarget.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridRowClipboardEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridHeadersVisibilityToVisibilityConverter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridGridLinesVisibility.cs" />
+    <Compile Include="Microsoft\Windows\Controls\IProvideDataGridColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridCell.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SelectedCellsChangedEventHandler.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridTemplateColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridHelper.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGrid.cs" />
+    <Compile Include="Microsoft\Windows\Controls\NativeMethods.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridSortingEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridSelectionUnit.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridLengthUnitType.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarBlackoutDatesCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DatePicker.cs" />
+    <Compile Include="Microsoft\Windows\Controls\MultipleCopiesCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridClipboardCopyMode.cs" />
+    <Compile Include="Microsoft\Windows\Controls\BooleanToSelectiveScrollingOrientationConverter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarMode.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Calendar.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ButtonBaseBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridHeadersVisibility.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridCellsPanel.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ClipboardHelper.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarSelectionMode.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridSelectionMode.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridCellEditEndingEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SelectiveScrollingOrientation.cs" />
+    <Compile Include="Microsoft\Windows\Controls\RealizedColumnsBlock.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridLength.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridHeaderBorder.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridEditingUnit.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridAutoGeneratingColumnEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridRowDetailsEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridPreparingCellForEditEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridLengthConverter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ListBoxItemBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridItemAttachedStorage.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridRowEditEndingEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridEditAction.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarDateRange.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SelectedCellsChangedEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\SelectedDatesCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DatePickerDateValidationErrorEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\InitializingNewItemEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridColumnCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarSelectionChangedEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridTextColumn.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridRowDetailsVisibilityMode.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ToggleButtonBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ProgressBarBehavior.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridColumnFloatingHeader.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DateTimeHelper.cs" />
+    <Compile Include="Microsoft\Windows\Controls\InitializingNewItemEventHandler.cs" />
+    <Compile Include="Microsoft\Windows\Controls\DataGridRow.cs" />
+    <Compile Include="Microsoft\Windows\Controls\ColumnHeaderCollection.cs" />
+    <Compile Include="Microsoft\Windows\Controls\KeyboardHelper.cs" />
+    <Compile Include="Microsoft\Windows\Controls\CalendarDateChangedEventArgs.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DataGridDetailsPresenter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\CalendarDayButton.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DataGridCellsPresenter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DataGridColumnHeader.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\CalendarButton.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\CalendarItem.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\SelectiveScrollingGrid.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DataGridColumnHeadersPresenter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DatePickerTextBox.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DataGridRowsPresenter.cs" />
+    <Compile Include="Microsoft\Windows\Controls\Primitives\DataGridRowHeader.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridItemAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridColumnHeaderAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DatePickerAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridRowHeaderAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridCellAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridRowAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridDetailsPresenterAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\CalendarAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\CalendarDayButtonAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridColumnHeadersPresenterAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\CalendarButtonAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridAutomationPeer.cs" />
+    <Compile Include="Microsoft\Windows\Automation\Peers\DataGridCellItemAutomationPeer.cs" />
+    <Compile Include="System\Windows\VisualState.cs" />
+    <Compile Include="System\Windows\VisualStateManager.cs" />
+    <Compile Include="System\Windows\VisualStateChangedEventArgs.cs" />
+    <Compile Include="System\Windows\VisualStateGroup.cs" />
+    <Compile Include="System\Windows\TemplateVisualStateAttribute.cs" />
+    <Compile Include="System\Windows\VisualTransition.cs" />
+    <Compile Include="MS\Internal\DoubleUtil.cs" />
+    <Compile Include="XamlGeneratedNamespace\GeneratedInternalTypeHelper.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionStringTable.resx" />
+    <EmbeddedResource Include="Microsoft\Windows\Controls\Calendar\Icon.bmp" />
+    <EmbeddedResource Include="Microsoft\Windows\Controls\DataGrid\Expression\Icon.png" />
+    <EmbeddedResource Include="Microsoft\Windows\Controls\DataGrid\Icon.bmp" />
+    <EmbeddedResource Include="Microsoft\Windows\Controls\DataGridColumn\Expression\Icon.png" />
+    <EmbeddedResource Include="Microsoft\Windows\Controls\DatePicker\Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="calendar\themes\aero.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="calendar\themes\classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="calendar\themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="calendar\themes\luna.homestead.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="calendar\themes\luna.metallic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="calendar\themes\luna.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="calendar\themes\royale.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\aero.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\luna.homestead.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\luna.metallic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\luna.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datagrid\themes\royale.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\aero.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\luna.homestead.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\luna.metallic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\luna.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="datepicker\themes\royale.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\aero.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\luna.homestead.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\luna.metallic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\luna.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\royale.normalcolor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

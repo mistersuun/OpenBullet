@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\IronPython.SQLite.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90880EBF-F05F-4B37-A59C-ED2D02BB91C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>IronPython.SQLite</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>2.7.9.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>IronPython.SQLite</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IronPython">
+      <HintPath>lib\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>lib\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>lib\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildInfo.cs" />
+    <Compile Include="Community\CsharpSqlite\Sqlite3.cs" />
+    <Compile Include="Community\CsharpSqlite\HelperMethods.cs" />
+    <Compile Include="IronPython\CurrentVersion.cs" />
+    <Compile Include="PythonSQLite.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="StatementType.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

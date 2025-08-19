@@ -1,0 +1,46 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: Newtonsoft.Json.Linq.JsonPath.ArrayIndexFilter
+// Assembly: Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+// MVID: D47DE75A-7E3F-422C-A4CA-64A654C80495
+// Assembly location: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\Newtonsoft.Json.dll
+
+using Newtonsoft.Json.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+
+#nullable disable
+namespace Newtonsoft.Json.Linq.JsonPath;
+
+internal class ArrayIndexFilter : PathFilter
+{
+  public int? Index { get; set; }
+
+  public override IEnumerable<JToken> ExecuteFilter(
+    JToken root,
+    IEnumerable<JToken> current,
+    bool errorWhenNoMatch)
+  {
+    foreach (JToken jtoken1 in current)
+    {
+      int? index = this.Index;
+      if (index.HasValue)
+      {
+        JToken t = jtoken1;
+        int num = errorWhenNoMatch ? 1 : 0;
+        index = this.Index;
+        int valueOrDefault = index.GetValueOrDefault();
+        JToken tokenIndex = PathFilter.GetTokenIndex(t, num != 0, valueOrDefault);
+        if (tokenIndex != null)
+          yield return tokenIndex;
+      }
+      else if (jtoken1 is JArray || jtoken1 is JConstructor)
+      {
+        foreach (JToken jtoken2 in (IEnumerable<JToken>) jtoken1)
+          yield return jtoken2;
+      }
+      else if (errorWhenNoMatch)
+        throw new JsonException("Index * not valid on {0}.".FormatWith((IFormatProvider) CultureInfo.InvariantCulture, (object) jtoken1.GetType().Name));
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:conv="clr-namespace:Xceed.Wpf.Toolkit.Mag.Converters"
+                    xmlns:coreconv="clr-namespace:Xceed.Wpf.Toolkit.Core.Converters">
+  <conv:RadiusConverter x:Key="RadiusConverter"/>
+  <coreconv:BorderThicknessToStrokeThicknessConverter x:Key="BorderThicknessToStrokeThicknessConverter"/>
+  <ControlTemplate x:Key="CircleTemplate" TargetType="{x:Type local:Magnifier}">
+    <Grid>
+      <Ellipse Fill="{TemplateBinding Control.Background}"/>
+      <Ellipse Stroke="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+               StrokeThickness="{Binding Path=BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BorderThicknessToStrokeThicknessConverter}}">
+        <Shape.Fill>
+          <VisualBrush x:Name="PART_VisualBrush" ViewboxUnits="Absolute"
+                       Visual="{Binding Path=Target, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Shape.Fill>
+      </Ellipse>
+    </Grid>
+  </ControlTemplate>
+  <ControlTemplate x:Key="RectangleTemplate" TargetType="{x:Type local:Magnifier}">
+    <Grid Background="{TemplateBinding Control.Background}">
+      <Rectangle Stroke="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                 StrokeThickness="{Binding Path=BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BorderThicknessToStrokeThicknessConverter}}">
+        <Shape.Fill>
+          <VisualBrush x:Name="PART_VisualBrush" ViewboxUnits="Absolute"
+                       Visual="{Binding Path=Target, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Shape.Fill>
+      </Rectangle>
+    </Grid>
+  </ControlTemplate>
+  <Style TargetType="{x:Type local:Magnifier}">
+    <Setter Property="UIElement.IsHitTestVisible" Value="false"/>
+    <Style.Triggers>
+      <Trigger Property="local:Magnifier.FrameType" Value="Circle">
+        <Setter Property="Control.Template" Value="{StaticResource CircleTemplate}"/>
+      </Trigger>
+      <Trigger Property="local:Magnifier.FrameType" Value="Rectangle">
+        <Setter Property="Control.Template" Value="{StaticResource RectangleTemplate}"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+</ResourceDictionary>

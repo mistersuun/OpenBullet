@@ -1,0 +1,43 @@
+﻿using System;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Security.Permissions;
+
+[assembly: NeutralResourcesLanguage("en-US")]
+[assembly: AssemblyTitle("System.Security.Cryptography.Algorithms")]
+[assembly: AssemblyDescription("System.Security.Cryptography.Algorithms")]
+[assembly: AssemblyDefaultAlias("System.Security.Cryptography.Algorithms")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyProduct("Microsoft® .NET Framework")]
+[assembly: AssemblyCopyright("© Microsoft Corporation.  All rights reserved.")]
+[assembly: AssemblyFileVersion("4.6.25815.03")]
+[assembly: AssemblyInformationalVersion("4.6.25815.03. Commit Hash: 0ceb8c26f15bd10adc7ccf15d911d75632fb3f3e")]
+[assembly: CLSCompliant(true)]
+[assembly: AssemblyMetadata(".NETFrameworkAssembly", "")]
+[assembly: AssemblyMetadata("Serviceable", "True")]
+[assembly: AssemblyVersion("4.1.0.0")]
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+[assembly: TypeForwardedTo(typeof (Aes))]
+[assembly: TypeForwardedTo(typeof (DeriveBytes))]
+[assembly: TypeForwardedTo(typeof (ECDsa))]
+[assembly: TypeForwardedTo(typeof (HMACMD5))]
+[assembly: TypeForwardedTo(typeof (HMACSHA1))]
+[assembly: TypeForwardedTo(typeof (HMACSHA256))]
+[assembly: TypeForwardedTo(typeof (HMACSHA384))]
+[assembly: TypeForwardedTo(typeof (HMACSHA512))]
+[assembly: TypeForwardedTo(typeof (MD5))]
+[assembly: TypeForwardedTo(typeof (RandomNumberGenerator))]
+[assembly: TypeForwardedTo(typeof (Rfc2898DeriveBytes))]
+[assembly: TypeForwardedTo(typeof (RSA))]
+[assembly: TypeForwardedTo(typeof (RSAEncryptionPadding))]
+[assembly: TypeForwardedTo(typeof (RSAEncryptionPaddingMode))]
+[assembly: TypeForwardedTo(typeof (RSAParameters))]
+[assembly: TypeForwardedTo(typeof (RSASignaturePadding))]
+[assembly: TypeForwardedTo(typeof (RSASignaturePaddingMode))]
+[assembly: TypeForwardedTo(typeof (SHA1))]
+[assembly: TypeForwardedTo(typeof (SHA256))]
+[assembly: TypeForwardedTo(typeof (SHA384))]
+[assembly: TypeForwardedTo(typeof (SHA512))]
+[assembly: TypeForwardedTo(typeof (TripleDES))]

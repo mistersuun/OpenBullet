@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\Microsoft.Scripting.Metadata.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43F487BB-B1BD-47A7-A44F-7A68F2266885}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Microsoft.Scripting.Metadata</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.2.2.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Microsoft.Scripting.Metadata</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildInfo.cs" />
+    <Compile Include="ClrStubs.cs" />
+    <Compile Include="MemoryBlock.cs" />
+    <Compile Include="MemoryMapping.cs" />
+    <Compile Include="MemoryReader.cs" />
+    <Compile Include="MetadataExtensions.cs" />
+    <Compile Include="MetadataImport.cs" />
+    <Compile Include="MetadataName.cs" />
+    <Compile Include="MetadataNamePart.cs" />
+    <Compile Include="MetadataServices.cs" />
+    <Compile Include="EnumerationIndirection.cs" />
+    <Compile Include="MetadataTableEnumerator.cs" />
+    <Compile Include="ModuleTable.cs" />
+    <Compile Include="TypeRefTable.cs" />
+    <Compile Include="TypeDefTable.cs" />
+    <Compile Include="FieldPtrTable.cs" />
+    <Compile Include="FieldTable.cs" />
+    <Compile Include="MethodPtrTable.cs" />
+    <Compile Include="MethodTable.cs" />
+    <Compile Include="ParamPtrTable.cs" />
+    <Compile Include="ParamTable.cs" />
+    <Compile Include="InterfaceImplTable.cs" />
+    <Compile Include="MemberRefTable.cs" />
+    <Compile Include="ConstantTable.cs" />
+    <Compile Include="CustomAttributeTable.cs" />
+    <Compile Include="FieldMarshalTable.cs" />
+    <Compile Include="DeclSecurityTable.cs" />
+    <Compile Include="ClassLayoutTable.cs" />
+    <Compile Include="FieldLayoutTable.cs" />
+    <Compile Include="StandAloneSigTable.cs" />
+    <Compile Include="EventMapTable.cs" />
+    <Compile Include="EventPtrTable.cs" />
+    <Compile Include="EventTable.cs" />
+    <Compile Include="PropertyMapTable.cs" />
+    <Compile Include="PropertyPtrTable.cs" />
+    <Compile Include="PropertyTable.cs" />
+    <Compile Include="MethodSemanticsTable.cs" />
+    <Compile Include="MethodImplTable.cs" />
+    <Compile Include="ModuleRefTable.cs" />
+    <Compile Include="TypeSpecTable.cs" />
+    <Compile Include="ImplMapTable.cs" />
+    <Compile Include="FieldRVATable.cs" />
+    <Compile Include="EnCLogTable.cs" />
+    <Compile Include="EnCMapTable.cs" />
+    <Compile Include="AssemblyTable.cs" />
+    <Compile Include="AssemblyProcessorTable.cs" />
+    <Compile Include="AssemblyOSTable.cs" />
+    <Compile Include="AssemblyRefTable.cs" />
+    <Compile Include="AssemblyRefProcessorTable.cs" />
+    <Compile Include="AssemblyRefOSTable.cs" />
+    <Compile Include="FileTable.cs" />
+    <Compile Include="ExportedTypeTable.cs" />
+    <Compile Include="ManifestResourceTable.cs" />
+    <Compile Include="NestedClassTable.cs" />
+    <Compile Include="GenericParamTable.cs" />
+    <Compile Include="MethodSpecTable.cs" />
+    <Compile Include="GenericParamConstraintTable.cs" />
+    <Compile Include="MetadataRecordType.cs" />
+    <Compile Include="MetadataTables.cs" />
+    <Compile Include="MetadataRecord.cs" />
+    <Compile Include="MetadataTableView.cs" />
+    <Compile Include="ModuleDef.cs" />
+    <Compile Include="TypeRef.cs" />
+    <Compile Include="TypeDef.cs" />
+    <Compile Include="FieldDef.cs" />
+    <Compile Include="MethodDef.cs" />
+    <Compile Include="ParamDef.cs" />
+    <Compile Include="InterfaceImpl.cs" />
+    <Compile Include="MemberRef.cs" />
+    <Compile Include="CustomAttributeDef.cs" />
+    <Compile Include="SignatureDef.cs" />
+    <Compile Include="PropertyDef.cs" />
+    <Compile Include="EventDef.cs" />
+    <Compile Include="ModuleRef.cs" />
+    <Compile Include="TypeSpec.cs" />
+    <Compile Include="AssemblyDef.cs" />
+    <Compile Include="AssemblyRef.cs" />
+    <Compile Include="FileDef.cs" />
+    <Compile Include="TypeExport.cs" />
+    <Compile Include="ManifestResourceDef.cs" />
+    <Compile Include="TypeNesting.cs" />
+    <Compile Include="GenericParamDef.cs" />
+    <Compile Include="GenericParamConstraint.cs" />
+    <Compile Include="MethodSpec.cs" />
+    <Compile Include="AssemblyFileAttributes.cs" />
+    <Compile Include="ManifestResourceAttributes.cs" />
+    <Compile Include="MetadataToken.cs" />
+    <Compile Include="PropertyAccessors.cs" />
+    <Compile Include="EventAccessors.cs" />
+    <Compile Include="PEMagic.cs" />
+    <Compile Include="MetadataStreamKind.cs" />
+    <Compile Include="MetadataTokenType.cs" />
+    <Compile Include="TableMask.cs" />
+    <Compile Include="HeapSizeFlag.cs" />
+    <Compile Include="MethodSemanticsFlags.cs" />
+    <Compile Include="ElementType.cs" />
+    <Compile Include="SignatureHeader.cs" />
+    <Compile Include="PEFileConstants.cs" />
+    <Compile Include="DirectoryEntry.cs" />
+    <Compile Include="OptionalHeaderDirectoryEntries.cs" />
+    <Compile Include="SectionHeader.cs" />
+    <Compile Include="COR20Constants.cs" />
+    <Compile Include="COR20Header.cs" />
+    <Compile Include="StorageHeader.cs" />
+    <Compile Include="StreamHeader.cs" />
+    <Compile Include="MetadataStreamConstants.cs" />
+    <Compile Include="MetadataTableHeader.cs" />
+    <Compile Include="TypeDefOrRefTag.cs" />
+    <Compile Include="HasConstantTag.cs" />
+    <Compile Include="HasCustomAttributeTag.cs" />
+    <Compile Include="HasFieldMarshalTag.cs" />
+    <Compile Include="HasDeclSecurityTag.cs" />
+    <Compile Include="MemberRefParentTag.cs" />
+    <Compile Include="HasSemanticsTag.cs" />
+    <Compile Include="MethodDefOrRefTag.cs" />
+    <Compile Include="MemberForwardedTag.cs" />
+    <Compile Include="ImplementationTag.cs" />
+    <Compile Include="CustomAttributeTypeTag.cs" />
+    <Compile Include="ResolutionScopeTag.cs" />
+    <Compile Include="TypeOrMethodDefTag.cs" />
+    <Compile Include="DynamicLanguageRuntime\CurrentVersion.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyTitle>RuriLib Test Framework - .NET Framework</AssemblyTitle>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Copy ALL Original OpenBullet DLLs to Output Directory -->
+  <ItemGroup Label="Copy Original DLLs">
+    <None Include="..\libs\*.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\amazonChecker.anom">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Reference Original OpenBullet DLLs Directly -->
+  <ItemGroup Label="OpenBullet DLL References">
+    <!-- Core Engine -->
+    <Reference Include="RuriLib">
+      <HintPath>..\libs\RuriLib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    
+    <!-- HTTP Client -->
+    <Reference Include="Leaf.xNet">
+      <HintPath>..\libs\Leaf.xNet.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    
+    <!-- JSON and Database -->
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    
+    <Reference Include="LiteDB">
+      <HintPath>..\libs\LiteDB.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    
+    <!-- HTML Parsing -->
+    <Reference Include="AngleSharp">
+      <HintPath>..\libs\AngleSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    
+    <!-- Other Core Components -->
+    <Reference Include="Extreme.Net">
+      <HintPath>..\libs\Extreme.Net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- .NET Framework System References -->
+  <ItemGroup Label="System References">
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+
+</Project>
+

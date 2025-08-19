@@ -1,0 +1,15 @@
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\bin\Debug\net9.0\SimpleAnalyzer.exe
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\bin\Debug\net9.0\SimpleAnalyzer.deps.json
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\bin\Debug\net9.0\SimpleAnalyzer.runtimeconfig.json
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\bin\Debug\net9.0\SimpleAnalyzer.dll
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\bin\Debug\net9.0\SimpleAnalyzer.pdb
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.AssemblyInfoInputs.cache
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.AssemblyInfo.cs
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.sourcelink.json
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.dll
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\refint\SimpleAnalyzer.dll
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.pdb
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\SimpleAnalyzer.genruntimeconfig.cache
+C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\SimpleAnalyzer\obj\Debug\net9.0\ref\SimpleAnalyzer.dll

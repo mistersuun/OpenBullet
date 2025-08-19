@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\Microsoft.IdentityModel.Tokens.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6110110B-FDFD-4A50-8370-5EFD7D303ECD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Microsoft.IdentityModel.Tokens</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ApplicationVersion>5.6.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Microsoft.IdentityModel.Tokens</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>lib\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SignDelegate.cs" />
+    <Compile Include="VerifyDelegate.cs" />
+    <Compile Include="AsymmetricAdapter.cs" />
+    <Compile Include="AsymmetricSecurityKey.cs" />
+    <Compile Include="PrivateKeyStatus.cs" />
+    <Compile Include="AsymmetricSignatureProvider.cs" />
+    <Compile Include="Base64UrlEncoder.cs" />
+    <Compile Include="CompressionAlgorithms.cs" />
+    <Compile Include="CompressionProviderFactory.cs" />
+    <Compile Include="CryptoProviderCache.cs" />
+    <Compile Include="CryptoProviderFactory.cs" />
+    <Compile Include="DateTimeUtil.cs" />
+    <Compile Include="DeflateCompressionProvider.cs" />
+    <Compile Include="CreateECDsaDelegate.cs" />
+    <Compile Include="ECDsaAdapter.cs" />
+    <Compile Include="ECDsaSecurityKey.cs" />
+    <Compile Include="EncryptingCredentials.cs" />
+    <Compile Include="AuthenticatedEncryptionProvider.cs" />
+    <Compile Include="AuthenticatedEncryptionResult.cs" />
+    <Compile Include="KeyWrapProvider.cs" />
+    <Compile Include="RsaKeyWrapProvider.cs" />
+    <Compile Include="SymmetricKeyWrapProvider.cs" />
+    <Compile Include="EpochTime.cs" />
+    <Compile Include="SecurityTokenCompressionFailedException.cs" />
+    <Compile Include="SecurityTokenDecompressionFailedException.cs" />
+    <Compile Include="SecurityTokenDecryptionFailedException.cs" />
+    <Compile Include="SecurityTokenEncryptionFailedException.cs" />
+    <Compile Include="SecurityTokenEncryptionKeyNotFoundException.cs" />
+    <Compile Include="SecurityTokenException.cs" />
+    <Compile Include="SecurityTokenExpiredException.cs" />
+    <Compile Include="SecurityTokenInvalidAudienceException.cs" />
+    <Compile Include="SecurityTokenInvalidIssuerException.cs" />
+    <Compile Include="SecurityTokenInvalidLifetimeException.cs" />
+    <Compile Include="SecurityTokenInvalidSignatureException.cs" />
+    <Compile Include="SecurityTokenInvalidSigningKeyException.cs" />
+    <Compile Include="SecurityTokenInvalidTypeException.cs" />
+    <Compile Include="SecurityTokenKeyWrapException.cs" />
+    <Compile Include="SecurityTokenNoExpirationException.cs" />
+    <Compile Include="SecurityTokenNotYetValidException.cs" />
+    <Compile Include="SecurityTokenReplayAddFailedException.cs" />
+    <Compile Include="SecurityTokenReplayDetectedException.cs" />
+    <Compile Include="SecurityTokenSignatureKeyNotFoundException.cs" />
+    <Compile Include="SecurityTokenValidationException.cs" />
+    <Compile Include="ICompressionProvider.cs" />
+    <Compile Include="ICryptoProvider.cs" />
+    <Compile Include="InMemoryCryptoProviderCache.cs" />
+    <Compile Include="ISecurityTokenValidator.cs" />
+    <Compile Include="ITokenReplayCache.cs" />
+    <Compile Include="JsonWebAlgorithmsKeyTypes.cs" />
+    <Compile Include="JsonWebKey.cs" />
+    <Compile Include="JsonWebKeyConverter.cs" />
+    <Compile Include="JsonWebKeyECTypes.cs" />
+    <Compile Include="JsonWebKeyParameterNames.cs" />
+    <Compile Include="JsonWebKeySet.cs" />
+    <Compile Include="JsonWebKeySetParameterNames.cs" />
+    <Compile Include="JsonWebKeyUseNames.cs" />
+    <Compile Include="LogMessages.cs" />
+    <Compile Include="RSACryptoServiceProviderProxy.cs" />
+    <Compile Include="RsaSecurityKey.cs" />
+    <Compile Include="SecurityAlgorithms.cs" />
+    <Compile Include="SecurityKey.cs" />
+    <Compile Include="SecurityKeyIdentifierClause.cs" />
+    <Compile Include="SecurityToken.cs" />
+    <Compile Include="SecurityTokenDescriptor.cs" />
+    <Compile Include="SecurityTokenHandler.cs" />
+    <Compile Include="SignatureProvider.cs" />
+    <Compile Include="SigningCredentials.cs" />
+    <Compile Include="SupportedAlgorithms.cs" />
+    <Compile Include="SymmetricSecurityKey.cs" />
+    <Compile Include="SymmetricSignatureProvider.cs" />
+    <Compile Include="TokenContext.cs" />
+    <Compile Include="TokenHandler.cs" />
+    <Compile Include="AudienceValidator.cs" />
+    <Compile Include="IssuerSigningKeyResolver.cs" />
+    <Compile Include="IssuerSigningKeyValidator.cs" />
+    <Compile Include="IssuerValidator.cs" />
+    <Compile Include="LifetimeValidator.cs" />
+    <Compile Include="TokenReplayValidator.cs" />
+    <Compile Include="SignatureValidator.cs" />
+    <Compile Include="TokenReader.cs" />
+    <Compile Include="TokenDecryptionKeyResolver.cs" />
+    <Compile Include="TokenValidationParameters.cs" />
+    <Compile Include="UniqueId.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Validators.cs" />
+    <Compile Include="X509EncryptingCredentials.cs" />
+    <Compile Include="X509SecurityKey.cs" />
+    <Compile Include="X509SigningCredentials.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

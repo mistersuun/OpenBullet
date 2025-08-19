@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\RuriLib.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{016C00CC-D828-4C68-9605-EC21574CA2D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>RuriLib</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>RuriLib</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AngleSharp">
+      <HintPath>lib\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Extreme.Net">
+      <HintPath>lib\Extreme.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython">
+      <HintPath>lib\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="Jint">
+      <HintPath>lib\Jint.dll</HintPath>
+    </Reference>
+    <Reference Include="Leaf.xNet">
+      <HintPath>lib\Leaf.xNet.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB">
+      <HintPath>lib\LiteDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>lib\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>lib\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http">
+      <HintPath>lib\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Tesseract">
+      <HintPath>lib\Tesseract.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>lib\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlockBlockchainDNS.cs" />
+    <Compile Include="BlockLSCode.cs" />
+    <Compile Include="BlockOCR.cs" />
+    <Compile Include="TCPCommand.cs" />
+    <Compile Include="BlockTCP.cs" />
+    <Compile Include="GZip.cs" />
+    <Compile Include="BlockBase.cs" />
+    <Compile Include="BlockBypassCF.cs" />
+    <Compile Include="BlockImageCaptcha.cs" />
+    <Compile Include="BlockCaptcha.cs" />
+    <Compile Include="BlockFunction.cs" />
+    <Compile Include="BlockKeycheck.cs" />
+    <Compile Include="ParseType.cs" />
+    <Compile Include="BlockParse.cs" />
+    <Compile Include="BlockRecaptcha.cs" />
+    <Compile Include="RequestType.cs" />
+    <Compile Include="MultipartContentType.cs" />
+    <Compile Include="ResponseType.cs" />
+    <Compile Include="BlockRequest.cs" />
+    <Compile Include="UtilityGroup.cs" />
+    <Compile Include="VarAction.cs" />
+    <Compile Include="ListAction.cs" />
+    <Compile Include="FileAction.cs" />
+    <Compile Include="BlockUtility.cs" />
+    <Compile Include="IOManager.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="ConfigSettings.cs" />
+    <Compile Include="TypeSwitch.cs" />
+    <Compile Include="LogLevel.cs" />
+    <Compile Include="LogEntry.cs" />
+    <Compile Include="BotStatus.cs" />
+    <Compile Include="BotData.cs" />
+    <Compile Include="BrowserAction.cs" />
+    <Compile Include="SBlockBrowserAction.cs" />
+    <Compile Include="ElementLocator.cs" />
+    <Compile Include="ElementAction.cs" />
+    <Compile Include="SBlockElementAction.cs" />
+    <Compile Include="SBlockExecuteJS.cs" />
+    <Compile Include="SBlockNavigate.cs" />
+    <Compile Include="ViewModels\ConfigViewModel.cs" />
+    <Compile Include="ViewModels\CustomInput.cs" />
+    <Compile Include="ViewModels\SettingsCaptchas.cs" />
+    <Compile Include="ViewModels\BotsDisplayMode.cs" />
+    <Compile Include="ViewModels\SettingsGeneral.cs" />
+    <Compile Include="ViewModels\ProxyReloadSource.cs" />
+    <Compile Include="ViewModels\SettingsProxies.cs" />
+    <Compile Include="ViewModels\BrowserType.cs" />
+    <Compile Include="ViewModels\SettingsSelenium.cs" />
+    <Compile Include="ViewModels\RLSettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Utils\Parsing\Parse.cs" />
+    <Compile Include="Runner\WorkerStatus.cs" />
+    <Compile Include="Runner\AbortableBackgroundWorker.cs" />
+    <Compile Include="Runner\IRunnerMessaging.cs" />
+    <Compile Include="Runner\RunnerBotViewModel.cs" />
+    <Compile Include="Runner\ProxyMode.cs" />
+    <Compile Include="Runner\RunnerViewModel.cs" />
+    <Compile Include="Models\DataPool.cs" />
+    <Compile Include="Models\ProxyPool.cs" />
+    <Compile Include="Models\RemoteProxySource.cs" />
+    <Compile Include="Models\RemoteProxySourceResult.cs" />
+    <Compile Include="Models\WebhookFormat.cs" />
+    <Compile Include="Models\CData.cs" />
+    <Compile Include="Models\ExportFormat.cs" />
+    <Compile Include="Models\Record.cs" />
+    <Compile Include="Models\CVar.cs" />
+    <Compile Include="Models\Wordlist.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\ProxyWorking.cs" />
+    <Compile Include="Models\CProxy.cs" />
+    <Compile Include="Models\Hit.cs" />
+    <Compile Include="Models\CustomKeychain.cs" />
+    <Compile Include="Models\EnvironmentSettings.cs" />
+    <Compile Include="Models\RuleType.cs" />
+    <Compile Include="Models\DataRule.cs" />
+    <Compile Include="Models\WordlistType.cs" />
+    <Compile Include="Models\KeyChain.cs" />
+    <Compile Include="Models\Key.cs" />
+    <Compile Include="Models\ValidData.cs" />
+    <Compile Include="Models\VariableList.cs" />
+    <Compile Include="LS\BlockProcessingException.cs" />
+    <Compile Include="LS\ScriptingLanguage.cs" />
+    <Compile Include="LS\LoliScript.cs" />
+    <Compile Include="LS\BlockParser.cs" />
+    <Compile Include="LS\CommandParser.cs" />
+    <Compile Include="LS\MouseActionParser.cs" />
+    <Compile Include="LS\Line.cs" />
+    <Compile Include="LS\BlockWriter.cs" />
+    <Compile Include="LS\TokenType.cs" />
+    <Compile Include="LS\LineParser.cs" />
+    <Compile Include="LS\DeleteParser.cs" />
+    <Compile Include="LS\SetParser.cs" />
+    <Compile Include="Functions\Conditions\Comparer.cs" />
+    <Compile Include="Functions\Conditions\Condition.cs" />
+    <Compile Include="Functions\Conditions\KeycheckCondition.cs" />
+    <Compile Include="Functions\Time\Time.cs" />
+    <Compile Include="Functions\Requests\Request.cs" />
+    <Compile Include="Functions\Requests\MultipartContent.cs" />
+    <Compile Include="Functions\Files\Files.cs" />
+    <Compile Include="Functions\Formats\Encode.cs" />
+    <Compile Include="Functions\Download\Download.cs" />
+    <Compile Include="Functions\Crypto\Hash.cs" />
+    <Compile Include="Functions\Crypto\Crypto.cs" />
+    <Compile Include="Functions\Conversions\Encoding.cs" />
+    <Compile Include="Functions\Conversions\Conversion.cs" />
+    <Compile Include="CaptchaServices\CaptchasIO.cs" />
+    <Compile Include="CaptchaServices\CustomTwoCaptcha.cs" />
+    <Compile Include="CaptchaServices\RuCaptcha.cs" />
+    <Compile Include="CaptchaServices\ServiceType.cs" />
+    <Compile Include="CaptchaServices\Service.cs" />
+    <Compile Include="CaptchaServices\AntiCaptcha.cs" />
+    <Compile Include="CaptchaServices\AZCaptcha.cs" />
+    <Compile Include="CaptchaServices\CaptchaService.cs" />
+    <Compile Include="CaptchaServices\CWebClient.cs" />
+    <Compile Include="CaptchaServices\DeathByCaptcha.cs" />
+    <Compile Include="CaptchaServices\DeCaptcher.cs" />
+    <Compile Include="CaptchaServices\ImageTyperz.cs" />
+    <Compile Include="CaptchaServices\SolveReCaptcha.cs" />
+    <Compile Include="CaptchaServices\TwoCaptcha.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

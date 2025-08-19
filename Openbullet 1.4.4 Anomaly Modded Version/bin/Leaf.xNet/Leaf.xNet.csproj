@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\Leaf.xNet.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{323D1FE5-7B26-488D-8D52-120E11F5BF81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Leaf.xNet</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <ApplicationVersion>5.1.83.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Leaf.xNet</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http">
+      <HintPath>lib\System.Net.Http.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NetException.cs" />
+    <Compile Include="Randomizer.cs" />
+    <Compile Include="RequestParams.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="SubstringException.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="AdvancedWebClient.cs" />
+    <Compile Include="CookieFilters.cs" />
+    <Compile Include="CookieStorage.cs" />
+    <Compile Include="Http.cs" />
+    <Compile Include="HttpException.cs" />
+    <Compile Include="HttpExceptionStatus.cs" />
+    <Compile Include="HttpHeader.cs" />
+    <Compile Include="HttpMethod.cs" />
+    <Compile Include="HttpRequest.cs" />
+    <Compile Include="HttpResponse.cs" />
+    <Compile Include="HttpStatusCode.cs" />
+    <Compile Include="BytesContent.cs" />
+    <Compile Include="FileContent.cs" />
+    <Compile Include="FormUrlEncodedContent.cs" />
+    <Compile Include="HttpContent.cs" />
+    <Compile Include="MultipartContent.cs" />
+    <Compile Include="StreamContent.cs" />
+    <Compile Include="StringContent.cs" />
+    <Compile Include="DownloadProgressChangedEventArgs.cs" />
+    <Compile Include="UploadProgressChangedEventArgs.cs" />
+    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="ProgressDelegate.cs" />
+    <Compile Include="ProgressStreamContent.cs" />
+    <Compile Include="ProxyHelper.cs" />
+    <Compile Include="HttpProxyClient.cs" />
+    <Compile Include="ProxyClient.cs" />
+    <Compile Include="ProxyException.cs" />
+    <Compile Include="ProxyType.cs" />
+    <Compile Include="Socks4AProxyClient.cs" />
+    <Compile Include="Socks4ProxyClient.cs" />
+    <Compile Include="Socks5ProxyClient.cs" />
+    <Compile Include="Services\StormWall\StormWallBypass.cs" />
+    <Compile Include="Services\StormWall\StormWallException.cs" />
+    <Compile Include="Services\StormWall\StormWallSolver.cs" />
+    <Compile Include="Services\Cloudflare\ChallengeSolution.cs" />
+    <Compile Include="Services\Cloudflare\ChallengeSolver.cs" />
+    <Compile Include="Services\Cloudflare\CloudflareBypass.cs" />
+    <Compile Include="Services\Cloudflare\CloudflareException.cs" />
+    <Compile Include="Services\Captcha\BaseCaptchaSolver.cs" />
+    <Compile Include="Services\Captcha\CaptchaError.cs" />
+    <Compile Include="Services\Captcha\CaptchaException.cs" />
+    <Compile Include="Services\Captcha\CaptchaProxyType.cs" />
+    <Compile Include="Services\Captcha\CaptchaProxy.cs" />
+    <Compile Include="Services\Captcha\ICaptchaSolver.cs" />
+    <Compile Include="Services\Captcha\CapmonsterSolver.cs" />
+    <Compile Include="Services\Captcha\RucaptchaSolver.cs" />
+    <Compile Include="Services\Captcha\TwoCaptchaSolver.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

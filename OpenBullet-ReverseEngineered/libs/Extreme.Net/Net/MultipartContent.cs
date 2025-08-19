@@ -1,0 +1,223 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: Extreme.Net.MultipartContent
+// Assembly: Extreme.Net, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: B85A5720-FE8B-4A1B-9FD2-F7651D37B15B
+// Assembly location: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\libs\Extreme.Net.dll
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+#nullable disable
+namespace Extreme.Net;
+
+public class MultipartContent : HttpContent, IEnumerable<HttpContent>, IEnumerable
+{
+  private const int FieldTemplateSize = 43;
+  private const int FieldFileTemplateSize = 72;
+  private const string FieldTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n";
+  private const string FieldFileTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
+  [ThreadStatic]
+  private static Random _rand;
+  private string _boundary;
+  private List<MultipartContent.Element> _elements = new List<MultipartContent.Element>();
+
+  private static Random Rand
+  {
+    get
+    {
+      if (MultipartContent._rand == null)
+        MultipartContent._rand = new Random();
+      return MultipartContent._rand;
+    }
+  }
+
+  public MultipartContent()
+    : this("----------------" + MultipartContent.GetRandomString(16 /*0x10*/))
+  {
+  }
+
+  public MultipartContent(string boundary)
+  {
+    switch (boundary)
+    {
+      case null:
+        throw new ArgumentNullException(nameof (boundary));
+      case "":
+        throw ExceptionHelper.EmptyString(nameof (boundary));
+      default:
+        this._boundary = boundary.Length <= 70 ? boundary : throw ExceptionHelper.CanNotBeGreater<int>(nameof (boundary), 70);
+        this._contentType = $"multipart/form-data; boundary={this._boundary}";
+        break;
+    }
+  }
+
+  public void Add(HttpContent content, string name)
+  {
+    if (content == null)
+      throw new ArgumentNullException(nameof (content));
+    switch (name)
+    {
+      case null:
+        throw new ArgumentNullException(nameof (name));
+      case "":
+        throw ExceptionHelper.EmptyString(nameof (name));
+      default:
+        this._elements.Add(new MultipartContent.Element()
+        {
+          Name = name,
+          Content = content
+        });
+        break;
+    }
+  }
+
+  public void Add(HttpContent content, string name, string fileName)
+  {
+    if (content == null)
+      throw new ArgumentNullException(nameof (content));
+    switch (name)
+    {
+      case null:
+        throw new ArgumentNullException(nameof (name));
+      case "":
+        throw ExceptionHelper.EmptyString(nameof (name));
+      default:
+        content.ContentType = fileName != null ? Http.DetermineMediaType(Path.GetExtension(fileName)) : throw new ArgumentNullException(nameof (fileName));
+        this._elements.Add(new MultipartContent.Element()
+        {
+          Name = name,
+          FileName = fileName,
+          Content = content
+        });
+        break;
+    }
+  }
+
+  public void Add(HttpContent content, string name, string fileName, string contentType)
+  {
+    if (content == null)
+      throw new ArgumentNullException(nameof (content));
+    switch (name)
+    {
+      case null:
+        throw new ArgumentNullException(nameof (name));
+      case "":
+        throw ExceptionHelper.EmptyString(nameof (name));
+      default:
+        if (fileName == null)
+          throw new ArgumentNullException(nameof (fileName));
+        content.ContentType = contentType != null ? contentType : throw new ArgumentNullException(nameof (contentType));
+        this._elements.Add(new MultipartContent.Element()
+        {
+          Name = name,
+          FileName = fileName,
+          Content = content
+        });
+        break;
+    }
+  }
+
+  public override long CalculateContentLength()
+  {
+    this.ThrowIfDisposed();
+    long num = 0;
+    foreach (MultipartContent.Element element in this._elements)
+    {
+      num += element.Content.CalculateContentLength();
+      if (element.IsFieldFile())
+      {
+        num += 72L;
+        num += (long) element.Name.Length;
+        num += (long) element.FileName.Length;
+        num += (long) element.Content.ContentType.Length;
+      }
+      else
+      {
+        num += 43L;
+        num += (long) element.Name.Length;
+      }
+      num += (long) (this._boundary.Length + 6);
+    }
+    return num + (long) (this._boundary.Length + 6);
+  }
+
+  public override void WriteTo(Stream stream)
+  {
+    this.ThrowIfDisposed();
+    if (stream == null)
+      throw new ArgumentNullException(nameof (stream));
+    byte[] bytes1 = Encoding.ASCII.GetBytes("\r\n");
+    byte[] bytes2 = Encoding.ASCII.GetBytes($"--{this._boundary}\r\n");
+    foreach (MultipartContent.Element element in this._elements)
+    {
+      stream.Write(bytes2, 0, bytes2.Length);
+      byte[] bytes3 = Encoding.ASCII.GetBytes(!element.IsFieldFile() ? $"Content-Disposition: form-data; name=\"{element.Name}\"\r\n\r\n" : $"Content-Disposition: form-data; name=\"{element.Name}\"; filename=\"{element.FileName}\"\r\nContent-Type: {element.Content.ContentType}\r\n\r\n");
+      stream.Write(bytes3, 0, bytes3.Length);
+      element.Content.WriteTo(stream);
+      stream.Write(bytes1, 0, bytes1.Length);
+    }
+    byte[] bytes4 = Encoding.ASCII.GetBytes($"--{this._boundary}--\r\n");
+    stream.Write(bytes4, 0, bytes4.Length);
+  }
+
+  public IEnumerator<HttpContent> GetEnumerator()
+  {
+    this.ThrowIfDisposed();
+    return this._elements.Select<MultipartContent.Element, HttpContent>((Func<MultipartContent.Element, HttpContent>) (e => e.Content)).GetEnumerator();
+  }
+
+  protected override void Dispose(bool disposing)
+  {
+    if (!disposing || this._elements == null)
+      return;
+    foreach (MultipartContent.Element element in this._elements)
+      element.Content.Dispose();
+    this._elements = (List<MultipartContent.Element>) null;
+  }
+
+  IEnumerator IEnumerable.GetEnumerator()
+  {
+    this.ThrowIfDisposed();
+    return (IEnumerator) this.GetEnumerator();
+  }
+
+  public static string GetRandomString(int length)
+  {
+    StringBuilder stringBuilder = new StringBuilder(length);
+    for (int index = 0; index < length; ++index)
+    {
+      switch (MultipartContent.Rand.Next(3))
+      {
+        case 0:
+          stringBuilder.Append((char) MultipartContent.Rand.Next(48 /*0x30*/, 58));
+          break;
+        case 1:
+          stringBuilder.Append((char) MultipartContent.Rand.Next(97, 123));
+          break;
+        case 2:
+          stringBuilder.Append((char) MultipartContent.Rand.Next(65, 91));
+          break;
+      }
+    }
+    return stringBuilder.ToString();
+  }
+
+  private void ThrowIfDisposed()
+  {
+    if (this._elements == null)
+      throw new ObjectDisposedException(nameof (MultipartContent));
+  }
+
+  private sealed class Element
+  {
+    public string Name;
+    public string FileName;
+    public HttpContent Content;
+
+    public bool IsFieldFile() => this.FileName != null;
+  }
+}

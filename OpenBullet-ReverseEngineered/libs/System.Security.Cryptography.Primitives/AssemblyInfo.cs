@@ -1,0 +1,30 @@
+﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+
+[assembly: AssemblyTitle("System.Security.Cryptography.Primitives")]
+[assembly: AssemblyDescription("System.Security.Cryptography.Primitives")]
+[assembly: AssemblyDefaultAlias("System.Security.Cryptography.Primitives")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyProduct("Microsoft® .NET Framework")]
+[assembly: AssemblyCopyright("© Microsoft Corporation.  All rights reserved.")]
+[assembly: AssemblyFileVersion("4.6.24705.01")]
+[assembly: AssemblyInformationalVersion("4.6.24705.01. Commit Hash: 4d1af962ca0fede10beb01d197367c2f90e92c97")]
+[assembly: CLSCompliant(true)]
+[assembly: AssemblyMetadata(".NETFrameworkAssembly", "")]
+[assembly: AssemblyMetadata("Serviceable", "True")]
+[assembly: AssemblyVersion("4.0.1.0")]
+[assembly: TypeForwardedTo(typeof (AsymmetricAlgorithm))]
+[assembly: TypeForwardedTo(typeof (CipherMode))]
+[assembly: TypeForwardedTo(typeof (CryptographicException))]
+[assembly: TypeForwardedTo(typeof (CryptoStream))]
+[assembly: TypeForwardedTo(typeof (CryptoStreamMode))]
+[assembly: TypeForwardedTo(typeof (HashAlgorithm))]
+[assembly: TypeForwardedTo(typeof (HashAlgorithmName))]
+[assembly: TypeForwardedTo(typeof (HMAC))]
+[assembly: TypeForwardedTo(typeof (ICryptoTransform))]
+[assembly: TypeForwardedTo(typeof (KeyedHashAlgorithm))]
+[assembly: TypeForwardedTo(typeof (KeySizes))]
+[assembly: TypeForwardedTo(typeof (PaddingMode))]
+[assembly: TypeForwardedTo(typeof (SymmetricAlgorithm))]
