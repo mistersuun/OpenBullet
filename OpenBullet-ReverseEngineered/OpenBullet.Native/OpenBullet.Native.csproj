@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyTitle>OpenBullet Native - Reverse Engineered</AssemblyTitle>
+    <AssemblyDescription>OpenBullet implementation using original DLL assemblies</AssemblyDescription>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <!-- Copy Original OpenBullet DLLs to Output Directory (excluding Newtonsoft.Json) -->
+  <ItemGroup Label="Copy Core DLLs">
+    <None Include="..\libs\RuriLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Leaf.xNet.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\LiteDB.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\AngleSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Extreme.Net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\ProxySocket.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\Tesseract.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\WebDriver.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\WebDriver.Support.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\libs\ICSharpCode.AvalonEdit.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <!-- Exclude Newtonsoft.Json.dll to avoid version conflicts - using NuGet version 13.0.3 instead -->
+    
+    <!-- Config file for testing -->
+    <None Include="..\..\amazonChecker.anom">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- .NET Framework System References -->
+  <ItemGroup Label="System References">
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+
+  <!-- Use the EXACT original Newtonsoft.Json.dll from working project -->
+  <ItemGroup Label="External References">
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

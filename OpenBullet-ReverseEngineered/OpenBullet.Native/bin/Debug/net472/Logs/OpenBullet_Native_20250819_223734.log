@@ -1,0 +1,33 @@
+[22:37:34] 🚀 OpenBullet Native v2.0 - Initializing...
+[22:37:34] 📦 Using Original OpenBullet DLL Files for Maximum Compatibility
+[22:37:34] 📝 Log file: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\bin\Debug\net472\Logs\OpenBullet_Native_20250819_223734.log
+[22:37:34] 🔍 Testing RuriLib.dll Integration...
+[22:37:34] ✅ RuriLib.dll loaded: RuriLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+[22:37:34] 📋 Found 123 public types in RuriLib
+[22:37:34] 🔧 Found Config type: RuriLib.Config
+[22:37:34] 🔧 Found Config type: RuriLib.ConfigSettings
+[22:37:34] 🔧 Found Config type: RuriLib.ViewModels.ConfigViewModel
+[22:37:34] 🤖 Found Bot type: RuriLib.BotStatus
+[22:37:34] 🤖 Found Bot type: RuriLib.BotData
+[22:37:34] 🤖 Found Bot type: RuriLib.ViewModels.BotsDisplayMode
+[22:37:34] 🤖 Found Bot type: RuriLib.Runner.RunnerBotViewModel
+[22:37:34] 🏃 Found Runner type: RuriLib.Runner.IRunnerMessaging
+[22:37:34] 🏃 Found Runner type: RuriLib.Runner.RunnerBotViewModel
+[22:37:34] 🏃 Found Runner type: RuriLib.Runner.RunnerViewModel
+[22:37:41] 📁 Loading config: amazonChecker.anom
+[22:37:41] 📄 Config file loaded: 13924 characters
+[22:37:41] 🔧 Loading config using discovered RuriLib.Config API...
+[22:37:41]    Constructor: Config(ConfigSettings settings, String script)
+[22:37:41] ❌ RuriLib config loading failed: Could not load file or assembly 'Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+[22:37:41] 🔧 Falling back to manual config parsing...
+[22:37:41] ❌ Config Loading Error: Could not load file or assembly 'Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+[22:37:43] 📋 Creating sample test data...
+[22:37:43] ✅ Sample data created: 5 phone numbers
+[22:37:54] 📁 Loading config: amazonChecker.anom
+[22:37:54] 📄 Config file loaded: 13924 characters
+[22:37:54] 🔧 Loading config using discovered RuriLib.Config API...
+[22:37:54]    Constructor: Config(ConfigSettings settings, String script)
+[22:37:54] ❌ RuriLib config loading failed: Could not load file or assembly 'Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+[22:37:54] 🔧 Falling back to manual config parsing...
+[22:37:54] ❌ Config Loading Error: Could not load file or assembly 'Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+[22:37:58] 📝 Log file path copied to clipboard: C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\bin\Debug\net472\Logs\OpenBullet_Native_20250819_223734.log
