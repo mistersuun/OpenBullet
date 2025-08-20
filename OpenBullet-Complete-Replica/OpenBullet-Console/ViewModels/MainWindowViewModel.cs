@@ -101,6 +101,7 @@ namespace OpenBullet_Console.ViewModels
         public ICommand LoadConfigCommand { get; }
         public ICommand ClearResultsCommand { get; }
         public ICommand ClearLogsCommand { get; }
+        public ICommand OpenResultsFolderCommand { get; }
         public ICommand LoadProxyListCommand { get; }
         public ICommand TestProxyCommand { get; }
         public ICommand ChangeThemeCommand { get; }
@@ -122,6 +123,7 @@ namespace OpenBullet_Console.ViewModels
             LoadConfigCommand = new AsyncRelayCommand(LoadConfigAsync);
             ClearResultsCommand = new RelayCommand(ClearResults);
             ClearLogsCommand = new RelayCommand(ClearLogs);
+            OpenResultsFolderCommand = new RelayCommand(OpenResultsFolder);
             LoadProxyListCommand = new AsyncRelayCommand(LoadProxyListAsync);
             TestProxyCommand = new AsyncRelayCommand(TestProxyAsync);
             ChangeThemeCommand = new RelayCommand<string>(ChangeTheme);
@@ -316,6 +318,40 @@ namespace OpenBullet_Console.ViewModels
         {
             DetailedLog = "";
             AddLog("🗑️ Logs cleared");
+        }
+
+        private void OpenResultsFolder()
+        {
+            try
+            {
+                string resultsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Results");
+                
+                // Ensure Results directory exists
+                Directory.CreateDirectory(resultsPath);
+                
+                AddLog($"📁 Opening Results folder: {resultsPath}");
+                
+                // Open folder in Windows Explorer
+                if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+                {
+                    System.Diagnostics.Process.Start("explorer.exe", resultsPath);
+                }
+                else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+                {
+                    System.Diagnostics.Process.Start("open", resultsPath);
+                }
+                else // Linux
+                {
+                    System.Diagnostics.Process.Start("xdg-open", resultsPath);
+                }
+                
+                AddLog("✅ Results folder opened - look for continue_response_[phone]_[timestamp].html files");
+                AddLog("🔍 These files contain the actual HTML Amazon returned for each phone validation");
+            }
+            catch (Exception ex)
+            {
+                AddLog($"❌ Error opening Results folder: {ex.Message}");
+            }
         }
         
         private void UpdateKeyDetectionStats(string detectedKey)

@@ -107,6 +107,23 @@
           "buildTransitive/Avalonia.BuildServices.targets": {}
         }
       },
+      "Avalonia.Controls.ColorPicker/11.3.4": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.3.4",
+          "Avalonia.Remote.Protocol": "11.3.4"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Avalonia.Controls.DataGrid/11.3.4": {
         "type": "package",
         "dependencies": {
@@ -139,6 +156,24 @@
         },
         "runtime": {
           "lib/net8.0/Avalonia.Desktop.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Avalonia.Diagnostics/11.3.4": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.3.4",
+          "Avalonia.Controls.ColorPicker": "11.3.4",
+          "Avalonia.Themes.Simple": "11.3.4"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Diagnostics.dll": {
             "related": ".xml"
           }
         }
@@ -245,6 +280,22 @@
         },
         "runtime": {
           "lib/net8.0/Avalonia.Themes.Fluent.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Avalonia.Themes.Simple/11.3.4": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.3.4"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Themes.Simple.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Themes.Simple.dll": {
             "related": ".xml"
           }
         }
@@ -2206,6 +2257,23 @@
           "buildTransitive/Avalonia.BuildServices.targets": {}
         }
       },
+      "Avalonia.Controls.ColorPicker/11.3.4": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.3.4",
+          "Avalonia.Remote.Protocol": "11.3.4"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Avalonia.Controls.DataGrid/11.3.4": {
         "type": "package",
         "dependencies": {
@@ -2238,6 +2306,24 @@
         },
         "runtime": {
           "lib/net8.0/Avalonia.Desktop.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Avalonia.Diagnostics/11.3.4": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.3.4",
+          "Avalonia.Controls.ColorPicker": "11.3.4",
+          "Avalonia.Themes.Simple": "11.3.4"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Diagnostics.dll": {
             "related": ".xml"
           }
         }
@@ -2338,6 +2424,22 @@
         },
         "runtime": {
           "lib/net8.0/Avalonia.Themes.Fluent.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Avalonia.Themes.Simple/11.3.4": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.3.4"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Themes.Simple.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Themes.Simple.dll": {
             "related": ".xml"
           }
         }
@@ -4479,6 +4581,24 @@
         "tools/netstandard2.0/runtimeconfig.json"
       ]
     },
+    "Avalonia.Controls.ColorPicker/11.3.4": {
+      "sha512": "9ZDFgEPLKGTvsyVgqcExSN1XzvRDqfzHILC3tQU08QL0o3p62w1PR008+D5YvbVPiZIlp2ugcT14dF1/n2+Eug==",
+      "type": "package",
+      "path": "avalonia.controls.colorpicker/11.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "avalonia.controls.colorpicker.11.3.4.nupkg.sha512",
+        "avalonia.controls.colorpicker.nuspec",
+        "lib/net6.0/Avalonia.Controls.ColorPicker.dll",
+        "lib/net6.0/Avalonia.Controls.ColorPicker.xml",
+        "lib/net8.0/Avalonia.Controls.ColorPicker.dll",
+        "lib/net8.0/Avalonia.Controls.ColorPicker.xml",
+        "lib/netstandard2.0/Avalonia.Controls.ColorPicker.dll",
+        "lib/netstandard2.0/Avalonia.Controls.ColorPicker.xml"
+      ]
+    },
     "Avalonia.Controls.DataGrid/11.3.4": {
       "sha512": "UW1hQ2SvvApvwZoquA48GWtP8EYDZMGrAJ9DIgdudy1j7QS+MlCSVwqF0keDtBYoTUPqdXcNCOrg65m9Gr8+EA==",
       "type": "package",
@@ -4514,6 +4634,24 @@
         "lib/net8.0/Avalonia.Desktop.xml",
         "lib/netstandard2.0/Avalonia.Desktop.dll",
         "lib/netstandard2.0/Avalonia.Desktop.xml"
+      ]
+    },
+    "Avalonia.Diagnostics/11.3.4": {
+      "sha512": "7agu3YsJ3VjSKlGehh3CBMHm6wkMTMmXj4rqYt0Lc08ZVaziurezP8R2Hudsn0I9jS28X3WvpNBFuny7KCCWPw==",
+      "type": "package",
+      "path": "avalonia.diagnostics/11.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "avalonia.diagnostics.11.3.4.nupkg.sha512",
+        "avalonia.diagnostics.nuspec",
+        "lib/net6.0/Avalonia.Diagnostics.dll",
+        "lib/net6.0/Avalonia.Diagnostics.xml",
+        "lib/net8.0/Avalonia.Diagnostics.dll",
+        "lib/net8.0/Avalonia.Diagnostics.xml",
+        "lib/netstandard2.0/Avalonia.Diagnostics.dll",
+        "lib/netstandard2.0/Avalonia.Diagnostics.xml"
       ]
     },
     "Avalonia.Fonts.Inter/11.3.4": {
@@ -4623,6 +4761,24 @@
         "lib/net8.0/Avalonia.Themes.Fluent.xml",
         "lib/netstandard2.0/Avalonia.Themes.Fluent.dll",
         "lib/netstandard2.0/Avalonia.Themes.Fluent.xml"
+      ]
+    },
+    "Avalonia.Themes.Simple/11.3.4": {
+      "sha512": "JIR/uTlyFD1EX2WoxD/8O1fwNbOimKYxzlaK+lZiW1ZG+5fcqEfG12Ve4/a/q54dWAAEISgLRjSgpCEywPqFuw==",
+      "type": "package",
+      "path": "avalonia.themes.simple/11.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "avalonia.themes.simple.11.3.4.nupkg.sha512",
+        "avalonia.themes.simple.nuspec",
+        "lib/net6.0/Avalonia.Themes.Simple.dll",
+        "lib/net6.0/Avalonia.Themes.Simple.xml",
+        "lib/net8.0/Avalonia.Themes.Simple.dll",
+        "lib/net8.0/Avalonia.Themes.Simple.xml",
+        "lib/netstandard2.0/Avalonia.Themes.Simple.dll",
+        "lib/netstandard2.0/Avalonia.Themes.Simple.xml"
       ]
     },
     "Avalonia.Win32/11.3.4": {
@@ -8913,6 +9069,7 @@
       "Avalonia >= 11.3.4",
       "Avalonia.Controls.DataGrid >= 11.3.4",
       "Avalonia.Desktop >= 11.3.4",
+      "Avalonia.Diagnostics >= 11.3.4",
       "Avalonia.Fonts.Inter >= 11.3.4",
       "Avalonia.Themes.Fluent >= 11.3.4",
       "CommunityToolkit.Mvvm >= 8.2.1",
@@ -8931,19 +9088,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BABY\\.nuget\\packages\\": {}
+    "C:\\Users\\futiliter\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
+      "projectUniqueName": "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
       "projectName": "OpenBullet-Console",
-      "projectPath": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
-      "packagesPath": "C:\\Users\\BABY\\.nuget\\packages\\",
-      "outputPath": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\obj\\",
+      "projectPath": "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
+      "packagesPath": "C:\\Users\\futiliter\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BABY\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\futiliter\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -8982,6 +9139,10 @@
             "version": "[11.3.4, )"
           },
           "Avalonia.Desktop": {
+            "target": "Package",
+            "version": "[11.3.4, )"
+          },
+          "Avalonia.Diagnostics": {
             "target": "Package",
             "version": "[11.3.4, )"
           },
@@ -9065,11 +9226,7 @@
             "version": "[9.0.8, 9.0.8]"
           },
           {
-            "name": "Microsoft.NETCore.App.Crossgen2.win-arm64",
-            "version": "[9.0.8, 9.0.8]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
             "version": "[9.0.8, 9.0.8]"
           },
           {

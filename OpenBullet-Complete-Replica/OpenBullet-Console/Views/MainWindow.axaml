@@ -7,8 +7,10 @@
         x:Class="OpenBullet_Console.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Title="🎯 OpenBullet Anomaly - Amazon Validator [PROFESSIONAL EDITION]"
-        MinWidth="1400" MinHeight="800"
-        WindowState="Maximized"
+        Width="1200" Height="900"
+        MinWidth="1000" MinHeight="700"
+        WindowStartupLocation="CenterScreen"
+        CanResize="True"
         Background="#1E1E1E">
 
     <Design.DataContext>
@@ -249,8 +251,8 @@
             </Grid>
         </Border>
 
-        <!-- Main Statistics -->
-        <Border Grid.Row="1" Classes="card" Margin="20,10,20,10">
+        <!-- Compact Main Statistics -->
+        <Border Grid.Row="1" Classes="card" Margin="15,5,15,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -259,287 +261,130 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0" Background="{DynamicResource InfoColorBrush}" CornerRadius="8" Padding="20">
+                <Border Grid.Column="0" Background="{DynamicResource InfoColorBrush}" CornerRadius="6" Padding="10,8">
                     <StackPanel>
-                        <TextBlock Text="{Binding TotalTested}" FontSize="32" FontWeight="Bold" 
-                                   Foreground="#3498DB" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Total Tested" FontSize="14" Foreground="#AAAAAA" 
-                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="{Binding TotalTested}" FontSize="20" FontWeight="Bold" 
+                                   Foreground="White" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Total Tested" FontSize="11" Foreground="#E3F2FD" 
+                                   HorizontalAlignment="Center" Margin="0,2,0,0"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Column="1" Background="{DynamicResource SuccessColorBrush}" CornerRadius="8" Padding="20" Margin="10,0">
+                <Border Grid.Column="1" Background="{DynamicResource SuccessColorBrush}" CornerRadius="6" Padding="10,8" Margin="5,0">
                     <StackPanel>
-                        <TextBlock Text="{Binding ValidCount}" FontSize="32" FontWeight="Bold" 
+                        <TextBlock Text="{Binding ValidCount}" FontSize="20" FontWeight="Bold" 
                                    Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="✅ Valid" FontSize="14" Foreground="#E8F8F5" 
-                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="✅ Valid" FontSize="11" Foreground="#E8F8F5" 
+                                   HorizontalAlignment="Center" Margin="0,2,0,0"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Column="2" Background="{DynamicResource DangerColorBrush}" CornerRadius="8" Padding="20">
+                <Border Grid.Column="2" Background="{DynamicResource DangerColorBrush}" CornerRadius="6" Padding="10,8">
                     <StackPanel>
-                        <TextBlock Text="{Binding InvalidCount}" FontSize="32" FontWeight="Bold" 
+                        <TextBlock Text="{Binding InvalidCount}" FontSize="20" FontWeight="Bold" 
                                    Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="❌ Invalid" FontSize="14" Foreground="#FADBD8" 
-                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="❌ Invalid" FontSize="11" Foreground="#FADBD8" 
+                                   HorizontalAlignment="Center" Margin="0,2,0,0"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Column="3" Background="{DynamicResource WarningColorBrush}" CornerRadius="8" Padding="20" Margin="10,0">
+                <Border Grid.Column="3" Background="{DynamicResource WarningColorBrush}" CornerRadius="6" Padding="10,8" Margin="5,0">
                     <StackPanel>
-                        <TextBlock Text="{Binding ValidPercentage, StringFormat={}{0:F1}%}" FontSize="32" FontWeight="Bold" 
+                        <TextBlock Text="{Binding ValidPercentage, StringFormat={}{0:F1}%}" FontSize="20" FontWeight="Bold" 
                                    Foreground="White" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Success Rate" FontSize="14" Foreground="#EBDEF0" 
-                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="Success Rate" FontSize="11" Foreground="#FEF9E7" 
+                                   HorizontalAlignment="Center" Margin="0,2,0,0"/>
                     </StackPanel>
                 </Border>
             </Grid>
         </Border>
 
-        <!-- Key Detection Statistics -->
-        <Border Grid.Row="2" Classes="card" Margin="20,0,20,10">
+        <!-- Compact Detection Statistics -->
+        <Border Grid.Row="2" Classes="card" Margin="15,0,15,5">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 
-                <TextBlock Grid.Row="0" Text="🔍 Detection Breakdown" FontSize="16" FontWeight="Bold" 
-                           Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Grid.Column="0" Text="🔍 Detection:" FontSize="12" FontWeight="Bold" 
+                           Foreground="#FFFFFF" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Border Grid.Column="0" Background="{DynamicResource SuccessColorBrush}" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding SeleniumSuccessCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="🎯 Selenium Success" FontSize="10" Foreground="#D5F4E6" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Border Background="{DynamicResource SuccessColorBrush}" CornerRadius="4" Padding="8,4" Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding SeleniumSuccessCount}" FontSize="12" FontWeight="Bold" 
+                                       Foreground="White" Margin="0,0,4,0"/>
+                            <TextBlock Text="Success" FontSize="10" Foreground="#D5F4E6"/>
                         </StackPanel>
                     </Border>
                     
-                    <Border Grid.Column="1" Background="{DynamicResource WarningColorBrush}" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding SeleniumInvalidCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="🔶 Selenium Invalid" FontSize="10" Foreground="#FDF2E9" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                    <Border Background="{DynamicResource WarningColorBrush}" CornerRadius="4" Padding="8,4" Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding SeleniumInvalidCount}" FontSize="12" FontWeight="Bold" 
+                                       Foreground="White" Margin="0,0,4,0"/>
+                            <TextBlock Text="Invalid" FontSize="10" Foreground="#FDF2E9"/>
                         </StackPanel>
                     </Border>
                     
-                    <Border Grid.Column="2" Background="{DynamicResource InfoColorBrush}" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding AmazonBlockedCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="🚫 Amazon Blocked" FontSize="10" Foreground="#EBDEF0" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                    <Border Background="{DynamicResource InfoColorBrush}" CornerRadius="4" Padding="8,4" Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding AmazonBlockedCount}" FontSize="12" FontWeight="Bold" 
+                                       Foreground="White" Margin="0,0,4,0"/>
+                            <TextBlock Text="Blocked" FontSize="10" Foreground="#EBDEF0"/>
                         </StackPanel>
                     </Border>
                     
-                    <Border Grid.Column="3" Background="{DynamicResource DangerColorBrush}" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding AmazonFailureCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="❌ Amazon Failure" FontSize="10" Foreground="#FADBD8" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                    <Border Background="{DynamicResource DangerColorBrush}" CornerRadius="4" Padding="8,4" Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding AmazonFailureCount}" FontSize="12" FontWeight="Bold" 
+                                       Foreground="White" Margin="0,0,4,0"/>
+                            <TextBlock Text="Failure" FontSize="10" Foreground="#FADBD8"/>
                         </StackPanel>
                     </Border>
                     
-                    <Border Grid.Column="4" Background="{DynamicResource AccentColorBrush}" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding HttpErrorCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="🌐 HTTP Error" FontSize="10" Foreground="#FDEAA7" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                    <Border Background="#95A5A6" CornerRadius="4" Padding="8,4" Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding OtherErrorCount}" FontSize="12" FontWeight="Bold" 
+                                       Foreground="White" Margin="0,0,4,0"/>
+                            <TextBlock Text="Other" FontSize="10" Foreground="#F8F9FA"/>
                         </StackPanel>
                     </Border>
-                    
-                    <Border Grid.Column="5" Background="{DynamicResource InfoColorBrush}" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding AmazonSecurityFlagCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="🔒 Security Flag" FontSize="10" Foreground="#E8DAEF" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <Border Grid.Column="6" Background="#95A5A6" CornerRadius="6" Padding="10" Margin="2">
-                        <StackPanel>
-                            <TextBlock Text="{Binding OtherErrorCount}" FontSize="18" FontWeight="Bold" 
-                                       Foreground="White" HorizontalAlignment="Center"/>
-                            <TextBlock Text="❓ Other" FontSize="10" Foreground="#F8F9FA" 
-                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Border>
-                </Grid>
+                </StackPanel>
             </Grid>
         </Border>
 
-        <!-- Enhanced Controls -->
-        <Border Grid.Row="3" Classes="card" Margin="20,0,20,10">
+        <!-- Compact Controls -->
+        <Border Grid.Row="3" Background="{DynamicResource HeaderBackgroundBrush}" Padding="15,8" Margin="15,0,15,5">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
                 
-                <!-- Main Input Row -->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <TextBox Grid.Column="0" 
-                             Text="{Binding PhoneNumberInput}"
-                             Watermark="Enter phone number (e.g., 1111111111 for invalid, 15142955315 for valid)"
-                             FontSize="16" Padding="15" CornerRadius="8"
-                             Background="{DynamicResource InputBackgroundBrush}" Foreground="{DynamicResource TextPrimaryBrush}" BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2"
-                             CaretBrush="#FFFFFF" FontWeight="Bold"/>
-                    
-                    <Button Grid.Column="1" Classes="success-btn" Command="{Binding TestSingleNumberCommand}" 
-                            Content="🔍 Test Single" Margin="10,0,0,0"/>
-                    
-                    <Button Grid.Column="2" Classes="action-btn" Command="{Binding LoadConfigCommand}" 
-                            Content="📂 Load Config"/>
-                    
-                    <Button Grid.Column="3" Classes="action-btn" Command="{Binding ClearResultsCommand}" 
-                            Content="🗑️ Clear Results"/>
-                </Grid>
+                <TextBox Grid.Column="0" 
+                         Text="{Binding PhoneNumberInput}"
+                         Watermark="Enter phone number (e.g., 1111111111 for invalid, 15142955315 for valid)"
+                         FontSize="14" Padding="10,8" CornerRadius="6" Height="35"
+                         Background="{DynamicResource InputBackgroundBrush}" Foreground="{DynamicResource TextPrimaryBrush}" BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1"/>
                 
-
+                <Button Grid.Column="1" Content="🔍 Test" Command="{Binding TestSingleNumberCommand}" 
+                        Classes="success-btn" Padding="12,6" Margin="8,0,0,0" FontSize="12" Height="35"/>
+                
+                <Button Grid.Column="2" Content="📂 Config" Command="{Binding LoadConfigCommand}" 
+                        Classes="action-btn" Padding="12,6" Margin="4,0,0,0" FontSize="12" Height="35"/>
+                
+                <Button Grid.Column="3" Content="🗑️ Clear" Command="{Binding ClearResultsCommand}" 
+                        Classes="action-btn" Padding="12,6" Margin="4,0,0,0" FontSize="12" Height="35"/>
             </Grid>
         </Border>
 
         <!-- Main Content - Clean Organized Tabs -->
-        <TabControl Grid.Row="4" Margin="20,0,20,10" Background="{DynamicResource CardBackgroundBrush}">
+        <TabControl Grid.Row="4" Margin="15,0,15,10" Background="{DynamicResource CardBackgroundBrush}">
             
-            <!-- 🎯 TEST VIEW - Main testing interface -->
-            <TabItem Header="🎯 Test">
-                <Border Classes="card" Margin="0">
-                    <Grid Margin="20">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <!-- Test Controls -->
-                        <Border Grid.Row="0" Background="{DynamicResource InfoColorBrush}" CornerRadius="8" Padding="20" Margin="0,0,0,20">
-                            <StackPanel>
-                                <TextBlock Text="🎯 Amazon Account Testing" FontSize="18" FontWeight="Bold" 
-                                           Foreground="#FFFFFF" Margin="0,0,0,15"/>
-                                
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <TextBox Grid.Column="0" Text="{Binding PhoneNumberInput}"
-                                             Watermark="Enter phone number (e.g., 15142955315 for valid test)"
-                                             FontSize="16" Padding="15" CornerRadius="8"
-                                             Background="{DynamicResource InputBackgroundBrush}" Foreground="{DynamicResource TextPrimaryBrush}" BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2"/>
-                                    
-                                    <Button Grid.Column="1" Classes="success-btn" Command="{Binding TestSingleNumberCommand}" 
-                                            Content="🔍 Test Single" Margin="15,0,0,0" IsEnabled="{Binding !IsValidationRunning}"/>
-                                    
-                                    <Button Grid.Column="2" Classes="action-btn" Command="{Binding LoadConfigCommand}" 
-                                            Content="📂 Load Config" Margin="10,0,0,0"/>
-                                </Grid>
-                            </StackPanel>
-                        </Border>
-                        
-                        <!-- Batch Operations -->
-                        <Border Grid.Row="1" Background="{DynamicResource AccentColorBrush}" CornerRadius="8" Padding="20" Margin="0,0,0,20">
-                            <StackPanel>
-                                <TextBlock Text="🚀 Batch Operations" FontSize="18" FontWeight="Bold" 
-                                           Foreground="#FFFFFF" Margin="0,0,0,15"/>
-                                
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <Button Grid.Column="0" Classes="action-btn" Command="{Binding LoadWordlistCommand}" 
-                                            Content="📱 Load Wordlist" Margin="0,0,15,0"/>
-                                    
-                                    <Button Grid.Column="1" Classes="success-btn" Command="{Binding StartBatchValidationCommand}" 
-                                            Content="🚀 Start Batch" Margin="0,0,15,0" IsEnabled="{Binding !IsValidationRunning}"/>
-                                    
-                                    <Button Grid.Column="2" Classes="danger-btn" Command="{Binding StopValidationCommand}" 
-                                            Content="⏹️ Stop" Margin="0,0,15,0" IsEnabled="{Binding IsValidationRunning}"/>
-                                    
-                                    <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="📊 Progress: " Foreground="#FFFFFF" VerticalAlignment="Center"/>
-                                        <ProgressBar Value="{Binding ValidationProgress}" Maximum="100" Width="200" Height="20" Margin="10,0"/>
-                                        <TextBlock Text="{Binding ValidationProgressText}" Foreground="#00FF00" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                                    </StackPanel>
-                                    
-
-                                </Grid>
-                            </StackPanel>
-                        </Border>
-                        
-                        <!-- Current Status -->
-                        <Border Grid.Row="2" Background="{DynamicResource SuccessColorBrush}" CornerRadius="8" Padding="20">
-                            <StackPanel>
-                                <TextBlock Text="⚡ Current Status" FontSize="18" FontWeight="Bold" 
-                                           Foreground="#FFFFFF" Margin="0,0,0,15"/>
-                                
-                                <TextBlock Text="{Binding CurrentStatus}" FontSize="16" 
-                                           Foreground="#FFFFFF" TextWrapping="Wrap" Margin="0,0,0,15"/>
-                                
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Text="✅ Valid" Foreground="#FFFFFF" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding ValidCount}" FontSize="20" Foreground="#27AE60" FontWeight="Bold"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock Text="❌ Invalid" Foreground="#FFFFFF" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding InvalidCount}" FontSize="20" Foreground="#E74C3C" FontWeight="Bold"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Grid.Column="2">
-                                        <TextBlock Text="📊 Total Tested" Foreground="#FFFFFF" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding TotalTested}" FontSize="20" Foreground="#3498DB" FontWeight="Bold"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Grid.Column="3">
-                                        <TextBlock Text="⏱️ Session Time" Foreground="#FFFFFF" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding UptimeString}" FontSize="20" Foreground="#F39C12" FontWeight="Bold"/>
-                                    </StackPanel>
-                                </Grid>
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                </Border>
-            </TabItem>
+            
             
             <!-- 📊 DASHBOARD - Clean analytics with wordlist controls -->
             <TabItem Header="📊 Dashboard">
@@ -993,22 +838,85 @@
                             </Grid>
                         </Border>
                         
-                        <!-- Debug Content -->
-                        <Border Grid.Row="1" Background="#0D1117" CornerRadius="0" BorderBrush="#2D2D30" BorderThickness="1,0,1,0">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                                <TextBox Text="{Binding DetailedLog}" 
-                                         IsReadOnly="True"
-                                         Background="Transparent" 
-                                         Foreground="#00FF41"
-                                         BorderThickness="0" 
-                                         FontFamily="JetBrains Mono, Consolas, Monaco, monospace"
-                                         FontSize="12" 
-                                         Padding="25"
-                                         TextWrapping="Wrap"
-                                         AcceptsReturn="True" 
-                                         AcceptsTab="True"/>
-                            </ScrollViewer>
-                        </Border>
+                        <!-- Enhanced Debug Content with HTML Error Analysis -->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Main Debug Logs -->
+                            <Border Grid.Row="0" Background="#0D1117" CornerRadius="0" BorderBrush="#2D2D30" BorderThickness="1,0,1,0">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <TextBox Text="{Binding DetailedLog}" 
+                                             IsReadOnly="True"
+                                             Background="Transparent" 
+                                             Foreground="#00FF41"
+                                             BorderThickness="0" 
+                                             FontFamily="JetBrains Mono, Consolas, Monaco, monospace"
+                                             FontSize="13" 
+                                             Padding="15"
+                                             TextWrapping="Wrap"
+                                             AcceptsReturn="True" 
+                                             AcceptsTab="True"/>
+                                </ScrollViewer>
+                            </Border>
+                            
+                            <!-- HTML Error Analysis Section -->
+                            <Border Grid.Row="1" Background="#FF6B35" Padding="15,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBlock Grid.Column="0" Text="🔍 HTML Error Analysis - View Amazon Response Patterns" 
+                                               FontWeight="Bold" Foreground="White" VerticalAlignment="Center"/>
+                                    
+                                    <Button Grid.Column="1" Classes="action-btn" Content="📁 View HTML Files" 
+                                            Command="{Binding OpenResultsFolderCommand}"
+                                            ToolTip.Tip="Open Results folder to view HTML response files"/>
+                                </Grid>
+                            </Border>
+                            
+                            <!-- HTML Pattern Analysis -->
+                            <Border Grid.Row="2" Background="#1A1A1A" BorderBrush="#2D2D30" BorderThickness="1,0,1,0">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="🔍 HTML Pattern Detection Analysis:" 
+                                                   Foreground="#F39C12" FontWeight="Bold" FontSize="14" Margin="0,0,0,10"/>
+                                        
+                                        <!-- Sample patterns to look for -->
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <StackPanel Grid.Column="0" Margin="0,0,15,0">
+                                                <TextBlock Text="✅ VALID Account Indicators:" Foreground="#27AE60" FontWeight="Bold" Margin="0,0,0,5"/>
+                                                <TextBlock Text="• id='ap_password' (password field)" Foreground="#00FF41" FontFamily="Consolas" FontSize="11"/>
+                                                <TextBlock Text="• 'Enter your password'" Foreground="#00FF41" FontFamily="Consolas" FontSize="11"/>
+                                                <TextBlock Text="• value='+1[phone]' (formatted phone)" Foreground="#00FF41" FontFamily="Consolas" FontSize="11"/>
+                                                <TextBlock Text="• 'Sign-In' form elements" Foreground="#00FF41" FontFamily="Consolas" FontSize="11"/>
+                                            </StackPanel>
+                                            
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="❌ INVALID/Error Indicators:" Foreground="#E74C3C" FontWeight="Bold" Margin="0,0,0,5"/>
+                                                <TextBlock Text="• 'Incorrect phone number'" Foreground="#FF6B6B" FontFamily="Consolas" FontSize="11"/>
+                                                <TextBlock Text="• 'We cannot find an account'" Foreground="#FF6B6B" FontFamily="Consolas" FontSize="11"/>
+                                                <TextBlock Text="• 'Please Enable Cookies'" Foreground="#FF6B6B" FontFamily="Consolas" FontSize="11"/>
+                                                <TextBlock Text="• 'suspicious activity'" Foreground="#FF6B6B" FontFamily="Consolas" FontSize="11"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        
+                                        <TextBlock Text="💡 Check Results folder for continue_response_[phone]_[timestamp].html files to analyze specific responses" 
+                                                   Foreground="#3498DB" FontStyle="Italic" Margin="0,15,0,0" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
 
                         <!-- Debug Status Bar -->
                         <Border Grid.Row="2" Background="#1A1A1A" CornerRadius="0,0,8,8" Padding="20,15" BorderBrush="#2D2D30" BorderThickness="1,0,1,1">

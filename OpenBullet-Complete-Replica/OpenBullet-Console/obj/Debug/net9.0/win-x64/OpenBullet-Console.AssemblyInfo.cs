@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OpenBullet-Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75f9f296170bb907157276d9c0ef9436f302d230")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53eb41c01ef7b7f88c973f720c5807df1f19e6b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("OpenBullet-Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OpenBullet Anomaly - Amazon Validator (Windows Edition)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.0.0.0")]

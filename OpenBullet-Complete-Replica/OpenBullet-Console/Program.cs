@@ -45,27 +45,18 @@ namespace OpenBullet_Console
                 }
                 catch (Exception ex)
                 {
-                    // **SIMPLE ERROR HANDLING**
-                    var logDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "OpenBullet-Anomaly");
-                    Directory.CreateDirectory(logDir);
-                    var errorLogFile = Path.Combine(logDir, $"error_{DateTime.Now:yyyyMMdd_HHmmss}.log");
-                    
-                    var errorDetails = $@"OpenBullet Anomaly - Startup Error
-=====================================
-Time: {DateTime.Now:yyyy-MM-dd HH:mm:ss}
-Error: {ex.Message}
-Stack Trace: {ex.StackTrace}
-Log File: {errorLogFile}
-=====================================";
-
-                    await File.WriteAllTextAsync(errorLogFile, errorDetails);
-                    
-                    Console.WriteLine("❌ STARTUP ERROR:");
+                    // **ENHANCED ERROR HANDLING** - Show error and fall back to console
+                    Console.WriteLine("❌ UI STARTUP ERROR:");
                     Console.WriteLine($"Error: {ex.Message}");
-                    Console.WriteLine($"Log saved to: {errorLogFile}");
-                    Console.WriteLine("\nPress any key to exit...");
+                    Console.WriteLine($"Stack: {ex.StackTrace}");
+                    Console.WriteLine();
+                    Console.WriteLine("🔄 Falling back to CONSOLE MODE...");
+                    Console.WriteLine("Press any key to continue to console mode...");
                     Console.ReadKey();
-                    return;
+                    Console.WriteLine();
+                    
+                    // Continue to console mode instead of exiting
+                    forceConsole = true;
                 }
             }
             

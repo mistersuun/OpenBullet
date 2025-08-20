@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj": {}
+    "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj": {
+    "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
+        "projectUniqueName": "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
         "projectName": "OpenBullet-Console",
-        "projectPath": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
-        "packagesPath": "C:\\Users\\BABY\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\obj\\",
+        "projectPath": "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\OpenBullet-Console.csproj",
+        "packagesPath": "C:\\Users\\futiliter\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Console\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\BABY\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\futiliter\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -53,6 +53,10 @@
               "version": "[11.3.4, )"
             },
             "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[11.3.4, )"
+            },
+            "Avalonia.Diagnostics": {
               "target": "Package",
               "version": "[11.3.4, )"
             },
@@ -136,11 +140,7 @@
               "version": "[9.0.8, 9.0.8]"
             },
             {
-              "name": "Microsoft.NETCore.App.Crossgen2.win-arm64",
-              "version": "[9.0.8, 9.0.8]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
               "version": "[9.0.8, 9.0.8]"
             },
             {
