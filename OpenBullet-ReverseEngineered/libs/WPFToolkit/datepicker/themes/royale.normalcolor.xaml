@@ -1,6 +1,0 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Microsoft.Windows.Controls"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
-  <String x:Key="{ComponentResourceKey TypeInTargetAssembly={Type local:DatePicker}, ResourceId=Theme}">Royale.NormalColor</String>
-</ResourceDictionary>

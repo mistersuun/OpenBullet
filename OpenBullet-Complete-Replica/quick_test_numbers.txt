@@ -1,0 +1,24 @@
+# Quick Test Wordlist - Essential Test Cases
+# Perfect for quick validation testing
+
+# Known Valid Numbers (confirmed working)
+15142955315
+5142955315
+
+# Common Test Patterns
+1111111111
+2222222222
+1234567890
+5555555555
+9999999999
+
+# Random Test Numbers
+6479971432
+4165551234
+5145556789
+
+# Edge Cases
+123456789
+12345678901
+
+# End of Quick Test

@@ -1,2 +1,0 @@
-Test completed after 5 iterations
-History: Blocks:2, Hits:0, Fails:0, Errors:0, BAN:3, Blocks:2, Hits:0, Fails:0, Errors:0, BAN:3, Blocks:2, Hits:0, Fails:0, Errors:0, BAN:3, Blocks:2, Hits:0, Fails:0, Errors:0, BAN:3, Blocks:2, Hits:0, Fails:0, Errors:0, BAN:3

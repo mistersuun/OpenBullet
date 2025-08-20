@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    
+    <!-- Assembly Information -->
+    <AssemblyTitle>OpenBullet Anomaly - Amazon Validator (Windows Edition)</AssemblyTitle>
+    <AssemblyDescription>Professional Amazon Account Validation Tool - Windowed Application</AssemblyDescription>
+    <AssemblyCompany>OpenBullet Anomaly Team</AssemblyCompany>
+    <AssemblyProduct>OpenBullet Anomaly Amazon Validator</AssemblyProduct>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    
+    <!-- Windows Executable Configuration -->
+    <CreateNoWindow>true</CreateNoWindow>
+    <WindowsAppType>AvaloniaApp</WindowsAppType>
+    <UseWindowsForms>false</UseWindowsForms>
+    
+    <!-- Single-File Publishing Configuration -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    
+    <!-- Runtime Configuration -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.4" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.4" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.4" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.4" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.4" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.3.4" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="LiteDB" Version="5.0.19" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.0" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc2" />
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.24.0" />
+    <PackageReference Include="Selenium.Support" Version="4.24.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="129.0.6668.5800" />
+  </ItemGroup>
+
+  <!-- Reference to Original OpenBullet DLL files for sophisticated cookie/browser handling -->
+  <ItemGroup>
+    <Reference Include="RuriLib">
+      <HintPath>../libs/RuriLib.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Leaf.xNet">
+      <HintPath>../libs/Leaf.xNet.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Extreme.Net">
+      <HintPath>../libs/Extreme.Net.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="ProxySocket">
+      <HintPath>../libs/ProxySocket.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="AngleSharp">
+      <HintPath>../libs/AngleSharp.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Jint">
+      <HintPath>../libs/Jint.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "restore": {
+    "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Modern\\OpenBullet-Modern.csproj": {}
+  },
+  "projects": {
+    "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Modern\\OpenBullet-Modern.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Modern\\OpenBullet-Modern.csproj",
+        "projectName": "OpenBullet-Modern",
+        "projectPath": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Modern\\OpenBullet-Modern.csproj",
+        "packagesPath": "C:\\Users\\BABY\\.nuget\\packages\\",
+        "outputPath": "\\\\Mac\\Home\\Downloads\\Projects\\OpenBullet\\OpenBullet-Complete-Replica\\OpenBullet-Modern\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\BABY\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0-windows7.0": {
+            "targetAlias": "net9.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "dependencies": {
+            "AngleSharp": {
+              "target": "Package",
+              "version": "[1.1.2, )"
+            },
+            "AvalonEdit": {
+              "target": "Package",
+              "version": "[6.3.0.90, )"
+            },
+            "LiteDB": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.24.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.24.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[129.0.6668.5800, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

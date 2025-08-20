@@ -1,0 +1,1055 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:OpenBullet_Console.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="OpenBullet_Console.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="🎯 OpenBullet Anomaly - Amazon Validator [PROFESSIONAL EDITION]"
+        MinWidth="1400" MinHeight="800"
+        WindowState="Maximized"
+        Background="#1E1E1E">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Window.Styles>
+        <!-- Dynamic Theme Resources -->
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        
+        <Style Selector="TextBlock.header">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <!-- Enhanced Button Styles with Hover Effects -->
+        <Style Selector="Button.action-btn">
+            <Setter Property="Background" Value="{DynamicResource AccentColorBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextInverseBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="Button.action-btn:pointerover">
+            <Setter Property="Background" Value="{DynamicResource AccentHoverBrush}"/>
+        </Style>
+
+        <Style Selector="Button.success-btn">
+            <Setter Property="Background" Value="{DynamicResource SuccessColorBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextInverseBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="Button.success-btn:pointerover">
+            <Setter Property="Background" Value="{DynamicResource SuccessHoverBrush}"/>
+        </Style>
+
+        <Style Selector="Button.danger-btn">
+            <Setter Property="Background" Value="{DynamicResource DangerColorBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextInverseBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="Button.danger-btn:pointerover">
+            <Setter Property="Background" Value="{DynamicResource DangerHoverBrush}"/>
+        </Style>
+        
+        <Style Selector="Button.export-btn">
+            <Setter Property="Background" Value="{DynamicResource InfoColorBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextInverseBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="Button.export-btn:pointerover">
+            <Setter Property="Background" Value="{DynamicResource InfoHoverBrush}"/>
+        </Style>
+        
+        <Style Selector="Button.test-btn">
+            <Setter Property="Background" Value="{DynamicResource WarningColorBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextInverseBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="Button.test-btn:pointerover">
+            <Setter Property="Background" Value="{DynamicResource WarningHoverBrush}"/>
+        </Style>
+        
+        <!-- Enhanced Input Controls -->
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+        
+        <Style Selector="NumericUpDown">
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        
+        <Style Selector="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        </Style>
+        
+        <Style Selector="ProgressBar">
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource SuccessColorBrush}"/>
+        </Style>
+        
+        <Style Selector="DataGrid">
+            <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColorBrush}"/>
+        </Style>
+        
+        <!-- Dynamic Resource Definitions -->
+        <Style Selector="Window">
+            <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+        </Style>
+        
+        <Style Selector="Border">
+            <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
+        </Style>
+        
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        </Style>
+        
+        <Style Selector="TabControl">
+            <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
+        </Style>
+    </Window.Styles>
+    
+    <Window.Resources>
+        <!-- Comprehensive Theme Resources (Default: Dark) -->
+        
+        <!-- Background Resources -->
+        <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#1E1E1E"/>
+        <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#252526"/>
+        <SolidColorBrush x:Key="CardBackgroundBrush" Color="#2D2D30"/>
+        <SolidColorBrush x:Key="InputBackgroundBrush" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#404040"/>
+        
+        <!-- Text Resources -->
+        <SolidColorBrush x:Key="TextPrimaryBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="TextSecondaryBrush" Color="#CCCCCC"/>
+        <SolidColorBrush x:Key="TextMutedBrush" Color="#999999"/>
+        <SolidColorBrush x:Key="TextInverseBrush" Color="#000000"/>
+        
+        <!-- Theme Color Resources -->
+        <SolidColorBrush x:Key="AccentColorBrush" Color="#007ACC"/>
+        <SolidColorBrush x:Key="AccentHoverBrush" Color="#005A99"/>
+        <SolidColorBrush x:Key="SuccessColorBrush" Color="#27AE60"/>
+        <SolidColorBrush x:Key="SuccessHoverBrush" Color="#229954"/>
+        <SolidColorBrush x:Key="DangerColorBrush" Color="#E74C3C"/>
+        <SolidColorBrush x:Key="DangerHoverBrush" Color="#C0392B"/>
+        <SolidColorBrush x:Key="WarningColorBrush" Color="#F39C12"/>
+        <SolidColorBrush x:Key="WarningHoverBrush" Color="#D68910"/>
+        <SolidColorBrush x:Key="InfoColorBrush" Color="#3498DB"/>
+        <SolidColorBrush x:Key="InfoHoverBrush" Color="#2980B9"/>
+        
+        <!-- Border & Separator Resources -->
+        <SolidColorBrush x:Key="BorderColorBrush" Color="#555555"/>
+        <SolidColorBrush x:Key="BorderLightBrush" Color="#666666"/>
+        <SolidColorBrush x:Key="SeparatorColorBrush" Color="#444444"/>
+    </Window.Resources>
+
+    <Grid Background="{DynamicResource WindowBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Header -->
+            <RowDefinition Height="Auto"/>  <!-- Main Statistics -->
+            <RowDefinition Height="Auto"/>  <!-- Key Detection Statistics -->
+            <RowDefinition Height="Auto"/>  <!-- Controls -->
+            <RowDefinition Height="*"/>     <!-- Main Content -->
+            <RowDefinition Height="Auto"/>  <!-- Status Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- Header with Theme Selector -->
+        <Border Grid.Row="0" Background="{DynamicResource HeaderBackgroundBrush}" Padding="20,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="🎯 OpenBullet Anomaly - Amazon Validator" 
+                               FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                    <TextBlock Text="🔧 Using EXACT Console Engine with Original DLL Files" 
+                               FontSize="14" Foreground="{DynamicResource SuccessColorBrush}" Margin="0,5,0,0"/>
+                    <TextBlock Text="📚 RuriLib • LeafNet • Extreme.Net • Perfect Validation Logic" 
+                               FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="🎨 Theme" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <ComboBox ItemsSource="{Binding AvailableThemes}" 
+                              SelectedItem="{Binding SelectedTheme}"
+                              SelectionChanged="OnThemeChanged"
+                              MinWidth="150" 
+                              Background="{DynamicResource InputBackgroundBrush}" 
+                              Foreground="{DynamicResource TextPrimaryBrush}"
+                              BorderBrush="{DynamicResource AccentColorBrush}" 
+                              BorderThickness="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main Statistics -->
+        <Border Grid.Row="1" Classes="card" Margin="20,10,20,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="{DynamicResource InfoColorBrush}" CornerRadius="8" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="{Binding TotalTested}" FontSize="32" FontWeight="Bold" 
+                                   Foreground="#3498DB" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Total Tested" FontSize="14" Foreground="#AAAAAA" 
+                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Background="{DynamicResource SuccessColorBrush}" CornerRadius="8" Padding="20" Margin="10,0">
+                    <StackPanel>
+                        <TextBlock Text="{Binding ValidCount}" FontSize="32" FontWeight="Bold" 
+                                   Foreground="White" HorizontalAlignment="Center"/>
+                        <TextBlock Text="✅ Valid" FontSize="14" Foreground="#E8F8F5" 
+                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" Background="{DynamicResource DangerColorBrush}" CornerRadius="8" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="{Binding InvalidCount}" FontSize="32" FontWeight="Bold" 
+                                   Foreground="White" HorizontalAlignment="Center"/>
+                        <TextBlock Text="❌ Invalid" FontSize="14" Foreground="#FADBD8" 
+                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Background="{DynamicResource WarningColorBrush}" CornerRadius="8" Padding="20" Margin="10,0">
+                    <StackPanel>
+                        <TextBlock Text="{Binding ValidPercentage, StringFormat={}{0:F1}%}" FontSize="32" FontWeight="Bold" 
+                                   Foreground="White" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Success Rate" FontSize="14" Foreground="#EBDEF0" 
+                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Key Detection Statistics -->
+        <Border Grid.Row="2" Classes="card" Margin="20,0,20,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="🔍 Detection Breakdown" FontSize="16" FontWeight="Bold" 
+                           Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Grid.Column="0" Background="{DynamicResource SuccessColorBrush}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SeleniumSuccessCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🎯 Selenium Success" FontSize="10" Foreground="#D5F4E6" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Grid.Column="1" Background="{DynamicResource WarningColorBrush}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SeleniumInvalidCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🔶 Selenium Invalid" FontSize="10" Foreground="#FDF2E9" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Grid.Column="2" Background="{DynamicResource InfoColorBrush}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding AmazonBlockedCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🚫 Amazon Blocked" FontSize="10" Foreground="#EBDEF0" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Grid.Column="3" Background="{DynamicResource DangerColorBrush}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding AmazonFailureCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="❌ Amazon Failure" FontSize="10" Foreground="#FADBD8" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Grid.Column="4" Background="{DynamicResource AccentColorBrush}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding HttpErrorCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🌐 HTTP Error" FontSize="10" Foreground="#FDEAA7" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Grid.Column="5" Background="{DynamicResource InfoColorBrush}" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding AmazonSecurityFlagCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🔒 Security Flag" FontSize="10" Foreground="#E8DAEF" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Grid.Column="6" Background="#95A5A6" CornerRadius="6" Padding="10" Margin="2">
+                        <StackPanel>
+                            <TextBlock Text="{Binding OtherErrorCount}" FontSize="18" FontWeight="Bold" 
+                                       Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock Text="❓ Other" FontSize="10" Foreground="#F8F9FA" 
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Enhanced Controls -->
+        <Border Grid.Row="3" Classes="card" Margin="20,0,20,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Main Input Row -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBox Grid.Column="0" 
+                             Text="{Binding PhoneNumberInput}"
+                             Watermark="Enter phone number (e.g., 1111111111 for invalid, 15142955315 for valid)"
+                             FontSize="16" Padding="15" CornerRadius="8"
+                             Background="{DynamicResource InputBackgroundBrush}" Foreground="{DynamicResource TextPrimaryBrush}" BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2"
+                             CaretBrush="#FFFFFF" FontWeight="Bold"/>
+                    
+                    <Button Grid.Column="1" Classes="success-btn" Command="{Binding TestSingleNumberCommand}" 
+                            Content="🔍 Test Single" Margin="10,0,0,0"/>
+                    
+                    <Button Grid.Column="2" Classes="action-btn" Command="{Binding LoadConfigCommand}" 
+                            Content="📂 Load Config"/>
+                    
+                    <Button Grid.Column="3" Classes="action-btn" Command="{Binding ClearResultsCommand}" 
+                            Content="🗑️ Clear Results"/>
+                </Grid>
+                
+
+            </Grid>
+        </Border>
+
+        <!-- Main Content - Clean Organized Tabs -->
+        <TabControl Grid.Row="4" Margin="20,0,20,10" Background="{DynamicResource CardBackgroundBrush}">
+            
+            <!-- 🎯 TEST VIEW - Main testing interface -->
+            <TabItem Header="🎯 Test">
+                <Border Classes="card" Margin="0">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Test Controls -->
+                        <Border Grid.Row="0" Background="{DynamicResource InfoColorBrush}" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+                            <StackPanel>
+                                <TextBlock Text="🎯 Amazon Account Testing" FontSize="18" FontWeight="Bold" 
+                                           Foreground="#FFFFFF" Margin="0,0,0,15"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBox Grid.Column="0" Text="{Binding PhoneNumberInput}"
+                                             Watermark="Enter phone number (e.g., 15142955315 for valid test)"
+                                             FontSize="16" Padding="15" CornerRadius="8"
+                                             Background="{DynamicResource InputBackgroundBrush}" Foreground="{DynamicResource TextPrimaryBrush}" BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="2"/>
+                                    
+                                    <Button Grid.Column="1" Classes="success-btn" Command="{Binding TestSingleNumberCommand}" 
+                                            Content="🔍 Test Single" Margin="15,0,0,0" IsEnabled="{Binding !IsValidationRunning}"/>
+                                    
+                                    <Button Grid.Column="2" Classes="action-btn" Command="{Binding LoadConfigCommand}" 
+                                            Content="📂 Load Config" Margin="10,0,0,0"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Batch Operations -->
+                        <Border Grid.Row="1" Background="{DynamicResource AccentColorBrush}" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+                            <StackPanel>
+                                <TextBlock Text="🚀 Batch Operations" FontSize="18" FontWeight="Bold" 
+                                           Foreground="#FFFFFF" Margin="0,0,0,15"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Button Grid.Column="0" Classes="action-btn" Command="{Binding LoadWordlistCommand}" 
+                                            Content="📱 Load Wordlist" Margin="0,0,15,0"/>
+                                    
+                                    <Button Grid.Column="1" Classes="success-btn" Command="{Binding StartBatchValidationCommand}" 
+                                            Content="🚀 Start Batch" Margin="0,0,15,0" IsEnabled="{Binding !IsValidationRunning}"/>
+                                    
+                                    <Button Grid.Column="2" Classes="danger-btn" Command="{Binding StopValidationCommand}" 
+                                            Content="⏹️ Stop" Margin="0,0,15,0" IsEnabled="{Binding IsValidationRunning}"/>
+                                    
+                                    <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="📊 Progress: " Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                                        <ProgressBar Value="{Binding ValidationProgress}" Maximum="100" Width="200" Height="20" Margin="10,0"/>
+                                        <TextBlock Text="{Binding ValidationProgressText}" Foreground="#00FF00" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                    
+
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Current Status -->
+                        <Border Grid.Row="2" Background="{DynamicResource SuccessColorBrush}" CornerRadius="8" Padding="20">
+                            <StackPanel>
+                                <TextBlock Text="⚡ Current Status" FontSize="18" FontWeight="Bold" 
+                                           Foreground="#FFFFFF" Margin="0,0,0,15"/>
+                                
+                                <TextBlock Text="{Binding CurrentStatus}" FontSize="16" 
+                                           Foreground="#FFFFFF" TextWrapping="Wrap" Margin="0,0,0,15"/>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="✅ Valid" Foreground="#FFFFFF" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding ValidCount}" FontSize="20" Foreground="#27AE60" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="❌ Invalid" Foreground="#FFFFFF" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding InvalidCount}" FontSize="20" Foreground="#E74C3C" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="📊 Total Tested" Foreground="#FFFFFF" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding TotalTested}" FontSize="20" Foreground="#3498DB" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Grid.Column="3">
+                                        <TextBlock Text="⏱️ Session Time" Foreground="#FFFFFF" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding UptimeString}" FontSize="20" Foreground="#F39C12" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+            </TabItem>
+            
+            <!-- 📊 DASHBOARD - Clean analytics with wordlist controls -->
+            <TabItem Header="📊 Dashboard">
+                <ScrollViewer>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>  <!-- Wordlist Control Panel -->
+                            <RowDefinition Height="Auto"/>  <!-- Title -->
+                            <RowDefinition Height="*"/>     <!-- Charts & Analytics -->
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Wordlist Control Panel -->
+                        <Border Grid.Row="0" Background="{DynamicResource AccentColorBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- Wordlist Status -->
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <TextBlock Text="📋 Wordlist Manager" FontSize="18" FontWeight="Bold" 
+                                               Foreground="{DynamicResource TextInverseBrush}" Margin="0,0,0,8"/>
+                                    <TextBlock Text="{Binding WordlistStatus, FallbackValue='No wordlist loaded - Click Load Wordlist to begin'}" 
+                                               FontSize="14" Foreground="{DynamicResource TextInverseBrush}" Margin="0,0,0,4"/>
+                                    <TextBlock Text="{Binding WordlistInfo, FallbackValue='Dashboard provides centralized wordlist loading and batch validation control'}" 
+                                               FontSize="12" Foreground="{DynamicResource TextInverseBrush}" Opacity="0.9"/>
+                                </StackPanel>
+                                
+                                <!-- Control Buttons -->
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button Content="📂 Load Wordlist" Classes="success-btn"
+                                            Command="{Binding LoadWordlistCommand}"
+                                            ToolTip.Tip="Load phone numbers from file"/>
+                                    <Button Content="🎯 Quick Test" Classes="test-btn"
+                                            Command="{Binding LoadQuickTestCommand}"
+                                            ToolTip.Tip="Load quick test numbers"
+                                            Margin="10,0,0,0"/>
+                                    <Button Content="🚀 Start Validation" Classes="success-btn"
+                                            Command="{Binding StartBatchValidationCommand}"
+                                            ToolTip.Tip="Start batch validation"
+                                            Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        
+                        <TextBlock Grid.Row="1" Text="📊 Real-Time Analytics Dashboard" 
+                                   FontSize="20" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+                        
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Charts Area -->
+                            <StackPanel Grid.Column="0" Margin="0,0,30,0">
+                                <Border Background="{DynamicResource CardBackgroundBrush}" Height="350" CornerRadius="12" Padding="25" Margin="0,0,0,25">
+                                    <StackPanel>
+                                        <TextBlock Text="📊 Validation Distribution" FontSize="16" FontWeight="Bold" 
+                                                   Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                                        <TextBlock Text="📈 Real-time pie chart showing validation results breakdown" 
+                                                   Foreground="#AAAAAA" HorizontalAlignment="Center" TextAlignment="Center"/>
+                                        <TextBlock Text="(Chart implementation ready for LiveCharts integration)" 
+                                                   Foreground="#666666" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,20,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Background="{DynamicResource CardBackgroundBrush}" Height="300" CornerRadius="12" Padding="25">
+                                    <StackPanel>
+                                        <TextBlock Text="📈 Performance Trends" FontSize="16" FontWeight="Bold" 
+                                                   Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                                        <TextBlock Text="📊 Response times and CPM trends over time" 
+                                                   Foreground="#AAAAAA" HorizontalAlignment="Center" TextAlignment="Center"/>
+                                        <TextBlock Text="(Line chart ready for implementation)" 
+                                                   Foreground="#666666" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,20,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            
+                            <!-- Key Metrics -->
+                            <StackPanel Grid.Column="1">
+                                <Border Background="{DynamicResource SuccessColorBrush}" CornerRadius="12" Padding="25" Margin="0,0,0,20">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="🎯 Success Rate" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding ValidPercentage, StringFormat='{}{0:F1}%'}" 
+                                                   FontSize="36" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Background="{DynamicResource InfoColorBrush}" CornerRadius="12" Padding="25" Margin="0,0,0,20">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="⚡ Current CPM" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Cpm, StringFormat='{}{0:F1}'}" 
+                                                   FontSize="36" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Background="#E74C3C" CornerRadius="12" Padding="25" Margin="0,0,0,20">
+                                    <StackPanel>
+                                        <TextBlock Text="🍪 Cookie Status" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                        <TextBlock Text="{Binding HasCachedCookies}" 
+                                                   FontSize="16" FontWeight="Bold" Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                        <TextBlock Text="{Binding CookieCacheStatus}" 
+                                                   FontSize="12" Foreground="#FFFFFF" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Background="#9B59B6" CornerRadius="12" Padding="25">
+                                    <StackPanel>
+                                        <TextBlock Text="🌐 Network Stats" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="📡 Sent" Foreground="#FFFFFF" FontSize="12"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding RequestsSent}" Foreground="#00FF00" FontWeight="Bold" HorizontalAlignment="Right"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="📥 Received" Foreground="#FFFFFF" FontSize="12"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ResponsesReceived}" Foreground="#00FF00" FontWeight="Bold" HorizontalAlignment="Right"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            
+            <!-- Results Tab -->
+            <TabItem Header="📊 Validation Results">
+                <Border Classes="card" Margin="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Classes="header" Text="📊 Validation Results (Console Engine)"/>
+                        
+                        <DataGrid Grid.Row="1" ItemsSource="{Binding ValidationResults}" 
+                                  AutoGenerateColumns="False"
+                                  Background="#3C3C3C" Foreground="White"
+                                  GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column">
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="📱 Phone/Email" Binding="{Binding PhoneNumber}" Width="200"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding DetectedKey}" Width="100"/>
+                                <DataGridTextColumn Header="🔍 Detection" Binding="{Binding DetectedKey}" Width="200"/>
+                                <DataGridTextColumn Header="⏱️ Time (ms)" Binding="{Binding ResponseTime}" Width="100"/>
+                                <DataGridTextColumn Header="📅 Status" Binding="{Binding DetectedKey}" Width="120"/>
+                                <DataGridTextColumn Header="❌ Error" Binding="{Binding ErrorMessage}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </TabItem>
+
+            <!-- Valid Numbers Tab -->
+            <TabItem Header="✅ Valid Numbers">
+                <Border Classes="card" Margin="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock Classes="header" Text="✅ Valid Amazon Accounts"/>
+                            <TextBlock Text="{Binding ValidCount, StringFormat=({0} found)}" 
+                                       Foreground="#27AE60" FontWeight="Bold" 
+                                       VerticalAlignment="Center" Margin="10,0,0,15"/>
+                        </StackPanel>
+                        
+                        <DataGrid Grid.Row="1" ItemsSource="{Binding ValidResults}" 
+                                  AutoGenerateColumns="False"
+                                  Background="#3C3C3C" Foreground="White"
+                                  GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column">
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="📱 Phone/Email" Binding="{Binding PhoneNumber}" Width="250"/>
+                                <DataGridTextColumn Header="🔍 Detection" Binding="{Binding DetectedKey}" Width="200"/>
+                                <DataGridTextColumn Header="⏱️ Time (ms)" Binding="{Binding ResponseTime}" Width="120"/>
+                                <DataGridTextColumn Header="📅 Status" Binding="{Binding DetectedKey}" Width="150"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </TabItem>
+
+            <!-- 🌐 SETTINGS - All configuration options -->
+            <TabItem Header="🌐 Settings">
+                <Border Classes="card" Margin="0">
+                    <ScrollViewer>
+                        <Grid Margin="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Proxy Configuration -->
+                            <Border Grid.Row="0" Background="#34495E" CornerRadius="12" Padding="25" Margin="0,0,0,25">
+                                <StackPanel>
+                                    <TextBlock Text="🌐 Proxy Configuration" FontSize="18" FontWeight="Bold" 
+                                               Foreground="#FFFFFF" Margin="0,0,0,20"/>
+                                    
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <CheckBox Grid.Column="0" Content="Enable Proxy" IsChecked="{Binding UseProxy}" 
+                                                  Foreground="#FFFFFF" Margin="0,0,20,0"/>
+                                        
+                                        <ComboBox Grid.Column="1" SelectedItem="{Binding ProxyType}" MinWidth="120" Margin="0,0,15,0"
+                                                  Background="#2D2D30" Foreground="#FFFFFF">
+                                            <ComboBoxItem Content="HTTP"/>
+                                            <ComboBoxItem Content="HTTPS"/>
+                                            <ComboBoxItem Content="SOCKS4"/>
+                                            <ComboBoxItem Content="SOCKS5"/>
+                                        </ComboBox>
+                                        
+                                        <TextBlock Grid.Column="2" Text="{Binding ProxyStatus}" Foreground="#00FF00" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        
+                                        <Button Grid.Column="3" Classes="action-btn" Command="{Binding LoadProxyListCommand}" 
+                                                Content="📂 Load List" Margin="0,0,10,0"/>
+                                        
+                                        <Button Grid.Column="4" Classes="test-btn" Command="{Binding TestProxyCommand}" 
+                                                Content="🧪 Test" IsEnabled="{Binding UseProxy}"/>
+                                    </Grid>
+                                    
+                                    <Grid Margin="0,20,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <TextBox Grid.Column="0" Text="{Binding ProxyHost}" Watermark="Proxy Host" 
+                                                 Background="#2D2D30" Foreground="#FFFFFF" Margin="0,0,15,0"/>
+                                        
+                                        <NumericUpDown Grid.Column="1" Value="{Binding ProxyPort}" Minimum="1" Maximum="65535"
+                                                       Background="#2D2D30" Foreground="#FFFFFF" Margin="0,0,15,0"/>
+                                        
+                                        <TextBox Grid.Column="2" Text="{Binding ProxyUsername}" Watermark="Username (optional)" 
+                                                 Background="#2D2D30" Foreground="#FFFFFF" Margin="0,0,15,0"/>
+                                        
+                                        <TextBox Grid.Column="3" Text="{Binding ProxyPassword}" Watermark="Password" 
+                                                 PasswordChar="*" Background="#2D2D30" Foreground="#FFFFFF"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Performance and Advanced Settings -->
+                            <Border Grid.Row="1" Background="#2C3E50" CornerRadius="12" Padding="25" Margin="0,0,0,25">
+                                <StackPanel>
+                                    <TextBlock Text="⚡ Performance Settings" FontSize="18" FontWeight="Bold" 
+                                               Foreground="#FFFFFF" Margin="0,0,0,20"/>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!-- First Row -->
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,20,15">
+                                            <TextBlock Text="🧵 Concurrent Threads (Original Anomaly Style)" Foreground="#FFFFFF" Margin="0,0,0,5"/>
+                                            <NumericUpDown Value="{Binding ThreadCount}" Minimum="1" Maximum="100"
+                                                           Background="#2D2D30" Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,20,15">
+                                            <TextBlock Text="⏱️ Request Delay (ms)" Foreground="#FFFFFF" Margin="0,0,0,5"/>
+                                            <NumericUpDown Value="{Binding RequestDelay}" Minimum="0" Maximum="10000"
+                                                           Background="#2D2D30" Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Row="0" Grid.Column="2" Margin="0,0,20,15">
+                                            <TextBlock Text="🔄 Proxy Timeout (s)" Foreground="#FFFFFF" Margin="0,0,0,5"/>
+                                            <NumericUpDown Value="{Binding ProxyTimeout}" Minimum="1" Maximum="60"
+                                                           Background="#2D2D30" Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Row="0" Grid.Column="3" Margin="0,0,0,15">
+                                            <TextBlock Text="🔁 Max Retries" Foreground="#FFFFFF" Margin="0,0,0,5"/>
+                                            <NumericUpDown Value="{Binding MaxProxyRetries}" Minimum="0" Maximum="10"
+                                                           Background="#2D2D30" Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <!-- Second Row - Checkboxes -->
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,20,0">
+                                            <CheckBox Content="🔄 Proxy Rotation" IsChecked="{Binding EnableProxyRotation}" 
+                                                      Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,20,0">
+                                            <CheckBox Content="🔍 Proxy Health Check" IsChecked="{Binding EnableProxyCheck}" 
+                                                      Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,0,20,0">
+                                            <CheckBox Content="🤖 Captcha Bypass" IsChecked="{Binding EnableCaptchaBypass}" 
+                                                      Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Row="1" Grid.Column="3">
+                                            <CheckBox Content="⚡ JavaScript" IsChecked="{Binding EnableJavaScript}" 
+                                                      Foreground="#FFFFFF"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Export and File Operations -->
+                            <Border Grid.Row="2" Background="#8E44AD" CornerRadius="12" Padding="25">
+                                <StackPanel>
+                                    <TextBlock Text="📤 Export and File Operations" FontSize="18" FontWeight="Bold" 
+                                               Foreground="#FFFFFF" Margin="0,0,0,20"/>
+                                    
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Button Grid.Column="0" Classes="export-btn" Command="{Binding ExportValidNumbersCommand}" 
+                                                Content="📤 Export Valid Numbers" Margin="0,0,15,0"/>
+                                        
+                                        <Button Grid.Column="1" Classes="export-btn" Command="{Binding ExportAllResultsCommand}" 
+                                                Content="📊 Export All Results" Margin="0,0,15,0"/>
+                                        
+                                        <Button Grid.Column="2" Classes="action-btn" Command="{Binding ClearResultsCommand}" 
+                                                Content="🗑️ Clear Results" Margin="0,0,15,0"/>
+                                        
+                                        <Button Grid.Column="3" Classes="action-btn" Command="{Binding ClearLogsCommand}" 
+                                                Content="🗑️ Clear Logs"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+            </TabItem>
+            
+            <!-- 📋 RESULTS - Results tables and export -->
+            <TabItem Header="📋 Results">
+                <Border Classes="card" Margin="0">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Text="📋 Validation Results" FontSize="20" FontWeight="Bold" 
+                                   Foreground="#FFFFFF" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                        
+                        <TabControl Grid.Row="1" Background="#2D2D30">
+                            <TabItem Header="📊 All Results">
+                                <DataGrid ItemsSource="{Binding ValidationResults}" 
+                                          AutoGenerateColumns="False" 
+                                          GridLinesVisibility="All"
+                                          Background="#2D2D30" 
+                                          Foreground="#FFFFFF"
+                                          BorderBrush="#007ACC" 
+                                          BorderThickness="1">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="150"/>
+                                        <DataGridTextColumn Header="Valid" Binding="{Binding IsValid}" Width="80"/>
+                                        <DataGridTextColumn Header="Detection" Binding="{Binding DetectedKey}" Width="200"/>
+                                        <DataGridTextColumn Header="Response Time" Binding="{Binding ResponseTime}" Width="120"/>
+                                        <DataGridTextColumn Header="Error" Binding="{Binding ErrorMessage}" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                            
+                            <TabItem Header="✅ Valid Numbers Only">
+                                <DataGrid ItemsSource="{Binding ValidResults}" 
+                                          AutoGenerateColumns="False"
+                                          Background="#2D2D30" 
+                                          Foreground="#FFFFFF"
+                                          BorderBrush="#27AE60" 
+                                          BorderThickness="2">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Valid Phone Number" Binding="{Binding PhoneNumber}" Width="200"/>
+                                        <DataGridTextColumn Header="Detection Method" Binding="{Binding DetectedKey}" Width="250"/>
+                                        <DataGridTextColumn Header="Response Time" Binding="{Binding ResponseTime}" Width="150"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                        </TabControl>
+                        
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <TextBlock Text="📊 Results Summary: " Foreground="#FFFFFF" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding TotalTested}" Foreground="#3498DB" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
+                            <TextBlock Text="tested," Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding ValidCount}" Foreground="#27AE60" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
+                            <TextBlock Text="valid," Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding InvalidCount}" Foreground="#E74C3C" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
+                            <TextBlock Text="invalid" Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </TabItem>
+            
+            <!-- 🔍 DEBUG - Clean debug interface -->
+            <TabItem Header="🔍 Debug">
+                <Border Classes="card" Margin="0">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Debug Header -->
+                        <Border Grid.Row="0" Background="#2D2D30" CornerRadius="8,8,0,0" Padding="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBlock Grid.Column="0" Text="🔍 Real-Time Console Debug Logs" 
+                                           FontSize="18" FontWeight="Bold" Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                                
+                                <Button Grid.Column="1" Classes="danger-btn" Content="🗑️ Clear Logs" 
+                                        Command="{Binding ClearLogsCommand}"/>
+                            </Grid>
+                        </Border>
+                        
+                        <!-- Debug Content -->
+                        <Border Grid.Row="1" Background="#0D1117" CornerRadius="0" BorderBrush="#2D2D30" BorderThickness="1,0,1,0">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                <TextBox Text="{Binding DetailedLog}" 
+                                         IsReadOnly="True"
+                                         Background="Transparent" 
+                                         Foreground="#00FF41"
+                                         BorderThickness="0" 
+                                         FontFamily="JetBrains Mono, Consolas, Monaco, monospace"
+                                         FontSize="12" 
+                                         Padding="25"
+                                         TextWrapping="Wrap"
+                                         AcceptsReturn="True" 
+                                         AcceptsTab="True"/>
+                            </ScrollViewer>
+                        </Border>
+
+                        <!-- Debug Status Bar -->
+                        <Border Grid.Row="2" Background="#1A1A1A" CornerRadius="0,0,8,8" Padding="20,15" BorderBrush="#2D2D30" BorderThickness="1,0,1,1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Border Grid.Column="0" Background="#27AE60" CornerRadius="4" Padding="8,4">
+                                    <TextBlock Text="🔍 LIVE DEBUG" Foreground="#FFFFFF" FontWeight="Bold" FontSize="12"/>
+                                </Border>
+                                
+                                <TextBlock Grid.Column="1" Text="💡 Using EXACT console validation logic with original OpenBullet DLL files" 
+                                           Foreground="#8B949E" FontStyle="Italic" VerticalAlignment="Center" Margin="15,0"/>
+                                
+                                <TextBlock Grid.Column="2" Text="{Binding UptimeString}" Foreground="#F39C12" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </TabItem>
+
+        </TabControl>
+
+        <!-- Status Bar -->
+        <Border Grid.Row="5" Background="{DynamicResource HeaderBackgroundBrush}" Padding="15,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="{Binding CurrentStatus}" 
+                           Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                           
+                <TextBlock Grid.Column="1" Text="{Binding CookieCacheStatus}" 
+                           Foreground="#AAAAAA" VerticalAlignment="Center" FontSize="12"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

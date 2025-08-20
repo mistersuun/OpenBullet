@@ -1,0 +1,2 @@
+/Users/BABY/Downloads/Projects/OpenBullet/OpenBullet-Complete-Replica/OpenBullet-Console/WindowsRelease/OpenBullet-Console.pdb
+/Users/BABY/Downloads/Projects/OpenBullet/OpenBullet-Complete-Replica/OpenBullet-Console/WindowsRelease/OpenBullet-Console.exe

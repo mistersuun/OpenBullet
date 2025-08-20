@@ -1,0 +1,346 @@
+<Window x:Class="OpenBullet_Modern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OpenBullet Anomaly - Windows Edition (Headless Chrome)" 
+        Width="1200" Height="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a1a">
+    
+    <Window.Resources>
+        <!-- Modern Button Style -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#404040"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#606060"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#505050"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#353535"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- Success Button Style -->
+        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#27ae60"/>
+            <Setter Property="BorderBrush" Value="#2ecc71"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2ecc71"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Danger Button Style -->
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#e74c3c"/>
+            <Setter Property="BorderBrush" Value="#c0392b"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#c0392b"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Warning Button Style -->
+        <Style x:Key="WarningButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#f39c12"/>
+            <Setter Property="BorderBrush" Value="#e67e22"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#e67e22"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Modern TextBox Style -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#2c2c2c"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="BorderBrush" Value="#606060"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#3498db"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2c2c2c" Padding="20">
+            <Grid>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="🎯" FontSize="20" Margin="0,0,10,0"/>
+                    <TextBlock Text="OpenBullet Anomaly - Windows Edition" Foreground="#ffffff" FontWeight="Bold" FontSize="16"/>
+                    <TextBlock Text="(Headless Chrome)" Foreground="#27ae60" FontSize="12" Margin="10,0,0,0" VerticalAlignment="Bottom"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Border Background="#27ae60" CornerRadius="12" Padding="8,4" Margin="5">
+                        <TextBlock Text="🤖 Real Chrome Automation" Foreground="White" FontSize="10" FontWeight="Bold"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Left Panel -->
+            <Border Grid.Column="0" Background="#252525" BorderBrush="#404040" BorderThickness="0,0,1,0">
+                <ScrollViewer>
+                    <StackPanel Margin="20">
+                        
+                        <!-- Config Section -->
+                        <TextBlock Text="CONFIG MANAGEMENT" Foreground="#3498db" FontWeight="Bold" FontSize="12" Margin="0,0,0,15"/>
+                        <Button Content="📂 Load amazonChecker.anom" Style="{StaticResource ModernButton}" Click="LoadConfig_Click" Margin="0,0,0,10"/>
+                        <Button Content="🔬 Test Amazon Validation" Style="{StaticResource WarningButton}" Click="TestAmazonValidation_Click" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="lblConfigStatus" Text="No config loaded" Foreground="#e74c3c" FontSize="10" Margin="0,0,0,20"/>
+                        
+                        <!-- Wordlist Section -->
+                        <TextBlock Text="WORDLIST MANAGEMENT" Foreground="#e67e22" FontWeight="Bold" FontSize="12" Margin="0,0,0,15"/>
+                        <Button Content="📋 Load Phone Numbers" Style="{StaticResource ModernButton}" Click="LoadWordlist_Click" Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtWordlistPath" Style="{StaticResource ModernTextBox}" IsReadOnly="True" Margin="0,0,0,10" Text="No wordlist loaded"/>
+                        <TextBlock x:Name="lblWordlistStatus" Text="Format: phone:pass (e.g., 16479971432:0000)" Foreground="#95a5a6" FontSize="9" Margin="0,0,0,20"/>
+                        
+                        <!-- Settings -->
+                        <TextBlock Text="RUNNER SETTINGS" Foreground="#2ecc71" FontWeight="Bold" FontSize="12" Margin="0,0,0,15"/>
+                        <TextBlock Text="Concurrent Bots:" Foreground="#cccccc" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtBotCount" Style="{StaticResource ModernTextBox}" Text="5" Margin="0,0,0,10"/>
+                        <TextBlock Text="Request Timeout (s):" Foreground="#cccccc" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtTimeout" Style="{StaticResource ModernTextBox}" Text="30" Margin="0,0,0,10"/>
+                        <CheckBox x:Name="chkSimulateProxies" Content="Simulate Proxy Rotation" Foreground="#cccccc" Margin="0,0,0,20"/>
+                        
+                        <!-- Quick Actions -->
+                        <TextBlock Text="QUICK ACTIONS" Foreground="#9b59b6" FontWeight="Bold" FontSize="12" Margin="0,0,0,15"/>
+                        <Button Content="🚀 Quick Test (5 Numbers)" Style="{StaticResource SuccessButton}" Click="QuickTest_Click" Margin="0,0,0,10"/>
+                        <Button Content="📊 View Statistics" Style="{StaticResource ModernButton}" Click="ViewStats_Click" Margin="0,0,0,10"/>
+                        <Button Content="🔄 Reset All Counters" Style="{StaticResource DangerButton}" Click="ResetCounters_Click" Margin="0,0,0,10"/>
+                        
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+            
+            <!-- Right Content -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Control Panel -->
+                <Border Grid.Row="0" Background="#2c2c2c" Padding="20">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="btnStart" Content="▶️ START VALIDATION" Style="{StaticResource SuccessButton}" Click="StartRunner_Click" Width="150" Height="40"/>
+                            <Button x:Name="btnStop" Content="⏹️ STOP" Style="{StaticResource DangerButton}" Click="StopRunner_Click" Width="100" Height="40"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Border Background="#27ae60" CornerRadius="15" Padding="15,8" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅ Valid: " FontSize="12" Foreground="White"/>
+                                    <TextBlock x:Name="lblQuickHits" Text="0" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#e74c3c" CornerRadius="15" Padding="15,8" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="❌ Invalid: " FontSize="12" Foreground="White"/>
+                                    <TextBlock x:Name="lblQuickFails" Text="0" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#3498db" CornerRadius="15" Padding="15,8" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🚀 CPM: " FontSize="12" Foreground="White"/>
+                                    <TextBlock x:Name="lblQuickCPM" Text="0" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                
+                <!-- Main Work Area -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="350"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Script/Log Display -->
+                    <Border Grid.Column="0" Background="#1e1e1e" Margin="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="15,15,15,10">
+                                <TextBlock Text="AMAZON VALIDATION LOG" Foreground="#3498db" FontWeight="Bold" FontSize="12"/>
+                                <Border Background="#e67e22" CornerRadius="8" Padding="6,2" Margin="15,0,0,0">
+                                    <TextBlock Text="🎯 amazon.ca/ap/signin" Foreground="White" FontSize="9" FontWeight="Bold"/>
+                                </Border>
+                            </StackPanel>
+                            
+                            <Border Grid.Row="1" Background="#1a1a1a" BorderBrush="#404040" BorderThickness="1" 
+                                    Margin="15,0,15,15" CornerRadius="4">
+                                <TextBox x:Name="txtExecutionLog" Background="Transparent" Foreground="#ffffff" 
+                                       BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                       IsReadOnly="True" TextWrapping="Wrap" FontFamily="Consolas" FontSize="11"
+                                       Padding="15"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    
+                    <!-- Statistics Panel -->
+                    <Border Grid.Column="1" Background="#252525" Margin="0,10,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Statistics Header -->
+                            <TextBlock Grid.Row="0" Text="LIVE STATISTICS" Foreground="#2ecc71" FontWeight="Bold" 
+                                     Margin="15,15,15,10" FontSize="14"/>
+                            
+                            <!-- Main Statistics -->
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                <StackPanel Margin="15">
+                                    
+                                    <!-- Core Stats -->
+                                    <Border Background="#2c2c2c" BorderBrush="#404040" BorderThickness="1" CornerRadius="4" Padding="15" Margin="0,0,0,15">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Tested:" Foreground="#cccccc" FontSize="12"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="lblTested" Text="0" Foreground="#ffffff" 
+                                                     FontWeight="Bold" FontSize="18"/>
+                                            
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Valid Accounts:" Foreground="#27ae60" FontSize="12"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="lblHits" Text="0" Foreground="#27ae60" 
+                                                     FontWeight="Bold" FontSize="18"/>
+                                            
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Invalid:" Foreground="#e74c3c" FontSize="12"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="lblFails" Text="0" Foreground="#e74c3c" 
+                                                     FontWeight="Bold" FontSize="18"/>
+                                            
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Success Rate:" Foreground="#f39c12" FontSize="12"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="lblSuccessRate" Text="0%" Foreground="#f39c12" 
+                                                     FontWeight="Bold" FontSize="18"/>
+                                            
+                                            <TextBlock Grid.Row="4" Grid.Column="0" Text="CPM:" Foreground="#3498db" FontSize="12"/>
+                                            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="lblCPM" Text="0" Foreground="#3498db" 
+                                                     FontWeight="Bold" FontSize="18"/>
+                                        </Grid>
+                                    </Border>
+                                    
+                                    <!-- Amazon Key Detection -->
+                                    <TextBlock Text="AMAZON KEY DETECTION" Foreground="#9b59b6" FontWeight="Bold" FontSize="11" Margin="0,0,0,10"/>
+                                    <Border Background="#1a1a1a" BorderBrush="#404040" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,0,0,15">
+                                        <StackPanel>
+                                            <Grid Margin="0,3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="✅ 'Sign-In' (Success):" Foreground="#27ae60" FontSize="10"/>
+                                                <TextBlock Grid.Column="1" x:Name="lblKeySignIn" Text="0" Foreground="#27ae60" FontSize="10" FontWeight="Bold"/>
+                                            </Grid>
+                                            <Grid Margin="0,3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="❌ 'No account found':" Foreground="#e74c3c" FontSize="10"/>
+                                                <TextBlock Grid.Column="1" x:Name="lblKeyNoAccount" Text="0" Foreground="#e74c3c" FontSize="10" FontWeight="Bold"/>
+                                            </Grid>
+                                            <Grid Margin="0,3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="❌ 'ap_ra_email_or_phone':" Foreground="#e74c3c" FontSize="10"/>
+                                                <TextBlock Grid.Column="1" x:Name="lblKeyEmailPhone" Text="0" Foreground="#e74c3c" FontSize="10" FontWeight="Bold"/>
+                                            </Grid>
+                                            <Grid Margin="0,3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="⚠️ Other errors:" Foreground="#f39c12" FontSize="10"/>
+                                                <TextBlock Grid.Column="1" x:Name="lblKeyOthers" Text="0" Foreground="#f39c12" FontSize="10" FontWeight="Bold"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                    
+                                    <!-- Progress -->
+                                    <TextBlock Text="PROGRESS" Foreground="#3498db" FontWeight="Bold" FontSize="11" Margin="0,0,0,10"/>
+                                    <ProgressBar x:Name="progressBar" Height="15" Background="#404040" Foreground="#3498db" 
+                                               BorderBrush="#606060" BorderThickness="1" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="lblProgressText" Text="Ready to start" Foreground="#95a5a6" FontSize="9" 
+                                             HorizontalAlignment="Center"/>
+                                    
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </Grid>
+                
+            </Grid>
+            
+            <!-- Status Bar -->
+            <Border Grid.Row="2" Background="#2c2c2c" BorderBrush="#404040" BorderThickness="0,1,0,0">
+                <Grid Margin="15,0">
+                    <TextBlock x:Name="statusText" Text="Ready - OpenBullet Anomaly Windows Edition with headless Chrome automation" 
+                             Foreground="#95a5a6" FontSize="11" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </Grid>
+        
+    </Grid>
+</Window>
+

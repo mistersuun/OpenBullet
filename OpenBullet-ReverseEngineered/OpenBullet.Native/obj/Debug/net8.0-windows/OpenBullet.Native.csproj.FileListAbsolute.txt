@@ -1,5 +1,0 @@
-C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\obj\Debug\net8.0-windows\OpenBullet.Native.csproj.AssemblyReference.cache
-C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\obj\Debug\net8.0-windows\App.g.cs
-C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\obj\Debug\net8.0-windows\OpenBullet.Native_MarkupCompile.cache
-C:\Users\futiliter\Documents\Projects\OpenBullet\OpenBullet-ReverseEngineered\OpenBullet.Native\obj\Debug\net8.0-windows\OpenBullet.Native_MarkupCompile.lref
