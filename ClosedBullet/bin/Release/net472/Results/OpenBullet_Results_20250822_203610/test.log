@@ -1,0 +1,10 @@
+[20:36:10] === OPENBULLET COPY ENGINE INITIALIZED ===
+[20:36:27] [15142955315:0000] Getting signin page
+[20:36:27] [15145692379:0000] Getting signin page
+[20:36:27] [15149772071:0000] Getting signin page
+[20:36:28] [15142955315:0000] GET Response: OK, 119768 chars
+[20:36:28] [15142955315:0000] ERROR: The given path's format is not supported.
+[20:36:28] [15145692379:0000] GET Response: OK, 121505 chars
+[20:36:28] [15145692379:0000] ERROR: The given path's format is not supported.
+[20:36:28] [15149772071:0000] GET Response: OK, 119740 chars
+[20:36:28] [15149772071:0000] ERROR: The given path's format is not supported.

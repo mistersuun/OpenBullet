@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>OpenBulletTestBot</RootNamespace>
+    <AssemblyName>TestBot</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Platforms>AnyCPU</Platforms>
+    <Configuration>Release</Configuration>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core OpenBullet DLLs -->
+    <Reference Include="RuriLib">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\RuriLib.dll</HintPath>
+    </Reference>
+    
+    <!-- HTTP Libraries -->
+    <Reference Include="Leaf.xNet">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Leaf.xNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Extreme.Net">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Extreme.Net.dll</HintPath>
+    </Reference>
+    
+    <!-- Parsing Libraries -->
+    <Reference Include="AngleSharp">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    
+    <!-- Database -->
+    <Reference Include="LiteDB">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\LiteDB.dll</HintPath>
+    </Reference>
+    
+    <!-- Selenium (if needed) -->
+    <Reference Include="WebDriver">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\WebDriver.Support.dll</HintPath>
+    </Reference>
+    
+    <!-- Scripting Support -->
+    <Reference Include="IronPython">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Jint">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Jint.dll</HintPath>
+    </Reference>
+    
+    <!-- OCR -->
+    <Reference Include="Tesseract">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\Tesseract.dll</HintPath>
+    </Reference>
+    
+    <!-- Proxy Support -->
+    <Reference Include="ProxySocket">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\ProxySocket.dll</HintPath>
+    </Reference>
+    
+    <!-- System Libraries -->
+    <Reference Include="System.Net.Http">
+      <HintPath>..\Openbullet 1.4.4 Anomaly Modded Version\bin\System.Net.Http.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <!-- Copy configuration files to output -->
+  <ItemGroup>
+    <None Include="..\amazonChecker.anom">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

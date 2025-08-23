@@ -1,0 +1,11 @@
+{
+  "DefaultThreads": 10,
+  "DefaultTimeout": 15000,
+  "SoundEnabled": true,
+  "SaveHtmlResponses": true,
+  "Theme": "Dark",
+  "AutoExportResults": false,
+  "DefaultWordlistPath": "Wordlists\\mixed_test_numbers.txt",
+  "MaxRetries": 3,
+  "DelayBetweenRequests": 200
+}

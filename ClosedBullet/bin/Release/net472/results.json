@@ -1,0 +1,802 @@
+[
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981915",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 2223,
+    "Timestamp": "2025-08-22T22:49:38.7209475+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479989295",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 2363,
+    "Timestamp": "2025-08-22T22:49:38.7191206+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987383",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 2393,
+    "Timestamp": "2025-08-22T22:49:38.7191206+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981273",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 2539,
+    "Timestamp": "2025-08-22T22:49:38.7171142+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986943",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 2602,
+    "Timestamp": "2025-08-22T22:49:38.7151094+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983619",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1840,
+    "Timestamp": "2025-08-22T22:49:39.7313543+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986429",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1174,
+    "Timestamp": "2025-08-22T22:49:40.6903412+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987330",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1150,
+    "Timestamp": "2025-08-22T22:49:41.9514191+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985035",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1164,
+    "Timestamp": "2025-08-22T22:49:42.1211153+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983269",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1023,
+    "Timestamp": "2025-08-22T22:49:42.2763993+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987357",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1235,
+    "Timestamp": "2025-08-22T22:49:42.3216796+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986896",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1002,
+    "Timestamp": "2025-08-22T22:49:42.584965+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987259",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1085,
+    "Timestamp": "2025-08-22T22:49:44.1097184+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988044",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1177,
+    "Timestamp": "2025-08-22T22:49:44.2963802+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982387",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1288,
+    "Timestamp": "2025-08-22T22:49:44.3120698+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982336",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1401,
+    "Timestamp": "2025-08-22T22:49:44.5598571+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988298",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1655,
+    "Timestamp": "2025-08-22T22:49:44.5907581+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981527",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 979,
+    "Timestamp": "2025-08-22T22:49:46.198715+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986611",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 926,
+    "Timestamp": "2025-08-22T22:49:46.4908175+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982629",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1233,
+    "Timestamp": "2025-08-22T22:49:46.6160249+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985318",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1043,
+    "Timestamp": "2025-08-22T22:49:47.2517607+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986608",
+    "Status": "VALID",
+    "Pattern": "OTPChallenge",
+    "ResponseTime": 1580,
+    "Timestamp": "2025-08-22T22:49:48.1963395+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987700",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 859,
+    "Timestamp": "2025-08-22T22:49:49.3002857+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479984334",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1040,
+    "Timestamp": "2025-08-22T22:49:50.7817418+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987071",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15053,
+    "Timestamp": "2025-08-22T22:49:38.7219563+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983308",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15054,
+    "Timestamp": "2025-08-22T22:49:38.7219563+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983261",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15012,
+    "Timestamp": "2025-08-22T22:49:40.950859+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982065",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1365,
+    "Timestamp": "2025-08-22T22:49:54.7915722+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988594",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15006,
+    "Timestamp": "2025-08-22T22:49:42.0904893+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479984172",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 759,
+    "Timestamp": "2025-08-22T22:49:56.98188+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985448",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15012,
+    "Timestamp": "2025-08-22T22:49:42.8776013+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986344",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 756,
+    "Timestamp": "2025-08-22T22:49:57.1731124+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988715",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1549,
+    "Timestamp": "2025-08-22T22:49:58.1061712+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985758",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1294,
+    "Timestamp": "2025-08-22T22:49:58.9085746+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479989474",
+    "Status": "VALID",
+    "Pattern": "OTPChallenge",
+    "ResponseTime": 2340,
+    "Timestamp": "2025-08-22T22:49:58.749802+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983022",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 2284,
+    "Timestamp": "2025-08-22T22:49:58.9388383+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988609",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15003,
+    "Timestamp": "2025-08-22T22:49:46.9732934+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479989645",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1762,
+    "Timestamp": "2025-08-22T22:50:00.6654995+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983830",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1780,
+    "Timestamp": "2025-08-22T22:50:01.2138768+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982569",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15008,
+    "Timestamp": "2025-08-22T22:49:48.4286861+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983789",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1740,
+    "Timestamp": "2025-08-22T22:50:02.1177202+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982545",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15006,
+    "Timestamp": "2025-08-22T22:49:48.8642572+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987138",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1781,
+    "Timestamp": "2025-08-22T22:50:02.2262041+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987282",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1362,
+    "Timestamp": "2025-08-22T22:50:02.9871166+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988175",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1335,
+    "Timestamp": "2025-08-22T22:50:04.008614+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981988",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1994,
+    "Timestamp": "2025-08-22T22:50:03.4357158+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985668",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1144,
+    "Timestamp": "2025-08-22T22:50:04.4528133+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983271",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15008,
+    "Timestamp": "2025-08-22T22:49:51.1736353+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986913",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1475,
+    "Timestamp": "2025-08-22T22:50:04.8724728+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981312",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1764,
+    "Timestamp": "2025-08-22T22:50:04.8734953+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986053",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1762,
+    "Timestamp": "2025-08-22T22:50:05.0134003+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982923",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1921,
+    "Timestamp": "2025-08-22T22:50:05.367567+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981293",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1328,
+    "Timestamp": "2025-08-22T22:50:06.3517961+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983376",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1118,
+    "Timestamp": "2025-08-22T22:50:06.6132582+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479989878",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15003,
+    "Timestamp": "2025-08-22T22:49:52.8253126+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988349",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1601,
+    "Timestamp": "2025-08-22T22:50:06.4442014+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983550",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 912,
+    "Timestamp": "2025-08-22T22:50:07.6457321+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982156",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1185,
+    "Timestamp": "2025-08-22T22:50:07.7831243+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988000",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1918,
+    "Timestamp": "2025-08-22T22:50:07.1978578+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985878",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1798,
+    "Timestamp": "2025-08-22T22:50:07.351774+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987254",
+    "Status": "ERROR",
+    "Pattern": "Error",
+    "ResponseTime": 15010,
+    "Timestamp": "2025-08-22T22:49:54.7924745+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986520",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1750,
+    "Timestamp": "2025-08-22T22:50:08.3058008+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983672",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1456,
+    "Timestamp": "2025-08-22T22:50:08.6939409+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982183",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1639,
+    "Timestamp": "2025-08-22T22:50:08.7402673+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988036",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1789,
+    "Timestamp": "2025-08-22T22:50:09.0481612+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983519",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1307,
+    "Timestamp": "2025-08-22T22:50:09.5723798+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986676",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 2323,
+    "Timestamp": "2025-08-22T22:50:08.8334988+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982445",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1443,
+    "Timestamp": "2025-08-22T22:50:09.974065+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982144",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1332,
+    "Timestamp": "2025-08-22T22:50:10.1273792+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479989644",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1168,
+    "Timestamp": "2025-08-22T22:50:10.814679+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985993",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1574,
+    "Timestamp": "2025-08-22T22:50:11.0673847+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982505",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1561,
+    "Timestamp": "2025-08-22T22:50:11.1600866+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982200",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1761,
+    "Timestamp": "2025-08-22T22:50:11.3943225+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983515",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1316,
+    "Timestamp": "2025-08-22T22:50:11.8913049+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985023",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 3125,
+    "Timestamp": "2025-08-22T22:50:10.1586067+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985831",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1321,
+    "Timestamp": "2025-08-22T22:50:12.1773426+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986871",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1846,
+    "Timestamp": "2025-08-22T22:50:11.8450053+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983785",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1291,
+    "Timestamp": "2025-08-22T22:50:12.4277652+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479988856",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1914,
+    "Timestamp": "2025-08-22T22:50:12.4740705+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982813",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1589,
+    "Timestamp": "2025-08-22T22:50:12.9956989+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981152",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1566,
+    "Timestamp": "2025-08-22T22:50:13.6579827+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982672",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1781,
+    "Timestamp": "2025-08-22T22:50:13.7350469+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983967",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1146,
+    "Timestamp": "2025-08-22T22:50:14.5008851+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479984308",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1552,
+    "Timestamp": "2025-08-22T22:50:14.1741042+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982009",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1898,
+    "Timestamp": "2025-08-22T22:50:14.2199104+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987495",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1932,
+    "Timestamp": "2025-08-22T22:50:14.2972473+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479982989",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1741,
+    "Timestamp": "2025-08-22T22:50:14.7331931+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983690",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1823,
+    "Timestamp": "2025-08-22T22:50:14.7009178+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479983596",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1416,
+    "Timestamp": "2025-08-22T22:50:15.594269+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479986767",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1911,
+    "Timestamp": "2025-08-22T22:50:15.3921986+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981561",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1568,
+    "Timestamp": "2025-08-22T22:50:16.2412749+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981473",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1186,
+    "Timestamp": "2025-08-22T22:50:16.6588174+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985643",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1454,
+    "Timestamp": "2025-08-22T22:50:16.5364587+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479987183",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1341,
+    "Timestamp": "2025-08-22T22:50:16.7355983+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985095",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1530,
+    "Timestamp": "2025-08-22T22:50:17.2395528+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479989719",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 1355,
+    "Timestamp": "2025-08-22T22:50:17.4757809+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479984834",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1320,
+    "Timestamp": "2025-08-22T22:50:17.5365717+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479984121",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1796,
+    "Timestamp": "2025-08-22T22:50:17.1359688+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479981985",
+    "Status": "VALID",
+    "Pattern": "PasswordField",
+    "ResponseTime": 1709,
+    "Timestamp": "2025-08-22T22:50:18.01314+02:00"
+  },
+  {
+    "Id": 0,
+    "PhoneNumber": "16479985928",
+    "Status": "INVALID",
+    "Pattern": "ErrorMessage",
+    "ResponseTime": 921,
+    "Timestamp": "2025-08-22T22:50:18.8230414+02:00"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build)",
+      "Bash(dotnet run:*)",
+      "Bash(taskkill:*)",
+      "Bash(tasklist)",
+      "Bash(.binReleasenet472OpenBullet-Copy.exe)",
+      "Bash(dir:*)",
+      "Bash(cmd /c:*)",
+      "Bash(dotnet publish:*)",
+      "Bash(./bin/WindowsRelease/OpenBullet-Copy.exe)",
+      "Bash(for file in *.cs)",
+      "Bash(do sed -i 's/namespace OpenBulletCopy/namespace ClosedBullet/g' \"$file\")",
+      "Bash(done)",
+      "Bash(./bin/ClosedBulletRelease/ClosedBullet.exe)",
+      "Bash(move:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\TestBot",
+      "C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet",
+      "C:\\c\\Users\\futiliter\\Documents\\Projects"
+    ]
+  }
+}

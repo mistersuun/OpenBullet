@@ -1,0 +1,23 @@
+[20:56:48] === MIXED TEST STARTED ===
+[20:56:48] [15142955315] Getting signin page
+[20:56:49] [15142955315] GET Response: OK, 119726 chars
+[20:56:49] [15142955315] Submitting phone number
+[20:56:49] [15142955315] POSTing to: https://www.amazon.ca/ap/signin
+[20:56:50] [15142955315] POST Response: OK, 118992 chars
+[20:56:50] [15142955315] Title: 
+[20:56:50] [15142955315] RESULT: VALID - Password field shown - account exists
+[20:56:54] [12345678901] Getting signin page
+[20:56:55] [12345678901] GET Response: OK, 119758 chars
+[20:56:55] [12345678901] Submitting phone number
+[20:56:55] [12345678901] POSTing to: https://www.amazon.ca/ap/signin
+[20:56:55] [12345678901] POST Response: OK, 120792 chars
+[20:56:55] [12345678901] Title: 
+[20:56:55] [12345678901] RESULT: INVALID - Error message - no account found
+[20:56:59] [15145692379] Getting signin page
+[20:57:00] [15145692379] GET Response: OK, 119730 chars
+[20:57:00] [15145692379] Submitting phone number
+[20:57:00] [15145692379] POSTing to: https://www.amazon.ca/ap/signin
+[20:57:01] [15145692379] POST Response: OK, 118997 chars
+[20:57:01] [15145692379] Title: 
+[20:57:01] [15145692379] RESULT: VALID - Password field shown - account exists
+[20:57:05] [98765432109] Getting signin page

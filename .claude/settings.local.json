@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(dotnet build:*)",
+      "Bash(copy:*)",
+      "Bash(xcopy:*)",
+      "Bash(powershell:*)",
+      "Bash(TestBot.exe)",
+      "Bash(\"C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\TestBot\\bin\\Release\\net472\\TestBot.exe\")",
+      "Bash(dir \"C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\TestBot\\bin\\Release\\net472\\TestResults_*\" /B)",
+      "Bash(move TestBot.cs TestBot.cs.bak)",
+      "Bash(move TestBotInvalid.cs TestBot.cs)",
+      "Bash(ren:*)",
+      "Bash(.TestBot.exe)",
+      "Bash(dir \"C:\\Users\\futiliter\\Documents\\Projects\\OpenBullet\\TestResults_Invalid_*\" /B)",
+      "Bash(csc:*)",
+      "Bash(del:*)",
+      "Bash(dir:*)",
+      "Bash(dotnet clean:*)",
+      "Bash(timeout:*)"
+    ],
+    "deny": [],
+    "additionalDirectories": [
+      "C:\\",
+      "C:\\Users\\futiliter\\Documents\\Projects\\TestBot",
+      "C:\\Users\\futiliter\\Documents\\Projects\\Openbullet 1.4.4 Anomaly Modded Version\\Sounds",
+      "C:\\Users\\futiliter\\Documents\\Projects\\Openbullet 1.4.4 Anomaly Modded Version\\x64",
+      "C:\\Users\\futiliter\\Documents\\Projects\\Openbullet 1.4.4 Anomaly Modded Version\\x86"
+    ]
+  }
+}
